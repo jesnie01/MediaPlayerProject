@@ -3,7 +3,7 @@ package com.example.mediaplayerproject;
 import java.sql.*;
 import java.util.Properties;
 
-public class dbConnection {
+public class DBConnection {
 
     private static final String dbName = "dbMediaPlayer";
     private static final String userName = "sa";
@@ -12,17 +12,22 @@ public class dbConnection {
     private static final String url = "jdbc:sqlserver://localhost:"+port+";databaseName="+dbName;
     private static Properties properties = new Properties();
 
-    private dbConnection() {
+    private static DBConnection dbConnection = null;
+    private DBConnection() {
         properties.setProperty("user", userName);
         properties.setProperty("password", password);
+        properties.setProperty("encrypt", "false");
     }
 
-    public Connection makeConnection() throws SQLException {
+    public static DBConnection getDbConnection() {
+        if (dbConnection == null)
+            dbConnection = new DBConnection();
+
+        return dbConnection;
+    }
+
+    public static Connection makeConnection() throws SQLException {
         Connection conn = DriverManager.getConnection(url,properties);
         return conn;
     }
-
-
-
-
 }
