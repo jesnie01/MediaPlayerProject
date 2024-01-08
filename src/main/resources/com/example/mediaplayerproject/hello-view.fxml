@@ -40,7 +40,7 @@
       </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
          <children>
-            <Label fx:id="welcomeText" prefHeight="18.0" prefWidth="61.0" text="Label" />
+            <Label fx:id="welcomeText" text="Label" />
             <ProgressBar prefWidth="200.0" progress="0.0" />
             <Label text="Label" />
          </children>
@@ -48,8 +48,8 @@
       <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="3">
          <children>
             <Button fx:id="helloButton" mnemonicParsing="false" onAction="#onButtonHelloClick" text="Button" />
-            <Button mnemonicParsing="false" text="Button" />
-            <Button mnemonicParsing="false" text="Button" />
+            <Button fx:id="searchButton" mnemonicParsing="false" onAction="#onButtonSearchClick" text="CSearch" />
+            <Button fx:id="searchPartialButton" mnemonicParsing="false" onAction="#onButtonPartialSearchClick" text="PSearch" />
             <Button mnemonicParsing="false" text="Button" />
             <Button mnemonicParsing="false" text="Button" />
             <Button mnemonicParsing="false" text="Button" />
@@ -58,7 +58,14 @@
       <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
          <children>
             <MediaView fitHeight="200.0" fitWidth="200.0" layoutX="200.0" layoutY="58.0" />
-            <ListView fx:id="mediaList" layoutX="182.0" layoutY="44.0" prefHeight="200.0" prefWidth="200.0" />
+            <ListView fx:id="mediaList" layoutX="307.0" layoutY="46.0" prefHeight="200.0" prefWidth="200.0" />
+            <TextField fx:id="searchBox" layoutX="51.0" layoutY="133.0" />
+            <RadioButton fx:id="searchToggleArtist" layoutX="38.0" layoutY="186.0" mnemonicParsing="false" selected="true" text="Search Artist">
+               <toggleGroup>
+                  <ToggleGroup fx:id="toggleSearch" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="searchToggleFilename" layoutX="141.0" layoutY="186.0" mnemonicParsing="false" text="Search Filename" toggleGroup="$toggleSearch" />
          </children>
       </Pane>
    </children>
