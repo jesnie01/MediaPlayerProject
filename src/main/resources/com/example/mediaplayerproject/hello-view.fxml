@@ -1,12 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.media.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.media.MediaView?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mediaplayerproject.HelloController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mediaplayerproject.HelloController">
   <columnConstraints>
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="506.3999755859375" minWidth="10.0" prefWidth="487.9999633789063" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="295.20001220703125" minWidth="10.0" prefWidth="112.00003662109373" />
   </columnConstraints>
   <rowConstraints>
     <RowConstraints maxHeight="128.60001220703126" minHeight="0.0" prefHeight="27.4" vgrow="SOMETIMES" />
@@ -47,19 +58,19 @@
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="3">
          <children>
-            <Button fx:id="helloButton" mnemonicParsing="false" onAction="#onButtonHelloClick" text="Button" />
-            <Button mnemonicParsing="false" text="Button" />
-            <Button mnemonicParsing="false" text="Button" />
-            <Button mnemonicParsing="false" text="Button" />
-            <Button mnemonicParsing="false" text="Button" />
-            <Button mnemonicParsing="false" text="Button" />
+            <Button fx:id="helloButton" mnemonicParsing="false" onAction="#onButtonHelloClick" text="Hello" />
+            <Button fx:id="buttonPlay" mnemonicParsing="false" onAction="#onButtonPlayClick" text="Play" />
+            <Button fx:id="buttonPause" mnemonicParsing="false" onAction="#onButtonPauseClick" text="Pause" />
+            <Button fx:id="buttonStop" mnemonicParsing="false" onAction="#onButtonStopClick" text="Stop" />
+            <Button fx:id="buttonPrev" mnemonicParsing="false" onAction="#onButtonPrevClick" text="Prev" />
+            <Button fx:id="buttonNext" mnemonicParsing="false" onAction="#onButtonNextClick" text="Next" />
          </children>
       </HBox>
       <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
          <children>
-            <MediaView fitHeight="200.0" fitWidth="200.0" layoutX="200.0" layoutY="58.0" />
-            <ListView fx:id="mediaList" layoutX="182.0" layoutY="44.0" prefHeight="200.0" prefWidth="200.0" />
+            <MediaView fx:id="mediaView" fitHeight="200.0" fitWidth="200.0" layoutX="200.0" layoutY="58.0" />
          </children>
       </Pane>
+      <ListView fx:id="mediaList" prefHeight="315.0" prefWidth="112.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
    </children>
 </GridPane>

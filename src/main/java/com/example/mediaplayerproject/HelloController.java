@@ -1,5 +1,6 @@
 package com.example.mediaplayerproject;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -29,5 +30,20 @@ public class HelloController {
             mediaList.getItems().add(tempString);
         }
         connection.close();
+    }
+
+    public void onButtonPlayClick(ActionEvent actionEvent) {
+    }
+
+    public void onButtonPauseClick(ActionEvent actionEvent) {
+    }
+
+    public void onButtonStopClick(ActionEvent actionEvent) {
+    }
+
+    public void onButtonPrevClick(ActionEvent actionEvent) {
+    }
+
+    public void onButtonNextClick(ActionEvent actionEvent) {
     }
 }
