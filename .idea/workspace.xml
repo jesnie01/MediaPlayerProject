@@ -5,11 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ddff0b61-f80f-4af6-a0de-828cd68eb743" name="Changes" comment="db connection&#10;all vars required to make connection to database">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/mediaplayerproject/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/mediaplayerproject/HelloApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/mediaplayerproject/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/mediaplayerproject/HelloController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/mediaplayerproject/dbConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/mediaplayerproject/DBConnection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/mediaplayerproject/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/mediaplayerproject/hello-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -61,7 +60,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "databaseConnection",
+    "git-widget-placeholder": "featureBranch",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/sqljdbc_12.4/enu/jars/mssql-jdbc-12.4.1.jre11.jar",
     "node.js.detected.package.eslint": "true",
