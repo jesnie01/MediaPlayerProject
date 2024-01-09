@@ -41,7 +41,7 @@ public class  HelloController {
     }
     @FXML
     protected void onButtonSearchClick() throws SQLException {
-        boolean searchToggleBool = searchToggleArtist.isPressed();
+        boolean searchToggleBool = searchToggleArtist.isSelected();
 
         ArrayList<String> searchedList = searchDB.searchComplete(searchBox.getText(),searchToggleBool);
         mediaList.getItems().clear();
@@ -51,7 +51,7 @@ public class  HelloController {
     }
     @FXML
     protected void onButtonPartialSearchClick() throws SQLException {
-        boolean searchToggleBool = searchToggleArtist.isPressed();
+        boolean searchToggleBool = searchToggleArtist.isSelected();
 
         ArrayList<String> searchedList = searchDB.searchPartial(searchBox.getText(),searchToggleBool);
         mediaList.getItems().clear();
