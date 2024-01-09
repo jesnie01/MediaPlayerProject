@@ -1,10 +1,7 @@
 package com.example.mediaplayerproject;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -23,6 +20,14 @@ public class  HelloController {
     private RadioButton searchToggleArtist;
     @FXML
     private RadioButton searchToggleFilename;
+    @FXML
+    private Button playlistHandler;
+    @FXML
+    private Button showPlist;
+    @FXML
+    private Button clearPlaylist;
+
+    private ArrayList<String> toAddToPlaylist = new ArrayList<>();
 
     SearchDB searchDB = new SearchDB();
 
@@ -61,5 +66,23 @@ public class  HelloController {
         for (String s : searchedList) {
             mediaList.getItems().add(s);
         }
+    }
+    @FXML
+    protected void onButtonClickPlaylistHanndler() {
+        String tempString = "Added ";
+        tempString += mediaList.getSelectionModel().getSelectedItem().toString();
+        toAddToPlaylist.add(tempString);
+    }
+    @FXML
+    protected void onButtonClickSPlist() {
+        mediaList.getItems().clear();
+        for (String i : toAddToPlaylist) {
+            mediaList.getItems().add(i);
+        }
+    }
+    @FXML
+    protected void onButtonClickClearPlaylist() {
+        toAddToPlaylist.clear();
+        mediaList.getItems().clear();
     }
 }

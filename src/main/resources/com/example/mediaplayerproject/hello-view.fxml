@@ -53,6 +53,9 @@
             <Button mnemonicParsing="false" text="Button" />
             <Button mnemonicParsing="false" text="Button" />
             <Button mnemonicParsing="false" text="Button" />
+            <Button fx:id="playlistHandler" mnemonicParsing="false" onAction="#onButtonClickPlaylistHanndler" text="Playlist handler" />
+            <Button fx:id="showPlist" mnemonicParsing="false" onAction="#onButtonClickSPlist" text="Show playlist" />
+            <Button fx:id="clearPlaylist" mnemonicParsing="false" onAction="#onButtonClickClearPlaylist" text="Clear playlist" />
          </children>
       </HBox>
       <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
