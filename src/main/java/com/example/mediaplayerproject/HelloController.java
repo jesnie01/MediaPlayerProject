@@ -32,6 +32,7 @@ public class HelloController implements Initializable {
     private Button buttonStop;
     @FXML
     private ListView mediaList;
+    @FXML
     private Button buttonPrev;
     @FXML
     private Button buttonNext;
@@ -39,10 +40,11 @@ public class HelloController implements Initializable {
     private MediaView mediaView = new MediaView();
     @FXML
     private TextField searchBox;
+    @FXML
     private Label durationLabel; //Prompt text = Duration
-
     @FXML
     private RadioButton searchToggleArtist;
+    @FXML
     private Label titleLabel; //Prompt text = Title
 
     @FXML
