@@ -32,10 +32,10 @@ public class  HelloController {
         PreparedStatement preparedStatement = connection.prepareCall("SELECT fldMediaTitle FROM tblMediaInfo");
         ResultSet resultSet = preparedStatement.executeQuery();
 
-        mediaList.getItems().clear();
+        mediaList.getItems().clear(); // Stops the list from duplicating itself every click
         while(resultSet.next()) {
-            String tempString = resultSet.getString(1);
-            mediaList.getItems().add(tempString);
+            String tempString = resultSet.getString(1); // gets everything from fldMediaTitle as String values
+            mediaList.getItems().add(tempString); // gets elements from ListView and replaces them with fldMediaTitle
         }
 
         connection.close();
@@ -43,9 +43,10 @@ public class  HelloController {
     @FXML
     protected void onButtonSearchClick() throws SQLException {
         boolean searchToggleBool = searchToggleArtist.isSelected();
-
+        //Checks the searchbox on button click for a complete artist name
         ArrayList<String> searchedList = searchDB.searchComplete(searchBox.getText(),searchToggleBool);
-        mediaList.getItems().clear();
+        mediaList.getItems().clear(); // makes sure the ListView is empty, before displaying elements
+        //if found, adds them to an Arraylist and displays it in a ListView
         for (String s : searchedList) {
             mediaList.getItems().add(s);
         }
@@ -53,9 +54,10 @@ public class  HelloController {
     @FXML
     protected void onButtonPartialSearchClick() throws SQLException {
         boolean searchToggleBool = searchToggleArtist.isSelected();
-
+        //Checks the searchbox on button click for a partial match in artist name
         ArrayList<String> searchedList = searchDB.searchPartial(searchBox.getText(),searchToggleBool);
         mediaList.getItems().clear();
+        //if found, adds them to an ArrayList and displays it in a ListView
         for (String s : searchedList) {
             mediaList.getItems().add(s);
         }
