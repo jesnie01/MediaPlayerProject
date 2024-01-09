@@ -27,6 +27,7 @@ public class HelloController implements Initializable {
     private Button buttonPlay;
     @FXML
     private Label welcomeText;
+    @FXML
     private Button buttonPause;
     @FXML
     private Button buttonStop;
@@ -63,7 +64,7 @@ public class HelloController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources){ //Need to change the link below to drag info from database
 
-        file = new File("src\\media\\eyy_gtfo_outta_here_dog_meme_a440-jN8drc.mp4").getAbsoluteFile(); //filepath
+        file = new File("src\\media\\30_December_2022_zavxdvECwRA.mp4").getAbsoluteFile(); //filepath
         media = new Media(file.toURI().toString()); //changes filepath to readable media
         mediaPlayer = new MediaPlayer(media); //add media to mediaplayer
         mediaView.setMediaPlayer(mediaPlayer); //add videocontent to the mediaview (without this line, it will only play sounds)
@@ -83,17 +84,6 @@ public class HelloController implements Initializable {
         }
 
         connection.close();
-    }
-    @FXML
-    protected void onButtonSearchClick() throws SQLException {
-        boolean searchToggleBool = searchToggleArtist.isSelected();
-        //Checks the searchbox on button click for a complete artist name
-        ArrayList<String> searchedList = searchDB.searchComplete(searchBox.getText(), searchToggleBool);
-        mediaList.getItems().clear(); // makes sure the ListView is empty, before displaying elements
-        //if found, adds them to an Arraylist and displays it in a ListView
-        for (String s : searchedList) {
-            mediaList.getItems().add(s);
-        }
     }
 
     public void onButtonPlayClick()
