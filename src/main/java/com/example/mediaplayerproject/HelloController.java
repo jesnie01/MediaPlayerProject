@@ -30,9 +30,19 @@ public class HelloController implements Initializable {
     private Button buttonPrev;
     @FXML
     private Button buttonNext;
+    @FXML
+    private MediaView mediaView;
+    @FXML
+    private Label durationLabel; //Prompt text = Duration
+
+    @FXML
+    private Label titleLabel; //Prompt text = Title
+
+    @FXML
+    private ListView mediaList;
     private File file;
     private Media media;
-    public MediaPlayer mediaPlayer;
+    private MediaPlayer mediaPlayer;
 
     /**
      * This method is invoked automatically in the beginning. Used for initializing, loading data etc.
@@ -42,21 +52,12 @@ public class HelloController implements Initializable {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources){ //Need to change the link below to drag info from database
-        file = new File("c:\\Users\\Jesper\\IdeaProjects\\MediaPlayerProject\\src\\media\\eyy_gtfo_outta_here_dog_meme_a440-jN8drc.mp4");
-        media = new Media(file.toURI().toString()); //changes filepath to media
+        file = new File("c:\\Users\\Jesper\\IdeaProjects\\MediaPlayerProject\\src\\media\\eyy_gtfo_outta_here_dog_meme_a440-jN8drc.mp4"); //filepath
+        media = new Media(file.toURI().toString()); //changes filepath to readable media
         mediaPlayer = new MediaPlayer(media); //add media to mediaplayer
-        mediaView.setMediaPlayer(mediaPlayer); //add videocontent to the mediaview
+        mediaView.setMediaPlayer(mediaPlayer); //add videocontent to the mediaview (without this line, it will only play sounds)
         mediaPlayer.setAutoPlay(false); //disable autoplay, so we can control the media using buttons
     }
-
-    @FXML
-    public MediaView mediaView;
-
-    @FXML
-    public Label titelText;
-
-    @FXML
-    private ListView mediaList;
 
     @FXML
     protected void onButtonHelloClick() throws SQLException {

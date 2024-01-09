@@ -42,9 +42,9 @@
       </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
          <children>
-            <Label fx:id="titelText" prefHeight="18.0" prefWidth="61.0" text="Titel" />
+            <Label fx:id="titleLabel" prefHeight="18.0" prefWidth="61.0" text="Title" />
             <ProgressBar prefWidth="200.0" progress="0.0" />
-            <Label text="Label" />
+            <Label fx:id="durationLabel" text="Duration" />
          </children>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="3">
