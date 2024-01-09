@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.media.*?>
@@ -7,6 +8,8 @@
 <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mediaplayerproject.HelloController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="506.3999755859375" minWidth="10.0" prefWidth="487.9999633789063" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="295.20001220703125" minWidth="10.0" prefWidth="112.00003662109373" />
   </columnConstraints>
   <rowConstraints>
     <RowConstraints maxHeight="128.60001220703126" minHeight="0.0" prefHeight="27.4" vgrow="SOMETIMES" />
@@ -41,8 +44,10 @@
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
          <children>
             <Label fx:id="welcomeText" text="Label" />
+            <Label fx:id="titleLabel" prefHeight="18.0" prefWidth="61.0" text="Title" />
             <ProgressBar prefWidth="200.0" progress="0.0" />
             <Label text="Label" />
+            <Label fx:id="durationLabel" text="Duration" />
          </children>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="3">
@@ -53,6 +58,12 @@
             <Button mnemonicParsing="false" text="Button" />
             <Button mnemonicParsing="false" text="Button" />
             <Button mnemonicParsing="false" text="Button" />
+            <Button fx:id="helloButton" mnemonicParsing="false" onAction="#onButtonHelloClick" text="Hello" />
+            <Button fx:id="buttonPlay" mnemonicParsing="false" onAction="#onButtonPlayClick" text="Play" />
+            <Button fx:id="buttonPause" mnemonicParsing="false" onAction="#onButtonPauseClick" text="Pause" />
+            <Button fx:id="buttonStop" mnemonicParsing="false" onAction="#onButtonStopClick" text="Stop" />
+            <Button fx:id="buttonPrev" mnemonicParsing="false" onAction="#onButtonPrevClick" text="Prev" />
+            <Button fx:id="buttonNext" mnemonicParsing="false" onAction="#onButtonNextClick" text="Next" />
          </children>
       </HBox>
       <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
@@ -66,7 +77,12 @@
                </toggleGroup>
             </RadioButton>
             <RadioButton fx:id="searchToggleFilename" layoutX="141.0" layoutY="186.0" mnemonicParsing="false" text="Search Filename" toggleGroup="$toggleSearch" />
+            <MediaView fx:id="mediaView" fitHeight="300.0" fitWidth="300.0" focusTraversable="true" layoutX="100.0">
+               <viewport>
+                  <Rectangle2D />
+               </viewport></MediaView>
          </children>
       </Pane>
+      <ListView fx:id="mediaList" prefHeight="315.0" prefWidth="112.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
    </children>
 </GridPane>
