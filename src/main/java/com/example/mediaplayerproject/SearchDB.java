@@ -23,7 +23,7 @@ public class SearchDB {
             }
 
             for (String s : tempArrayList) {
-                if (s.equals(searchText)) {
+                if (s.equalsIgnoreCase(searchText)) {
                     sortArrayList.add(s);
                 }
             }
@@ -38,13 +38,13 @@ public class SearchDB {
             }
 
             for (String s : tempArrayList) {
-                if (s.equals(searchText)) {
+                if (s.equalsIgnoreCase(searchText)) {
                     sortArrayList.add(s);
                 }
             }
 
             for (String s : sortArrayList) {
-                String sqlQuery = "Select * from tblCreatorMedia inner join tblMediaInfo on tblCreatorMedia.fldMediaId = tblMediaInfo.fldMediaId where fldCreatorId = (SELECT fldCreatorId from tblCreator where fldCreatorName = " + s;
+                String sqlQuery = "Select * from tblCreatorMedia inner join tblMediaInfo on tblCreatorMedia.fldMediaId = tblMediaInfo.fldMediaId where fldCreatorId = (SELECT fldCreatorId from tblCreator where fldCreatorName = '" + s + "')";
                 preparedStatement = connection.prepareCall(sqlQuery);
                 resultSet = preparedStatement.executeQuery();
 
@@ -58,20 +58,50 @@ public class SearchDB {
     public ArrayList<String> searchPartial(String searchText, boolean toggle) throws SQLException {
         ArrayList<String> tempArrayList = new ArrayList<>();
         ArrayList<String> sortArrayList = new ArrayList<>();
+        ArrayList<String> sortedMediaArrayList = new ArrayList<>();
 
-        Connection connection = DBConnection.getDbConnection().makeConnection();
-        PreparedStatement preparedStatement = connection.prepareCall("SELECT * FROM tblMediaInfo");
-        ResultSet resultSet = preparedStatement.executeQuery();
+        if (!toggle) {
+            Connection connection = DBConnection.getDbConnection().makeConnection();
+            PreparedStatement preparedStatement = connection.prepareCall("SELECT * FROM tblMediaInfo");
+            ResultSet resultSet = preparedStatement.executeQuery();
 
-        while (resultSet.next()) {
-            tempArrayList.add(resultSet.getString(2));
-        }
-
-        for (String s : tempArrayList) {
-            if (s.contains(searchText)) {
-                sortArrayList.add(s);
+            while (resultSet.next()) {
+                tempArrayList.add(resultSet.getString(2));
             }
+
+            for (String s : tempArrayList) {
+                if (s.toLowerCase().contains(searchText.toLowerCase())) {
+                    sortArrayList.add(s);
+                }
+            }
+            return sortArrayList;
+        }else {
+            Connection connection = DBConnection.getDbConnection().makeConnection();
+            PreparedStatement preparedStatement = connection.prepareCall("SELECT * FROM tblCreator");
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                tempArrayList.add(resultSet.getString(2));
+            }
+
+            for (String s : tempArrayList) {
+                if (s.toLowerCase().contains(searchText.toLowerCase())) {
+                    sortArrayList.add(s);
+                }
+            }
+
+            for (String s : sortArrayList) {
+                String sqlQuery = "Select * from tblCreatorMedia inner join tblMediaInfo on tblCreatorMedia.fldMediaId = tblMediaInfo.fldMediaId where fldCreatorId = (SELECT fldCreatorId from tblCreator where fldCreatorName = '" + s + "')";
+                preparedStatement = connection.prepareCall(sqlQuery);
+                resultSet = preparedStatement.executeQuery();
+
+                while (resultSet.next()) {
+                    if (!sortedMediaArrayList.contains(resultSet.getString(5))) {
+                        sortedMediaArrayList.add(resultSet.getString(5));
+                    }
+                }
+            }
+            return sortedMediaArrayList;
         }
-        return sortArrayList;
     }
 }

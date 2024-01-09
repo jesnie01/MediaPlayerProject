@@ -29,19 +29,20 @@ public class  HelloController {
     @FXML
     protected void onButtonHelloClick() throws SQLException {
         Connection connection = DBConnection.getDbConnection().makeConnection();
-        PreparedStatement preparedStatement = connection.prepareCall("SELECT fldMediaTitle FROM tblMediaInfo WHERE fldMediaId = 1");
+        PreparedStatement preparedStatement = connection.prepareCall("SELECT fldMediaTitle FROM tblMediaInfo");
         ResultSet resultSet = preparedStatement.executeQuery();
 
-        resultSet.next();
-        String tempString = resultSet.getString(1);
-
-        welcomeText.setText(tempString);
+        mediaList.getItems().clear();
+        while(resultSet.next()) {
+            String tempString = resultSet.getString(1);
+            mediaList.getItems().add(tempString);
+        }
 
         connection.close();
     }
     @FXML
     protected void onButtonSearchClick() throws SQLException {
-        boolean searchToggleBool = searchToggleArtist.isPressed();
+        boolean searchToggleBool = searchToggleArtist.isSelected();
 
         ArrayList<String> searchedList = searchDB.searchComplete(searchBox.getText(),searchToggleBool);
         mediaList.getItems().clear();
@@ -51,7 +52,7 @@ public class  HelloController {
     }
     @FXML
     protected void onButtonPartialSearchClick() throws SQLException {
-        boolean searchToggleBool = searchToggleArtist.isPressed();
+        boolean searchToggleBool = searchToggleArtist.isSelected();
 
         ArrayList<String> searchedList = searchDB.searchPartial(searchBox.getText(),searchToggleBool);
         mediaList.getItems().clear();
