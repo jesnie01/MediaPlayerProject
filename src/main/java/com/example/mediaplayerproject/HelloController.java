@@ -76,10 +76,12 @@ public class HelloController implements Initializable {
         mediaPlayer.play();
     }
 
-    public void onButtonPauseClick(ActionEvent actionEvent) {
+    public void onButtonPauseClick() {
+        mediaPlayer.pause();
     }
 
-    public void onButtonStopClick(ActionEvent actionEvent) {
+    public void onButtonStopClick() {
+        mediaPlayer.stop();
     }
 
     public void onButtonPrevClick(ActionEvent actionEvent) {
