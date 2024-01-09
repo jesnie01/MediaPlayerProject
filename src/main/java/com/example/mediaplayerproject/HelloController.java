@@ -29,13 +29,14 @@ public class  HelloController {
     @FXML
     protected void onButtonHelloClick() throws SQLException {
         Connection connection = DBConnection.getDbConnection().makeConnection();
-        PreparedStatement preparedStatement = connection.prepareCall("SELECT fldMediaTitle FROM tblMediaInfo WHERE fldMediaId = 1");
+        PreparedStatement preparedStatement = connection.prepareCall("SELECT fldMediaTitle FROM tblMediaInfo");
         ResultSet resultSet = preparedStatement.executeQuery();
 
-        resultSet.next();
-        String tempString = resultSet.getString(1);
-
-        welcomeText.setText(tempString);
+        mediaList.getItems().clear();
+        while(resultSet.next()) {
+            String tempString = resultSet.getString(1);
+            mediaList.getItems().add(tempString);
+        }
 
         connection.close();
     }
