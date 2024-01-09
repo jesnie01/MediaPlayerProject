@@ -64,7 +64,7 @@ public class HelloController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources){ //Need to change the link below to drag info from database
 
-        file = new File("src\\media\\30_December_2022_zavxdvECwRA.mp4").getAbsoluteFile(); //filepath
+        file = new File("src\\media\\eyy_gtfo_outta_here_dog_meme_a440-jN8drc.mp4").getAbsoluteFile(); //filepath
         media = new Media(file.toURI().toString()); //changes filepath to readable media
         mediaPlayer = new MediaPlayer(media); //add media to mediaplayer
         mediaView.setMediaPlayer(mediaPlayer); //add videocontent to the mediaview (without this line, it will only play sounds)

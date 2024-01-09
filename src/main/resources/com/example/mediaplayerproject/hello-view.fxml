@@ -38,7 +38,7 @@
                 </Menu>
               </menus>
             </MenuBar>
-            <TextField fx:id="searchBox" />
+            <TextField fx:id="searchBox" promptText="search" />
             <Button fx:id="searchPartialButton" mnemonicParsing="false" onAction="#onButtonPartialSearchClick" text="Search" />
             <RadioButton fx:id="searchToggleArtist" mnemonicParsing="false" selected="true" text="Creator">
                <toggleGroup>
