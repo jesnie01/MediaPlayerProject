@@ -22,9 +22,13 @@ import java.util.ResourceBundle;
 public class HelloController implements Initializable {
     @FXML
     private Button buttonPlay;
+    @FXML
     private Button buttonPause;
+    @FXML
     private Button buttonStop;
+    @FXML
     private Button buttonPrev;
+    @FXML
     private Button buttonNext;
     private File file;
     private Media media;

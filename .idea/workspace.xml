@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ddff0b61-f80f-4af6-a0de-828cd68eb743" name="Changes" comment="moved listview to the right&#10;increased scenesize to 800x600&#10;added button names&#10;added buttonhandlers in HelloController">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/mediaplayerproject/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/mediaplayerproject/HelloController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/mediaplayerproject/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/mediaplayerproject/hello-view.fxml" afterDir="false" />
-    </list>
+    <list default="true" id="ddff0b61-f80f-4af6-a0de-828cd68eb743" name="Changes" comment="display of media&#10;adjusted view size of media&#10;created handlers for buttons" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -96,7 +92,7 @@
       <workItem from="1704702415377" duration="1504000" />
       <workItem from="1704704006836" duration="4223000" />
       <workItem from="1704708255532" duration="717000" />
-      <workItem from="1704787823586" duration="1290000" />
+      <workItem from="1704787823586" duration="1724000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <option name="closed" value="true" />
@@ -130,7 +126,15 @@
       <option name="project" value="LOCAL" />
       <updated>1704717556508</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="display of media&#10;adjusted view size of media&#10;created handlers for buttons">
+      <option name="closed" value="true" />
+      <created>1704789509689</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1704789509689</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -165,7 +169,8 @@
     <MESSAGE value="db connection&#10;all vars required to make connection to database" />
     <MESSAGE value="test" />
     <MESSAGE value="moved listview to the right&#10;increased scenesize to 800x600&#10;added button names&#10;added buttonhandlers in HelloController" />
-    <option name="LAST_COMMIT_MESSAGE" value="moved listview to the right&#10;increased scenesize to 800x600&#10;added button names&#10;added buttonhandlers in HelloController" />
+    <MESSAGE value="display of media&#10;adjusted view size of media&#10;created handlers for buttons" />
+    <option name="LAST_COMMIT_MESSAGE" value="display of media&#10;adjusted view size of media&#10;created handlers for buttons" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
