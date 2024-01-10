@@ -72,6 +72,10 @@
             <Button fx:id="buttonStop" mnemonicParsing="false" onAction="#onButtonStopClick" text="Stop" />
             <Button fx:id="buttonPrev" mnemonicParsing="false" onAction="#onButtonPrevClick" text="Prev" />
             <Button fx:id="buttonNext" mnemonicParsing="false" onAction="#onButtonNextClick" text="Next" />
+            <Slider fx:id="volumeSlider" majorTickUnit="50.0" minorTickCount="4" showTickLabels="true" showTickMarks="true" value="50.0">
+               <padding>
+                  <Insets left="5.0" top="5.0" />
+               </padding></Slider>
          </children>
       </HBox>
       <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
