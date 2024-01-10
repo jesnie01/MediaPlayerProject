@@ -1,14 +1,11 @@
 package com.example.mediaplayerproject;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
@@ -46,13 +43,15 @@ public class HelloController implements Initializable {
     @FXML
     private RadioButton searchToggleArtist;
     @FXML
-    private Label titleLabel; //Prompt text = Title
-
+    private Label titleLabel; //Dette skal laves om til current duration i sangen?
+    @FXML
+    private Slider volumeSlider;
     @FXML
     private RadioButton searchToggleFilename;
     private File file;
     private Media media;
     private MediaPlayer mediaPlayer;
+    private int volume = 100;
 
     SearchDB searchDB = new SearchDB();
     /**
@@ -69,6 +68,13 @@ public class HelloController implements Initializable {
         mediaPlayer = new MediaPlayer(media); //add media to mediaplayer
         mediaView.setMediaPlayer(mediaPlayer); //add videocontent to the mediaview (without this line, it will only play sounds)
         mediaPlayer.setAutoPlay(false); //disable autoplay, so we can control the media using buttons
+
+        volumeSlider.valueProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
+                volume = (int)volumeSlider.getValue();
+            }
+        });
     }
 
     @FXML
