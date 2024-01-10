@@ -51,7 +51,6 @@ public class HelloController implements Initializable {
     private File file;
     private Media media;
     private MediaPlayer mediaPlayer;
-    private int volume;
 
     SearchDB searchDB = new SearchDB();
     /**
