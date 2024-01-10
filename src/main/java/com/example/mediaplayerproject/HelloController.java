@@ -54,6 +54,8 @@ public class HelloController implements Initializable {
     private Media media;
     private MediaPlayer mediaPlayer;
 
+    private ArrayList<String> toAddToPlaylist = new ArrayList<>();
+
     SearchDB searchDB = new SearchDB();
     /**
      * This method is invoked automatically in the beginning. Used for initializing, loading data etc.
@@ -114,5 +116,23 @@ public class HelloController implements Initializable {
     }
 
     public void onButtonNextClick(ActionEvent actionEvent) {
+    }
+    @FXML
+    protected void onButtonClickPlaylistHanndler() {
+        String tempString = "Added ";
+        tempString += mediaList.getSelectionModel().getSelectedItem().toString();
+        toAddToPlaylist.add(tempString);
+    }
+    @FXML
+    protected void onButtonClickSPlist() {
+        mediaList.getItems().clear();
+        for (String i : toAddToPlaylist) {
+            mediaList.getItems().add(i);
+        }
+    }
+    @FXML
+    protected void onButtonClickClearPlaylist() {
+        toAddToPlaylist.clear();
+        mediaList.getItems().clear();
     }
 }
