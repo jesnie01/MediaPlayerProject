@@ -51,7 +51,7 @@ public class HelloController implements Initializable {
     private File file;
     private Media media;
     private MediaPlayer mediaPlayer;
-    private int volume = 100;
+    private int volume;
 
     SearchDB searchDB = new SearchDB();
     /**
@@ -68,13 +68,7 @@ public class HelloController implements Initializable {
         mediaPlayer = new MediaPlayer(media); //add media to mediaplayer
         mediaView.setMediaPlayer(mediaPlayer); //add videocontent to the mediaview (without this line, it will only play sounds)
         mediaPlayer.setAutoPlay(false); //disable autoplay, so we can control the media using buttons
-
-        volumeSlider.valueProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
-                volume = (int)volumeSlider.getValue();
-            }
-        });
+        volumeSlider.valueProperty().addListener((observableValue, number, t1) -> mediaPlayer.setVolume((int)volumeSlider.getValue()));
     }
 
     @FXML
