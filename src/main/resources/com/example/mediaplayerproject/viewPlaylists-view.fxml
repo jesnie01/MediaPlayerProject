@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane minHeight="200.0" minWidth="200.0" prefHeight="350.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mediaplayerproject.viewPlaylistsController">
+   <children>
+      <ListView fx:id="playlistListView" layoutX="10.0" layoutY="45.6" prefHeight="200.0" prefWidth="500.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="45.6" />
+      <AnchorPane layoutX="25.399999618530273" layoutY="10.0" AnchorPane.bottomAnchor="314.4" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+         <children>
+            <TextField fx:id="playlistSearchField" minWidth="150.0" AnchorPane.leftAnchor="103.0" AnchorPane.rightAnchor="126.6" AnchorPane.topAnchor="0.0" />
+            <Button fx:id="buttonSearch" maxHeight="20.0" maxWidth="20.0" mnemonicParsing="false" onAction="#onButtonClickSearchPlaylists" prefHeight="20.0" prefWidth="20.0" text="Button" AnchorPane.rightAnchor="103.0" AnchorPane.topAnchor="0.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

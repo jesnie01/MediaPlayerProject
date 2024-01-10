@@ -4,8 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ddff0b61-f80f-4af6-a0de-828cd68eb743" name="Changes" comment="working patch">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/mediaplayerproject/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/mediaplayerproject/HelloController.java" afterDir="false" />
+    <list default="true" id="ddff0b61-f80f-4af6-a0de-828cd68eb743" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/mediaplayerproject/viewPlaylistsController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/mediaplayerproject/viewPlaylists-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_08-01-2024_12_08__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_08-01-2024_12_08__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_08-01-2024_12_10__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_08-01-2024_12_10__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/mediaplayerproject/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/mediaplayerproject/HelloApplication.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,6 +21,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="FxmlFile" />
         <option value="Class" />
       </list>
     </option>
@@ -36,6 +43,9 @@
     &quot;assignee&quot;: &quot;jesnie01&quot;
   }
 }</component>
+  <component name="GithubDefaultAccount">
+    <option name="defaultAccountId" value="6518c05e-a661-48b3-aa27-d187e15ee4a0" />
+  </component>
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
@@ -73,7 +83,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "updateDBPlaylist",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Jesper/IdeaProjects/MediaPlayerProject",
     "node.js.detected.package.eslint": "true",
@@ -184,7 +194,23 @@
       <option name="project" value="LOCAL" />
       <updated>1704806459267</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="update .gitignore">
+      <option name="closed" value="true" />
+      <created>1704880615394</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1704880615394</updated>
+    </task>
+    <task id="LOCAL-00011" summary="merged playlist functionality into master">
+      <option name="closed" value="true" />
+      <created>1704882289250</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1704882289250</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -224,7 +250,9 @@
     <MESSAGE value="merged hello view" />
     <MESSAGE value="fixed minor errors since merge" />
     <MESSAGE value="working patch" />
-    <option name="LAST_COMMIT_MESSAGE" value="working patch" />
+    <MESSAGE value="update .gitignore" />
+    <MESSAGE value="merged playlist functionality into master" />
+    <option name="LAST_COMMIT_MESSAGE" value="merged playlist functionality into master" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
