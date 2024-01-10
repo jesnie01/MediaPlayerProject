@@ -1,5 +1,7 @@
 package com.example.mediaplayerproject;
 
+import javafx.beans.InvalidationListener;
+import javafx.beans.Observable;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -48,10 +50,7 @@ public class HelloController implements Initializable {
     private Slider volumeSlider;
     @FXML
     private RadioButton searchToggleFilename;
-    private File file;
-    private Media media;
     private MediaPlayer mediaPlayer;
-    private int volume = 50;
 
     SearchDB searchDB = new SearchDB();
     /**
@@ -63,17 +62,16 @@ public class HelloController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources){ //Need to change the link below to drag info from database
 
-        file = new File("src\\media\\eyy_gtfo_outta_here_dog_meme_a440-jN8drc.mp4").getAbsoluteFile(); //filepath
-        media = new Media(file.toURI().toString()); //changes filepath to readable media
+        File file = new File("src\\media\\eyy_gtfo_outta_here_dog_meme_a440-jN8drc.mp4").getAbsoluteFile(); //filepath
+        Media media = new Media(file.toURI().toString()); //changes filepath to readable media
         mediaPlayer = new MediaPlayer(media); //add media to mediaplayer
         mediaView.setMediaPlayer(mediaPlayer); //add videocontent to the mediaview (without this line, it will only play sounds)
         mediaPlayer.setAutoPlay(false); //disable autoplay, so we can control the media using buttons
-        volumeSlider.valueProperty().addListener(new ChangeListener<Number>() {
+        volumeSlider.setValue(mediaPlayer.getVolume()*100);
+        volumeSlider.valueProperty().addListener(new InvalidationListener() {
             @Override
-            public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
-                volume = (int)volumeSlider.getValue();
-                mediaPlayer.setVolume(volume);
-
+            public void invalidated(Observable observable) {
+                mediaPlayer.setVolume(volumeSlider.getValue()/100);
             }
         });
     }
