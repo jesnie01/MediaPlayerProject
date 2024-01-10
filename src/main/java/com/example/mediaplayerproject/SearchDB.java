@@ -14,6 +14,7 @@ public class SearchDB {
         ArrayList<String> sortedMediaArrayList = new ArrayList<>();
 
 
+
         if (!toggle) { // if toggle media is selected, makes connection to DB and executes the following sql query
             Connection connection = DBConnection.getDbConnection().makeConnection();
             PreparedStatement preparedStatement = connection.prepareCall("SELECT * FROM tblMediaInfo");
@@ -80,6 +81,9 @@ public class SearchDB {
                     sortArrayList.add(s);
                 }
             }
+            if (sortArrayList.isEmpty()) {
+                sortArrayList.add("Nothing found");
+            }
             return sortArrayList;
         }else { // same thing with creator
             Connection connection = DBConnection.getDbConnection().makeConnection();
@@ -107,6 +111,10 @@ public class SearchDB {
                     }
                 }
             }
+            if (sortedMediaArrayList.isEmpty()) {
+                sortedMediaArrayList.add("Nothing found");
+            }
+
             return sortedMediaArrayList;
         }
     }

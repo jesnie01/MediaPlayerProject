@@ -37,7 +37,6 @@ public class  HelloController {
             String tempString = resultSet.getString(1); // gets everything from fldMediaTitle as String values
             mediaList.getItems().add(tempString); // gets elements from ListView and replaces them with fldMediaTitle
         }
-
         connection.close();
     }
     @FXML
