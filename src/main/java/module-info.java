@@ -7,6 +7,7 @@ module com.example.mediaplayerproject {
     requires org.kordamp.bootstrapfx.core;
     requires java.sql;
 
+
     opens com.example.mediaplayerproject to javafx.fxml;
     exports com.example.mediaplayerproject;
 }
