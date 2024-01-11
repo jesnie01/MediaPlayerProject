@@ -1,4 +1,6 @@
-package com.example.mediaplayerproject;
+package com.example.mediaplayerproject.model;
+
+import com.example.mediaplayerproject.DBConnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -99,7 +101,6 @@ public class SearchDB {
                     sortArrayList.add(s);
                 }
             }
-
             for (String s : sortArrayList) {
                 String sqlQuery = "Select * from tblCreatorMedia inner join tblMediaInfo on tblCreatorMedia.fldMediaId = tblMediaInfo.fldMediaId where fldCreatorId = (SELECT fldCreatorId from tblCreator where fldCreatorName = '" + s + "')";
                 preparedStatement = connection.prepareCall(sqlQuery);
@@ -114,7 +115,6 @@ public class SearchDB {
             if (sortedMediaArrayList.isEmpty()) {
                 sortedMediaArrayList.add("Nothing found");
             }
-
             return sortedMediaArrayList;
         }
     }

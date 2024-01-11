@@ -1,9 +1,9 @@
-package com.example.mediaplayerproject;
+package com.example.mediaplayerproject.controller;
 
+import com.example.mediaplayerproject.DBConnection;
+import com.example.mediaplayerproject.model.SearchDB;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -77,8 +77,6 @@ public class HelloController implements Initializable {
             }
         });
     }
-
-
     @FXML
     protected void onButtonHelloClick() throws SQLException {
         Connection connection = DBConnection.getDbConnection().makeConnection();
@@ -121,6 +119,7 @@ public class HelloController implements Initializable {
     }
 
     public void onButtonNextClick(ActionEvent actionEvent) {
+
     }
     @FXML
     protected void onButtonClickPlaylistHanndler() {
