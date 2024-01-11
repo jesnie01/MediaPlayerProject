@@ -116,4 +116,20 @@ public class SearchDB {
             return sortedMediaArrayList;
         }
     }
+
+    public static ResultSet searchMedia() throws SQLException {
+        Connection connection = DBConnection.getDbConnection().makeConnection();
+        PreparedStatement preparedStatement = connection.prepareCall("SELECT * FROM tblMediaInfo");
+        return preparedStatement.executeQuery();
+    }
+    public static ResultSet searchCreators() throws SQLException {
+        Connection connection = DBConnection.getDbConnection().makeConnection();
+        PreparedStatement preparedStatement = connection.prepareCall("SELECT * FROM tblCreator");
+        return preparedStatement.executeQuery();
+    }
+    public static ResultSet searchPlaylists() throws SQLException {
+        Connection connection = DBConnection.getDbConnection().makeConnection();
+        PreparedStatement preparedStatement = connection.prepareCall("SELECT * FROM tblPlaylist");
+        return preparedStatement.executeQuery();
+    }
 }
