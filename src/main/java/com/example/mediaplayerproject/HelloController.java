@@ -50,10 +50,18 @@ public class HelloController implements Initializable {
     private Slider volumeSlider;
     @FXML
     private RadioButton searchToggleFilename;
-    private MediaPlayer mediaPlayer;
+
+    private File file = new File("src\\media\\getTheFuckOuttaHere.mp4").getAbsoluteFile(); //filepath
+
+    private Media media = new Media(file.toURI().toString()); //changes filepath to readable media
+    private MediaPlayer mediaPlayer = new MediaPlayer(media);
+    //private mediaPlayer = new MediaPlayer(media); //add media to mediaplayer
+
+
 
     private ArrayList<String> toAddToPlaylist = new ArrayList<>();
-
+    //private MediaInfo mediainfo = new MediaInfo();
+    //private File file = new File(mediainfo.getMediaPath());
     SearchDB searchDB = new SearchDB();
     /**
      * This method is invoked automatically in the beginning. Used for initializing, loading data etc.
@@ -64,9 +72,6 @@ public class HelloController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources){ //Need to change the link below to drag info from database
 
-        File file = new File("src\\media\\eyy_gtfo_outta_here_dog_meme_a440-jN8drc.mp4").getAbsoluteFile(); //filepath
-        Media media = new Media(file.toURI().toString()); //changes filepath to readable media
-        mediaPlayer = new MediaPlayer(media); //add media to mediaplayer
         mediaView.setMediaPlayer(mediaPlayer); //add videocontent to the mediaview (without this line, it will only play sounds)
         mediaPlayer.setAutoPlay(false); //disable autoplay, so we can control the media using buttons
         volumeSlider.setValue(mediaPlayer.getVolume()*100);
@@ -121,7 +126,14 @@ public class HelloController implements Initializable {
     public void onButtonPrevClick(ActionEvent actionEvent) {
     }
 
-    public void onButtonNextClick(ActionEvent actionEvent) {
+    public void onButtonNextClick() {
+        mediaPlayer.dispose();
+        file = new File("src\\media\\laughMeme.mp4").getAbsoluteFile();
+        media = new Media(file.toURI().toString());
+        mediaPlayer = new MediaPlayer(media);
+        mediaView.setMediaPlayer(mediaPlayer);
+        //mediaPlayer.setAutoPlay(true);
+
     }
     @FXML
     protected void onButtonClickPlaylistHanndler() {
