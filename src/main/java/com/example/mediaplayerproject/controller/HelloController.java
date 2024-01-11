@@ -1,6 +1,6 @@
 package com.example.mediaplayerproject.controller;
 
-import com.example.mediaplayerproject.DBConnection;
+import com.example.mediaplayerproject.model.DBConnection;
 import com.example.mediaplayerproject.model.SearchDB;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;

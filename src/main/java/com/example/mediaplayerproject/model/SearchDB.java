@@ -1,7 +1,5 @@
 package com.example.mediaplayerproject.model;
 
-import com.example.mediaplayerproject.DBConnection;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
