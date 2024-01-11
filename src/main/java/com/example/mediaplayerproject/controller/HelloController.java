@@ -1,5 +1,7 @@
-package com.example.mediaplayerproject;
+package com.example.mediaplayerproject.controller;
 
+import com.example.mediaplayerproject.DBConnection;
+import com.example.mediaplayerproject.model.SearchDB;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
 import javafx.beans.value.ChangeListener;
@@ -60,8 +62,7 @@ public class HelloController implements Initializable {
 
 
     private ArrayList<String> toAddToPlaylist = new ArrayList<>();
-    //private MediaInfo mediainfo = new MediaInfo();
-    //private File file = new File(mediainfo.getMediaPath());
+
     SearchDB searchDB = new SearchDB();
     /**
      * This method is invoked automatically in the beginning. Used for initializing, loading data etc.

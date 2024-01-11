@@ -1,4 +1,6 @@
-package com.example.mediaplayerproject;
+package com.example.mediaplayerproject.model;
+
+import com.example.mediaplayerproject.DBConnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,6 +14,7 @@ public class SearchDB {
         ArrayList<String> tempArrayList = new ArrayList<>();
         ArrayList<String> sortArrayList = new ArrayList<>();
         ArrayList<String> sortedMediaArrayList = new ArrayList<>();
+
 
 
         if (!toggle) { // if toggle media is selected, makes connection to DB and executes the following sql query
@@ -80,6 +83,9 @@ public class SearchDB {
                     sortArrayList.add(s);
                 }
             }
+            if (sortArrayList.isEmpty()) {
+                sortArrayList.add("Nothing found");
+            }
             return sortArrayList;
         }else { // same thing with creator
             Connection connection = DBConnection.getDbConnection().makeConnection();
@@ -95,7 +101,6 @@ public class SearchDB {
                     sortArrayList.add(s);
                 }
             }
-
             for (String s : sortArrayList) {
                 String sqlQuery = "Select * from tblCreatorMedia inner join tblMediaInfo on tblCreatorMedia.fldMediaId = tblMediaInfo.fldMediaId where fldCreatorId = (SELECT fldCreatorId from tblCreator where fldCreatorName = '" + s + "')";
                 preparedStatement = connection.prepareCall(sqlQuery);
@@ -106,6 +111,9 @@ public class SearchDB {
                         sortedMediaArrayList.add(resultSet.getString(5));
                     }
                 }
+            }
+            if (sortedMediaArrayList.isEmpty()) {
+                sortedMediaArrayList.add("Nothing found");
             }
             return sortedMediaArrayList;
         }
