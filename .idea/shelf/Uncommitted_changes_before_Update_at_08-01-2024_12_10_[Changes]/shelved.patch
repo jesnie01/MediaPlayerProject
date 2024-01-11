@@ -1,0 +1,128 @@
+Index: src/main/java/com/example/mediaplayerproject/HelloController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.mediaplayerproject;\r\n\r\nimport javafx.fxml.FXML;\r\nimport javafx.scene.control.Label;\r\n\r\npublic class HelloController {\r\n    @FXML\r\n    private Label welcomeText;\r\n\r\n    @FXML\r\n    protected void onHelloButtonClick() {\r\n        welcomeText.setText(\"Welcome to JavaFX Application!\");\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/mediaplayerproject/HelloController.java b/src/main/java/com/example/mediaplayerproject/HelloController.java
+--- a/src/main/java/com/example/mediaplayerproject/HelloController.java	(revision 49f65c5959c65acef05e5603823a82f17411343c)
++++ b/src/main/java/com/example/mediaplayerproject/HelloController.java	(date 1704712179052)
+@@ -1,12 +1,19 @@
+ package com.example.mediaplayerproject;
+ 
++import javafx.collections.FXCollections;
++import javafx.collections.ObservableList;
+ import javafx.fxml.FXML;
+ import javafx.scene.control.Label;
++import javafx.scene.control.ListView;
++import javafx.stage.FileChooser;
+ 
+ public class HelloController {
+     @FXML
+     private Label welcomeText;
+ 
++    @FXML
++    private ListView<String> playlistView;
++
+     @FXML
+     protected void onHelloButtonClick() {
+         welcomeText.setText("Welcome to JavaFX Application!");
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"ddff0b61-f80f-4af6-a0de-828cd68eb743\" name=\"Changes\" comment=\"First commit\" />\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MavenImportPreferences\">\r\n    <option name=\"generalSettings\">\r\n      <MavenGeneralSettings>\r\n        <option name=\"mavenHome\" value=\"Use Maven wrapper\" />\r\n      </MavenGeneralSettings>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectColorInfo\"><![CDATA[{\r\n  \"associatedIndex\": 1\r\n}]]></component>\r\n  <component name=\"ProjectId\" id=\"2aWwkiE1JdQ4q8LiG9DdIZzKoc5\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"ASKED_ADD_EXTERNAL_FILES\": \"true\",\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"WebServerToolWindowFactoryState\": \"false\",\r\n    \"git-widget-placeholder\": \"master\",\r\n    \"last_opened_file_path\": \"C:/Users/Jesper/IdeaProjects/ProjectWeek43\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.detected.package.tslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"project.structure.last.edited\": \"Global Libraries\",\r\n    \"project.structure.proportion\": \"0.15\",\r\n    \"project.structure.side.proportion\": \"0.2\",\r\n    \"settings.editor.selected.configurable\": \"advanced.settings\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  }\r\n}]]></component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"ddff0b61-f80f-4af6-a0de-828cd68eb743\" name=\"Changes\" comment=\"\" />\r\n      <created>1704447792137</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1704447792137</updated>\r\n      <workItem from=\"1704447793679\" duration=\"4969000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"First commit\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1704447959572</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1704447959573</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"2\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <option name=\"ADD_EXTERNAL_FILES_SILENTLY\" value=\"true\" />\r\n    <MESSAGE value=\"First commit\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"First commit\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 49f65c5959c65acef05e5603823a82f17411343c)
++++ b/.idea/workspace.xml	(date 1704712243759)
+@@ -4,13 +4,21 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="ddff0b61-f80f-4af6-a0de-828cd68eb743" name="Changes" comment="First commit" />
++    <list default="true" id="ddff0b61-f80f-4af6-a0de-828cd68eb743" name="Changes" comment="added media files">
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/mediaplayerproject/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/mediaplayerproject/HelloController.java" afterDir="false" />
++    </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+     <option name="LAST_RESOLUTION" value="IGNORE" />
+   </component>
+   <component name="Git.Settings">
++    <option name="RECENT_BRANCH_BY_REPOSITORY">
++      <map>
++        <entry key="$PROJECT_DIR$" value="jesper" />
++      </map>
++    </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+   </component>
+   <component name="MavenImportPreferences">
+@@ -20,9 +28,9 @@
+       </MavenGeneralSettings>
+     </option>
+   </component>
+-  <component name="ProjectColorInfo"><![CDATA[{
+-  "associatedIndex": 1
+-}]]></component>
++  <component name="ProjectColorInfo">{
++  &quot;associatedIndex&quot;: 1
++}</component>
+   <component name="ProjectId" id="2aWwkiE1JdQ4q8LiG9DdIZzKoc5" />
+   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+     <ConfirmationsSetting value="2" id="Add" />
+@@ -38,12 +46,12 @@
+     "RunOnceActivity.ShowReadmeOnStart": "true",
+     "WebServerToolWindowFactoryState": "false",
+     "git-widget-placeholder": "master",
+-    "last_opened_file_path": "C:/Users/Jesper/IdeaProjects/ProjectWeek43",
++    "last_opened_file_path": "C:/Users/Jesper/IdeaProjects/DemoMediaPlayerFHA",
+     "node.js.detected.package.eslint": "true",
+     "node.js.detected.package.tslint": "true",
+     "node.js.selected.package.eslint": "(autodetect)",
+     "node.js.selected.package.tslint": "(autodetect)",
+-    "project.structure.last.edited": "Global Libraries",
++    "project.structure.last.edited": "Libraries",
+     "project.structure.proportion": "0.15",
+     "project.structure.side.proportion": "0.2",
+     "settings.editor.selected.configurable": "advanced.settings",
+@@ -58,7 +66,8 @@
+       <option name="number" value="Default" />
+       <option name="presentableId" value="Default" />
+       <updated>1704447792137</updated>
+-      <workItem from="1704447793679" duration="4969000" />
++      <workItem from="1704447793679" duration="6229000" />
++      <workItem from="1704700471742" duration="8861000" />
+     </task>
+     <task id="LOCAL-00001" summary="First commit">
+       <option name="closed" value="true" />
+@@ -68,7 +77,15 @@
+       <option name="project" value="LOCAL" />
+       <updated>1704447959573</updated>
+     </task>
+-    <option name="localTasksCounter" value="2" />
++    <task id="LOCAL-00002" summary="added media files">
++      <option name="closed" value="true" />
++      <created>1704462052907</created>
++      <option name="number" value="00002" />
++      <option name="presentableId" value="LOCAL-00002" />
++      <option name="project" value="LOCAL" />
++      <updated>1704462052907</updated>
++    </task>
++    <option name="localTasksCounter" value="3" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -88,6 +105,7 @@
+   <component name="VcsManagerConfiguration">
+     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+     <MESSAGE value="First commit" />
+-    <option name="LAST_COMMIT_MESSAGE" value="First commit" />
++    <MESSAGE value="added media files" />
++    <option name="LAST_COMMIT_MESSAGE" value="added media files" />
+   </component>
+ </project>
+\ No newline at end of file
