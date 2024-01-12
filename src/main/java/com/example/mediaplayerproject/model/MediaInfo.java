@@ -1,4 +1,4 @@
-package com.example.mediaplayerproject;
+package com.example.mediaplayerproject.model;
 
 public class MediaInfo {
     public int getMediaId() {
