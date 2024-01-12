@@ -1,12 +1,11 @@
 package com.example.mediaplayerproject.controller;
 
 import com.example.mediaplayerproject.model.DBConnection;
+import com.example.mediaplayerproject.model.SearchDB;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -17,9 +16,7 @@ public class viewPlaylistsController  {
     private ListView playlistListView;
     @FXML
     protected void onButtonClickSearchPlaylists() throws SQLException {
-        Connection connection = DBConnection.getDbConnection().makeConnection();
-        PreparedStatement preparedStatement = connection.prepareCall("SELECT * FROM tblPlaylist");
-        ResultSet resultSet = preparedStatement.executeQuery();
+        ResultSet resultSet = SearchDB.searchPlaylists();
 
         playlistListView.getItems().clear();
 
