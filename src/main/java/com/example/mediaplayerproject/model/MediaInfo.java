@@ -1,6 +1,7 @@
 package com.example.mediaplayerproject.model;
 
 public class MediaInfo {
+    //region Getters and setters
     public int getMediaId() {
         return mediaId;
     }
@@ -40,6 +41,7 @@ public class MediaInfo {
     public void setMediaSize(int mediaSize) {
         this.mediaSize = mediaSize;
     }
+    //endregion
 
     public int mediaId;
     public String mediaTitle;
