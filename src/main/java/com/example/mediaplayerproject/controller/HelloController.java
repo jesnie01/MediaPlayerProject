@@ -116,6 +116,7 @@ public class HelloController implements Initializable {
     }
 
     public void onButtonPrevClick(ActionEvent actionEvent) {
+
     }
 
     public void onButtonNextClick(ActionEvent actionEvent) {
