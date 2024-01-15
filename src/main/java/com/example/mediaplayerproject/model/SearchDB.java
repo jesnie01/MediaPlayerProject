@@ -46,6 +46,7 @@ public class SearchDB {
                     sortArrayList.add(s);
                 }
             }
+            //
             for (String s : sortArrayList) {
                 String sqlQuery = "Select * from tblCreatorMedia inner join tblMediaInfo on tblCreatorMedia.fldMediaId = tblMediaInfo.fldMediaId where fldCreatorId = (SELECT fldCreatorId from tblCreator where fldCreatorName = '" + s + "')";
                 preparedStatement = connection.prepareCall(sqlQuery);
