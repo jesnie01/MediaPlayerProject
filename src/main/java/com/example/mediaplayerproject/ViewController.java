@@ -21,7 +21,7 @@ public class ViewController {
 
     @FXML
     private void SwitchToView2() {
-        loadView("View2.fxml");
+        loadView("viewPlaylists-view.fxml");
     }
 
     private void loadView(String fxmlFile) {
