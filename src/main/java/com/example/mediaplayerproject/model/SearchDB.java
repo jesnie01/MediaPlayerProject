@@ -1,7 +1,5 @@
 package com.example.mediaplayerproject.model;
 
-import com.example.mediaplayerproject.DBConnection;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,15 +7,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class SearchDB {
-
-    //------------------------------------------------------------------------------------
-    //ArrayList method for data storage on search button click
+    //ArrayList method for partial search button for data storage
     public ArrayList<String> searchPartial(String searchText, boolean toggle) throws SQLException {
         ArrayList<String> tempArrayList = new ArrayList<>();
         ArrayList<String> sortArrayList = new ArrayList<>();
         ArrayList<String> sortedMediaArrayList = new ArrayList<>();
 
-        if (!toggle) { // if toggle media is selected connects to DB and executes the following sql query:
+        if (!toggle) { // if toggle media is selected connects to DB and executes sql query:
             Connection connection = DBConnection.getDbConnection().makeConnection();
             PreparedStatement preparedStatement = connection.prepareCall("SELECT * FROM tblMediaInfo");
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -36,7 +32,7 @@ public class SearchDB {
                 sortArrayList.add("Nothing found");
             }
             return sortArrayList;
-        }else { // same thing with creator toggled
+        }else { // same thing with creator
             Connection connection = DBConnection.getDbConnection().makeConnection();
             PreparedStatement preparedStatement = connection.prepareCall("SELECT * FROM tblCreator");
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -66,5 +62,21 @@ public class SearchDB {
             }
             return sortedMediaArrayList;
         }
+    }
+
+    public static ResultSet searchMedia() throws SQLException {
+        Connection connection = DBConnection.getDbConnection().makeConnection();
+        PreparedStatement preparedStatement = connection.prepareCall("SELECT * FROM tblMediaInfo");
+        return preparedStatement.executeQuery();
+    }
+    public static ResultSet searchCreators() throws SQLException {
+        Connection connection = DBConnection.getDbConnection().makeConnection();
+        PreparedStatement preparedStatement = connection.prepareCall("SELECT * FROM tblCreator");
+        return preparedStatement.executeQuery();
+    }
+    public static ResultSet searchPlaylists() throws SQLException {
+        Connection connection = DBConnection.getDbConnection().makeConnection();
+        PreparedStatement preparedStatement = connection.prepareCall("SELECT * FROM tblPlaylist");
+        return preparedStatement.executeQuery();
     }
 }

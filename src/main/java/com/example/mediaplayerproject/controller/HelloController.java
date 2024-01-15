@@ -1,9 +1,11 @@
 package com.example.mediaplayerproject.controller;
 
-import com.example.mediaplayerproject.DBConnection;
+import com.example.mediaplayerproject.model.DBConnection;
 import com.example.mediaplayerproject.model.SearchDB;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -11,7 +13,6 @@ import javafx.scene.control.*;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
-import javafx.util.Duration;
 
 import java.io.File;
 import java.net.URL;
@@ -51,7 +52,14 @@ public class HelloController implements Initializable {
     private Slider volumeSlider;
     @FXML
     private RadioButton searchToggleFilename;
-    private MediaPlayer mediaPlayer;
+
+    private File file = new File("src\\media\\getTheFuckOuttaHere.mp4").getAbsoluteFile(); //filepath
+
+    private Media media = new Media(file.toURI().toString()); //changes filepath to readable media
+    private MediaPlayer mediaPlayer = new MediaPlayer(media);
+    //private mediaPlayer = new MediaPlayer(media); //add media to mediaplayer
+
+
 
     private ArrayList<String> toAddToPlaylist = new ArrayList<>();
 
@@ -65,9 +73,6 @@ public class HelloController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources){ //Need to change the link below to drag info from database
 
-        File file = new File("src\\media\\eyy_gtfo_outta_here_dog_meme_a440-jN8drc.mp4").getAbsoluteFile(); //filepath
-        Media media = new Media(file.toURI().toString()); //changes filepath to readable media
-        mediaPlayer = new MediaPlayer(media); //add media to mediaplayer
         mediaView.setMediaPlayer(mediaPlayer); //add videocontent to the mediaview (without this line, it will only play sounds)
         mediaPlayer.setAutoPlay(false); //disable autoplay, so we can control the media using buttons
         volumeSlider.setValue(mediaPlayer.getVolume()*100);
@@ -78,6 +83,7 @@ public class HelloController implements Initializable {
             }
         });
     }
+
 
     @FXML
     protected void onButtonHelloClick() throws SQLException {
@@ -90,6 +96,7 @@ public class HelloController implements Initializable {
             String tempString = resultSet.getString(1); // gets everything from fldMediaTitle as String values
             mediaList.getItems().add(tempString); // gets elements from ListView and replaces them with fldMediaTitle
         }
+
         connection.close();
     }
 
@@ -101,7 +108,6 @@ public class HelloController implements Initializable {
     public void onButtonPauseClick() {
         mediaPlayer.pause();
     }
-
     @FXML
     protected void onButtonPartialSearchClick() throws SQLException {
         boolean searchToggleBool = searchToggleArtist.isSelected();
@@ -119,10 +125,15 @@ public class HelloController implements Initializable {
     }
 
     public void onButtonPrevClick(ActionEvent actionEvent) {
-
     }
 
-    public void onButtonNextClick(ActionEvent actionEvent) {
+    public void onButtonNextClick() {
+        mediaPlayer.dispose();
+        file = new File("src\\media\\laughMeme.mp4").getAbsoluteFile();
+        media = new Media(file.toURI().toString());
+        mediaPlayer = new MediaPlayer(media);
+        mediaView.setMediaPlayer(mediaPlayer);
+        //mediaPlayer.setAutoPlay(true);
 
     }
     @FXML
