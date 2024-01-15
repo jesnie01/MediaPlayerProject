@@ -4,11 +4,11 @@
 <?import javafx.scene.layout.*?>
 
 <AnchorPane minHeight="200.0" minWidth="200.0" prefHeight="350.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mediaplayerproject.controller.viewPlaylistsController">
-    <ListView fx:id="playlistListView" layoutX="10.0" layoutY="46.0" prefHeight="294.0" prefWidth="210.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="180.0" AnchorPane.topAnchor="46.0" />
+    <ListView fx:id="playlistListView" layoutX="10.0" layoutY="46.0" onMouseClicked="#clickGetList" prefHeight="294.0" prefWidth="210.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="180.0" AnchorPane.topAnchor="46.0" />
     <AnchorPane layoutX="25.399999618530273" layoutY="10.0" AnchorPane.bottomAnchor="314.4" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
         <TextField fx:id="playlistSearchField" minWidth="150.0" AnchorPane.leftAnchor="103.0" AnchorPane.rightAnchor="126.6" AnchorPane.topAnchor="0.0" />
         <Button maxHeight="20.0" maxWidth="20.0" mnemonicParsing="false" onAction="#onButtonClickSearchPlaylists" prefHeight="20.0" prefWidth="20.0" text="Button" AnchorPane.rightAnchor="103.0" AnchorPane.topAnchor="0.0" />
     </AnchorPane>
-   <ListView layoutX="232.0" layoutY="75.0" prefHeight="264.0" prefWidth="158.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="76.0" />
-   <Label layoutX="297.0" layoutY="46.0" text="Label" AnchorPane.rightAnchor="75.0" AnchorPane.topAnchor="46.0" />
+   <ListView fx:id="listViewOfMediaInCurrentPlaylist" layoutX="232.0" layoutY="75.0" prefHeight="264.0" prefWidth="158.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="76.0" />
+   <Label fx:id="currentPlaylistLabel" layoutX="297.0" layoutY="46.0" text="Label" AnchorPane.rightAnchor="75.0" AnchorPane.topAnchor="46.0" />
 </AnchorPane>
