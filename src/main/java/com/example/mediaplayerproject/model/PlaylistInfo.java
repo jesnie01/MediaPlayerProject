@@ -8,11 +8,9 @@ public class PlaylistInfo {
     public int getPlaylistId() {
         return playlistId;
     }
-
     public void setPlaylistId(int playlistId) {
         this.playlistId = playlistId;
     }
-
     public String getPlaylistTitle() {
         return playlistTitle;
     }
@@ -28,7 +26,4 @@ public class PlaylistInfo {
     public void setPlaylistOwner(String playlistOwner) {
         this.playlistOwner = playlistOwner;
     }
-
-
-
 }

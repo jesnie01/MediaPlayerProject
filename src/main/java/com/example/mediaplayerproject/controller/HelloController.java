@@ -11,6 +11,7 @@ import javafx.scene.control.*;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
+import javafx.util.Duration;
 
 import java.io.File;
 import java.net.URL;
@@ -77,6 +78,7 @@ public class HelloController implements Initializable {
             }
         });
     }
+
     @FXML
     protected void onButtonHelloClick() throws SQLException {
         Connection connection = DBConnection.getDbConnection().makeConnection();
@@ -99,6 +101,7 @@ public class HelloController implements Initializable {
     public void onButtonPauseClick() {
         mediaPlayer.pause();
     }
+
     @FXML
     protected void onButtonPartialSearchClick() throws SQLException {
         boolean searchToggleBool = searchToggleArtist.isSelected();
