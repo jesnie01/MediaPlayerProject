@@ -16,23 +16,18 @@ public class viewPlaylistsController  {
     private ListView playlistListView;
     @FXML
     protected void onButtonClickSearchPlaylists() throws SQLException {
+        playlistListView.getItems().clear();  //clears the list so results wont duplicate on click
         ResultSet resultSet = SearchDB.searchPlaylists();
 
-        playlistListView.getItems().clear();
-
-        if (playlistSearchField.getText().isEmpty()) {
-            while (resultSet.next()) {
-                playlistListView.getItems().add(resultSet.getString(2));
-            }
-        }else {
-            while (resultSet.next()) {
-                if (resultSet.getString(2).toLowerCase().contains(playlistSearchField.getText().toLowerCase())) {
+        while (resultSet.next()) {
+            //partial search, if searchfield contains something in fldPlayListTitle, prints it out.
+            if (resultSet.getString(2).toLowerCase().contains(playlistSearchField.getText().toLowerCase())) {
                     playlistListView.getItems().add(resultSet.getString(2));
-                }
-                if (playlistListView.getItems().isEmpty()) {
-                    playlistListView.getItems().add("Nothing found");
-                }
             }
+        }
+        if (playlistListView.getItems().isEmpty()) {
+                playlistListView.getItems().add("Nothing found");
         }
     }
 }
+
