@@ -11,13 +11,13 @@ import java.util.ArrayList;
 public class SearchDB {
 
     //------------------------------------------------------------------------------------
-    //ArrayList method for search button for data storage
+    //ArrayList method for data storage on search button click
     public ArrayList<String> searchPartial(String searchText, boolean toggle) throws SQLException {
         ArrayList<String> tempArrayList = new ArrayList<>();
         ArrayList<String> sortArrayList = new ArrayList<>();
         ArrayList<String> sortedMediaArrayList = new ArrayList<>();
 
-        if (!toggle) { // if toggle media is selected connects to DB and executes sql query:
+        if (!toggle) { // if toggle media is selected connects to DB and executes the following sql query:
             Connection connection = DBConnection.getDbConnection().makeConnection();
             PreparedStatement preparedStatement = connection.prepareCall("SELECT * FROM tblMediaInfo");
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -36,7 +36,7 @@ public class SearchDB {
                 sortArrayList.add("Nothing found");
             }
             return sortArrayList;
-        }else { // same thing with creator
+        }else { // same thing with creator toggled
             Connection connection = DBConnection.getDbConnection().makeConnection();
             PreparedStatement preparedStatement = connection.prepareCall("SELECT * FROM tblCreator");
             ResultSet resultSet = preparedStatement.executeQuery();
