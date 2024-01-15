@@ -1,4 +1,4 @@
-package com.example.mediaplayerproject.model;
+package com.example.mediaplayerproject;
 
 import java.sql.*;
 import java.util.Properties;
