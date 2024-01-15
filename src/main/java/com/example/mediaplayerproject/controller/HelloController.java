@@ -25,19 +25,19 @@ import java.util.ResourceBundle;
 
 public class HelloController implements Initializable {
     @FXML
-    private Button buttonPlay;
-    @FXML
     private Label welcomeText;
+    @FXML
+    private Button buttonPlay;
     @FXML
     private Button buttonPause;
     @FXML
     private Button buttonStop;
     @FXML
-    private ListView mediaList;
-    @FXML
     private Button buttonPrev;
     @FXML
     private Button buttonNext;
+    @FXML
+    private ListView mediaList;
     @FXML
     private MediaView mediaView = new MediaView();
     @FXML
@@ -122,7 +122,8 @@ public class HelloController implements Initializable {
     }
 
     public void onButtonStopClick() {
-        mediaPlayer.stop();
+        mediaPlayer.dispose();
+        mediaView.setMediaPlayer(null);
     }
 
     public void onButtonPrevClick(ActionEvent actionEvent) {
