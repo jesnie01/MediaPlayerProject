@@ -10,4 +10,8 @@ module com.example.mediaplayerproject {
 
     opens com.example.mediaplayerproject to javafx.fxml;
     exports com.example.mediaplayerproject;
+    exports com.example.mediaplayerproject.model;
+    opens com.example.mediaplayerproject.model to javafx.fxml;
+    exports com.example.mediaplayerproject.controller;
+    opens com.example.mediaplayerproject.controller to javafx.fxml;
 }
