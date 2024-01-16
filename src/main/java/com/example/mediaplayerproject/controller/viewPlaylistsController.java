@@ -32,7 +32,9 @@ public class viewPlaylistsController {
         }
         if (playlistListView.getItems().isEmpty()) {
                 playlistListView.getItems().add("Nothing found");
+                listViewOfMediaInCurrentPlaylist.getItems().clear();
         }
+
     }
     @FXML
     public void clickGetList(MouseEvent mouseEvent) throws SQLException {
@@ -45,6 +47,11 @@ public class viewPlaylistsController {
         for (String s : tempArrayList) {
             listViewOfMediaInCurrentPlaylist.getItems().add(s);
         }
+        if(listViewOfMediaInCurrentPlaylist.getItems().isEmpty())
+        {
+            listViewOfMediaInCurrentPlaylist.getItems().add("Playlist is empty.");
+        }
+
     }
 }
 
