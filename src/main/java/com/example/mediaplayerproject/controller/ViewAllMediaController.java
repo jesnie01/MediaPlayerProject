@@ -42,6 +42,7 @@ public class ViewAllMediaController {
         //if found, adds them to an ArrayList and displays it in a ListView
         for (String s : searchedList) {
             mediaList.getItems().add(s);
+            System.out.println("hi");
         }
     }
 }
