@@ -40,6 +40,10 @@ public class ViewController {
         loadView("viewPlaylists-view.fxml");
     }
 
+    @FXML
+    private void SwitchToView3() {
+        loadView("viewAllMedia.fxml");
+    }
     public void onButtonPlayClick() {
         mediaPlayer.play();
     }

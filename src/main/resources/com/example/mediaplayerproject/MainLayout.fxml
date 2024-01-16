@@ -24,7 +24,7 @@
             <items>
               <MenuItem mnemonicParsing="false" onAction="#SwitchToView1" text="View1" />
                   <MenuItem mnemonicParsing="false" onAction="#SwitchToView2" text="View2" />
-                  <MenuItem mnemonicParsing="false" text="View3" />
+                  <MenuItem mnemonicParsing="false" onAction="#SwitchToView3" text="View3" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">

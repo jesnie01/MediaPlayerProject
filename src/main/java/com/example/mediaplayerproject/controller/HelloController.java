@@ -51,7 +51,7 @@ public class HelloController implements Initializable {
     @FXML
     private Label titleLabel; //Dette skal laves om til current duration i sangen?
     @FXML
-    private Slider volumeSlider;
+    private Slider volumeSlider= new Slider();
     @FXML
     private RadioButton searchToggleFilename;
 

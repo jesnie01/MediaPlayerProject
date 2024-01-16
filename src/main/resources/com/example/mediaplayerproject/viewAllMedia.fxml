@@ -36,36 +36,5 @@
             <Button fx:id="helloButton" layoutX="423.0" layoutY="4.0" mnemonicParsing="false" onAction="#onButtonHelloClick" text="Hello" />
          </children>
       </Pane>
-      <MenuBar maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="17.0" prefWidth="600.0">
-         <menus>
-            <Menu mnemonicParsing="false" text="View">
-               <items>
-                  <MenuItem mnemonicParsing="false" onAction="#SwitchToView1" text="View1" />
-                  <MenuItem mnemonicParsing="false" onAction="#SwitchToView2" text="View2" />
-                  <MenuItem mnemonicParsing="false" text="View3" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Edit">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Create" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Help">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Edit" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="How to">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Action 1" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="About">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Action 1" />
-               </items>
-            </Menu>
-         </menus>
-      </MenuBar>
    </children>
 </AnchorPane>
