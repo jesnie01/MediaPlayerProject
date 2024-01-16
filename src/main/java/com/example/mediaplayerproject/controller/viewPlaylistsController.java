@@ -44,6 +44,7 @@ public class viewPlaylistsController {
         Global.playlistMedia.clear();
         while (resultSet.next()) {
             Global.playlistMedia.add(resultSet.getString(5));
+            
         }
         for (String s : Global.playlistMedia) {
             listViewOfMediaInCurrentPlaylist.getItems().add(s);
