@@ -39,21 +39,14 @@ public class HelloController implements Initializable {
     @FXML
     private Button buttonNext;
     @FXML
-    private ListView mediaList;
-    @FXML
     private MediaView mediaView = new MediaView();
-    @FXML
-    private TextField searchBox;
     @FXML
     private Label durationLabel; //Prompt text = Duration
     @FXML
-    private RadioButton searchToggleArtist;
-    @FXML
     private Label titleLabel; //Dette skal laves om til current duration i sangen?
     @FXML
-    private Slider volumeSlider;
-    @FXML
-    private RadioButton searchToggleFilename;
+    private Slider volumeSlider = new Slider();
+
 
     private File file = new File("src\\media\\getTheFuckOuttaHere.mp4").getAbsoluteFile(); //filepath
 
@@ -62,10 +55,8 @@ public class HelloController implements Initializable {
     //private mediaPlayer = new MediaPlayer(media); //add media to mediaplayer
 
 
-
     private ArrayList<String> toAddToPlaylist = new ArrayList<>();
 
-    SearchDB searchDB = new SearchDB();
     /**
      * This method is invoked automatically in the beginning. Used for initializing, loading data etc.
      *
@@ -73,7 +64,7 @@ public class HelloController implements Initializable {
      * @param resources
      */
     @Override
-    public void initialize(URL location, ResourceBundle resources){ //Need to change the link below to drag info from database
+    public void initialize(URL location, ResourceBundle resources) { //Need to change the link below to drag info from database
 
         try {
             ResultSet resultSet = SearchDB.searchMedia();
@@ -95,18 +86,18 @@ public class HelloController implements Initializable {
 
         mediaView.setMediaPlayer(mediaPlayer); //add videocontent to the mediaview (without this line, it will only play sounds)
         mediaPlayer.setAutoPlay(false); //disable autoplay, so we can control the media using buttons
-        volumeSlider.setValue(mediaPlayer.getVolume()*100);
+        volumeSlider.setValue(mediaPlayer.getVolume() * 100);
 
         volumeSlider.valueProperty().addListener(new InvalidationListener() {
             @Override
             public void invalidated(Observable observable) {
-                mediaPlayer.setVolume(volumeSlider.getValue()/100);
+                mediaPlayer.setVolume(volumeSlider.getValue() / 100);
             }
         });
     }
 
 
-    @FXML
+    /*@FXML
     protected void onButtonHelloClick() throws SQLException {
         Connection connection = DBConnection.getDbConnection().makeConnection();
         PreparedStatement preparedStatement = connection.prepareCall("SELECT fldMediaTitle FROM tblMediaInfo");
@@ -121,15 +112,16 @@ public class HelloController implements Initializable {
         connection.close();
     }
 
-    public void onButtonPlayClick()
-    {
+     */
+
+    public void onButtonPlayClick() {
         mediaPlayer.play();
     }
 
     public void onButtonPauseClick() {
         mediaPlayer.pause();
     }
-    @FXML
+    /*@FXML
     protected void onButtonPartialSearchClick() throws SQLException {
         boolean searchToggleBool = searchToggleArtist.isSelected();
         //Checks the searchbox on button click for a partial match in artist name
@@ -141,6 +133,8 @@ public class HelloController implements Initializable {
         }
     }
 
+     */
+
     public void onButtonStopClick() {
         mediaPlayer.dispose();
         mediaView.setMediaPlayer(null);
@@ -150,8 +144,8 @@ public class HelloController implements Initializable {
         mediaPlayer.dispose();
         if (Global.currentIndexOfMediaInPlaylist > 0) {
             Global.currentIndexOfMediaInPlaylist--;
-        }else {
-            Global.currentIndexOfMediaInPlaylist = Global.allMedia.size()-1;
+        } else {
+            Global.currentIndexOfMediaInPlaylist = Global.allMedia.size() - 1;
         }
 
         file = new File(Global.allMedia.get(Global.currentIndexOfMediaInPlaylist).getMediaPath()).getAbsoluteFile();
@@ -162,9 +156,9 @@ public class HelloController implements Initializable {
 
     public void onButtonNextClick() {
         mediaPlayer.dispose();
-        if (Global.currentIndexOfMediaInPlaylist < Global.allMedia.size()-1) {
+        if (Global.currentIndexOfMediaInPlaylist < Global.allMedia.size() - 1) {
             Global.currentIndexOfMediaInPlaylist++;
-        }else {
+        } else {
             Global.currentIndexOfMediaInPlaylist = 0;
         }
 
@@ -175,6 +169,7 @@ public class HelloController implements Initializable {
         //mediaPlayer.setAutoPlay(true);
 
     }
+    /*
     @FXML
     protected void onButtonClickPlaylistHanndler() {
         String tempString = "Added ";
@@ -193,4 +188,5 @@ public class HelloController implements Initializable {
         toAddToPlaylist.clear();
         mediaList.getItems().clear();
     }
+  */
 }

@@ -39,7 +39,11 @@ public class ViewController {
     private void SwitchToView2() {
         loadView("viewPlaylists-view.fxml");
     }
-
+    @FXML
+    private void SwitchToView3() {
+        loadView("viewAllMedia.fxml");
+    }
+/*
     public void onButtonPlayClick() {
         mediaPlayer.play();
     }
@@ -55,15 +59,15 @@ public class ViewController {
     public void onButtonPrevClick(ActionEvent actionEvent){}
 
     public void onButtonNextClick() {
-        /*
+
         mediaPlayer.dispose();
         file = new File("src\\media\\laughMeme.mp4").getAbsoluteFile();
         Media media = new Media(file.toURI().toString());
         mediaPlayer = new MediaPlayer(media);
         mediaView.setMediaPlayer(mediaPlayer);
         //mediaPlayer.setAutoPlay(true);
+        }
         */
-    }
 
     private void loadView(String fxmlFile) {
 
