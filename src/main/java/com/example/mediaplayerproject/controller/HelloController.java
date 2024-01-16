@@ -89,7 +89,7 @@ public class HelloController implements Initializable {
             throw new RuntimeException(e);
         }
 
-        file = new File(Global.allMedia.get(Global.currentIndexOfMediaInPlaylist).getMediaPath() + ".mp4").getAbsoluteFile();
+        file = new File(Global.allMedia.get(Global.currentIndexOfMediaInPlaylist).getMediaPath()).getAbsoluteFile();
         media = new Media(file.toURI().toString());
         mediaPlayer = new MediaPlayer(media);
 
@@ -154,7 +154,7 @@ public class HelloController implements Initializable {
             Global.currentIndexOfMediaInPlaylist = Global.allMedia.size()-1;
         }
 
-        file = new File(Global.allMedia.get(Global.currentIndexOfMediaInPlaylist).getMediaPath() + ".mp4").getAbsoluteFile();
+        file = new File(Global.allMedia.get(Global.currentIndexOfMediaInPlaylist).getMediaPath()).getAbsoluteFile();
         media = new Media(file.toURI().toString());
         mediaPlayer = new MediaPlayer(media);
         mediaView.setMediaPlayer(mediaPlayer);
@@ -168,7 +168,7 @@ public class HelloController implements Initializable {
             Global.currentIndexOfMediaInPlaylist = 0;
         }
 
-        file = new File(Global.allMedia.get(Global.currentIndexOfMediaInPlaylist).getMediaPath() + ".mp4").getAbsoluteFile();
+        file = new File(Global.allMedia.get(Global.currentIndexOfMediaInPlaylist).getMediaPath()).getAbsoluteFile();
         media = new Media(file.toURI().toString());
         mediaPlayer = new MediaPlayer(media);
         mediaView.setMediaPlayer(mediaPlayer);

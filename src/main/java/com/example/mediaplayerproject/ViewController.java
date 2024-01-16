@@ -32,7 +32,7 @@ public class ViewController {
 
     @FXML
     private void SwitchToView1() {
-        loadView("MainLayout.fxml");
+        loadView("viewMediaPlayer-view.fxml");
     }
 
     @FXML
