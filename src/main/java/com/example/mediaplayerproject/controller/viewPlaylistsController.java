@@ -1,5 +1,6 @@
 package com.example.mediaplayerproject.controller;
 
+import com.example.mediaplayerproject.model.Global;
 import com.example.mediaplayerproject.model.SearchDB;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
@@ -36,13 +37,13 @@ public class viewPlaylistsController {
     }
     @FXML
     public void clickGetList(MouseEvent mouseEvent) throws SQLException {
-        ArrayList<String> tempArrayList = new ArrayList<>();
         listViewOfMediaInCurrentPlaylist.getItems().clear();
         ResultSet resultSet = SearchDB.searchMediaInPlaylist(playlistListView.getSelectionModel().selectedItemProperty().getValue().toString());
+        Global.playlistMedia.clear();
         while (resultSet.next()) {
-            tempArrayList.add(resultSet.getString(5));
+            Global.playlistMedia.add(resultSet.getString(5));
         }
-        for (String s : tempArrayList) {
+        for (String s : Global.playlistMedia) {
             listViewOfMediaInCurrentPlaylist.getItems().add(s);
         }
     }
