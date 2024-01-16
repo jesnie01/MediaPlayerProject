@@ -1,6 +1,14 @@
 package com.example.mediaplayerproject.model;
 
+import java.util.ArrayList;
+
 public class MediaInfo {
+    public int mediaId;
+    public String mediaTitle;
+    public String mediaPath;
+    ArrayList<String> creatorName = new ArrayList<>();
+    public int mediaSize;
+
     //region Getters and setters
     public int getMediaId() {
         return mediaId;
@@ -26,12 +34,12 @@ public class MediaInfo {
         this.mediaPath = mediaPath;
     }
 
-    public String getCreatorName() {
+    public ArrayList<String> getCreatorName() {
         return creatorName;
     }
 
     public void setCreatorName(String creatorName) {
-        this.creatorName = creatorName;
+        this.creatorName.add(creatorName);
     }
 
     public int getMediaSize() {
@@ -42,10 +50,4 @@ public class MediaInfo {
         this.mediaSize = mediaSize;
     }
     //endregion
-
-    public int mediaId;
-    public String mediaTitle;
-    public String mediaPath;
-    public String creatorName;
-    public int mediaSize;
 }

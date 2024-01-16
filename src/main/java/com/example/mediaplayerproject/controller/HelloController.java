@@ -1,6 +1,8 @@
 package com.example.mediaplayerproject.controller;
 
 import com.example.mediaplayerproject.model.DBConnection;
+import com.example.mediaplayerproject.model.Global;
+import com.example.mediaplayerproject.model.MediaInfo;
 import com.example.mediaplayerproject.model.SearchDB;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
@@ -73,6 +75,24 @@ public class HelloController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources){ //Need to change the link below to drag info from database
 
+        try {
+            ResultSet resultSet = SearchDB.searchMedia();
+            while (resultSet.next()) {
+                MediaInfo tempMedia = new MediaInfo();
+                tempMedia.setMediaId(resultSet.getInt(1));
+                tempMedia.setMediaTitle(resultSet.getString(2));
+                //TBD Add creatorNames as arraylist here!
+                tempMedia.setMediaPath(resultSet.getString(4));
+                Global.allMedia.add(tempMedia);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        file = new File(Global.allMedia.get(Global.currentIndexOfMediaInPlaylist).getMediaPath()).getAbsoluteFile();
+        media = new Media(file.toURI().toString());
+        mediaPlayer = new MediaPlayer(media);
+
         mediaView.setMediaPlayer(mediaPlayer); //add videocontent to the mediaview (without this line, it will only play sounds)
         mediaPlayer.setAutoPlay(false); //disable autoplay, so we can control the media using buttons
         volumeSlider.setValue(mediaPlayer.getVolume()*100);
@@ -127,11 +147,28 @@ public class HelloController implements Initializable {
     }
 
     public void onButtonPrevClick(ActionEvent actionEvent) {
+        mediaPlayer.dispose();
+        if (Global.currentIndexOfMediaInPlaylist > 0) {
+            Global.currentIndexOfMediaInPlaylist--;
+        }else {
+            Global.currentIndexOfMediaInPlaylist = Global.allMedia.size()-1;
+        }
+
+        file = new File(Global.allMedia.get(Global.currentIndexOfMediaInPlaylist).getMediaPath()).getAbsoluteFile();
+        media = new Media(file.toURI().toString());
+        mediaPlayer = new MediaPlayer(media);
+        mediaView.setMediaPlayer(mediaPlayer);
     }
 
     public void onButtonNextClick() {
         mediaPlayer.dispose();
-        file = new File("src\\media\\laughMeme.mp4").getAbsoluteFile();
+        if (Global.currentIndexOfMediaInPlaylist < Global.allMedia.size()-1) {
+            Global.currentIndexOfMediaInPlaylist++;
+        }else {
+            Global.currentIndexOfMediaInPlaylist = 0;
+        }
+
+        file = new File(Global.allMedia.get(Global.currentIndexOfMediaInPlaylist).getMediaPath()).getAbsoluteFile();
         media = new Media(file.toURI().toString());
         mediaPlayer = new MediaPlayer(media);
         mediaView.setMediaPlayer(mediaPlayer);
