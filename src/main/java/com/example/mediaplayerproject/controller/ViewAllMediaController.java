@@ -34,7 +34,7 @@ public class ViewAllMediaController {
 
     private String fxmlFile = "viewMediaPlayer-view.fxml";
     SearchDB searchDB = new SearchDB();
-    String absolutePath = "C:\\Users\\Jesper\\IdeaProjects\\MediaPlayerProject\\src\\main\\resources\\com\\example\\mediaplayerproject\\viewMediaPlayer-view.fxml";
+    String relativePath = "src\\main\\resources\\com\\example\\mediaplayerproject\\viewMediaPlayer-view.fxml";
 
 
     @FXML
@@ -66,7 +66,7 @@ public class ViewAllMediaController {
         }
         try { //Loads the view of the mediaplayer with the matching index of the selected media, ready to play
             System.out.println("Loading view: " + fxmlFile);
-            AnchorPane newView = FXMLLoader.load(new File(absolutePath).toURI().toURL());
+            AnchorPane newView = FXMLLoader.load(new File(relativePath).toURI().toURL());
             allMediaView.getChildren().removeAll();
             allMediaView.getChildren().setAll(newView);
         } catch (IOException e) {
