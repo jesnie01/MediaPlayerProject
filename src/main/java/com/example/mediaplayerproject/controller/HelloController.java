@@ -78,11 +78,14 @@ public class HelloController implements Initializable {
         try {
             ResultSet resultSet = SearchDB.searchMedia();
             while (resultSet.next()) {
-                MediaInfo tempMedia = new MediaInfo();
+                MediaInfo tempMedia = new MediaInfo(); // instance of MediaInfo class "tempMedia"
                 tempMedia.setMediaId(resultSet.getInt(1));
                 tempMedia.setMediaTitle(resultSet.getString(2));
                 //TBD Add creatorNames as arraylist here!
                 tempMedia.setMediaPath(resultSet.getString(4));
+
+                // sets the attributes in the "tempMedia" instance to the values in DB
+                // adds the instance "tempMedia" to an arraylist of class MediaInfo "allMedia"
                 Global.allMedia.add(tempMedia);
             }
         } catch (SQLException e) {
@@ -108,17 +111,19 @@ public class HelloController implements Initializable {
 
     @FXML
     protected void onButtonHelloClick() throws SQLException {
-        Connection connection = DBConnection.getDbConnection().makeConnection();
+        /*Connection connection = DBConnection.getDbConnection().makeConnection();
         PreparedStatement preparedStatement = connection.prepareCall("SELECT fldMediaTitle FROM tblMediaInfo");
         ResultSet resultSet = preparedStatement.executeQuery();
-
         mediaList.getItems().clear(); // Stops the list from duplicating itself every click
         while(resultSet.next()) {
             String tempString = resultSet.getString(1); // gets everything from fldMediaTitle as String values
             mediaList.getItems().add(tempString); // gets elements from ListView and replaces them with fldMediaTitle
         }
-
-        connection.close();
+        connection.close();*/
+        for(int i = 0; i < Global.allMedia.size(); i++)
+        {
+            mediaList.getItems().add(Global.allMedia.get(i).getMediaTitle());
+        }
     }
 
     public void onButtonPlayClick()

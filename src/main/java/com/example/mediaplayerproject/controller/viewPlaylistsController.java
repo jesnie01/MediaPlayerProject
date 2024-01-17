@@ -46,6 +46,11 @@ public class viewPlaylistsController  {
         deleteStatement.setString(1, (String) playlistListView.getSelectionModel().getSelectedItem());
         deleteStatement.executeUpdate();
     }
+    public void onButtonClickCreatePlaylist() throws SQLException {
+
+
+    }
+
     @FXML
     public void clickGetList(MouseEvent mouseEvent) throws SQLException {
         listViewOfMediaInCurrentPlaylist.getItems().clear();

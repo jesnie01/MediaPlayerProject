@@ -39,6 +39,10 @@ public class ViewController {
     private void SwitchToView2() {
         loadView("viewPlaylists-view.fxml");
     }
+    @FXML
+    private void SwitchToView3() {
+        loadView("viewAllMedia.fxml");
+    }
 
     public void onButtonPlayClick() {
         mediaPlayer.play();
@@ -51,6 +55,7 @@ public class ViewController {
     public void onButtonStopClick() {
         mediaPlayer.stop();
     }
+
 
     public void onButtonPrevClick(ActionEvent actionEvent){}
 

@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mediaplayerproject.controller.CreatAndEditPlaylistController">
+<AnchorPane prefHeight="421.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mediaplayerproject.controller.CreatAndEditPlaylistController">
    <children>
       <ListView fx:id="allMediaView" layoutX="15.0" layoutY="47.0" prefHeight="342.0" prefWidth="256.0" />
       <ListView fx:id="allPlaylistsView" layoutX="328.0" layoutY="70.0" prefHeight="319.0" prefWidth="256.0" />
@@ -11,9 +11,14 @@
       <TextField fx:id="searchField" layoutX="15.0" layoutY="14.0" />
       <Button fx:id="addItemButton" layoutX="285.0" layoutY="187.0" mnemonicParsing="false" text="-&gt;" />
       <Button fx:id="removeItemButton" layoutX="285.0" layoutY="218.0" mnemonicParsing="false" text="&lt;-" />
-      <RadioButton layoutX="241.0" layoutY="18.0" mnemonicParsing="false" text="RadioButton" />
-      <RadioButton layoutX="329.0" layoutY="18.0" mnemonicParsing="false" text="RadioButton" />
+      <RadioButton layoutX="241.0" layoutY="18.0" mnemonicParsing="false" selected="true" text="RadioButton">
+         <toggleGroup>
+            <ToggleGroup fx:id="searchToggle" />
+         </toggleGroup></RadioButton>
+      <RadioButton layoutX="329.0" layoutY="18.0" mnemonicParsing="false" text="RadioButton" toggleGroup="$searchToggle" />
       <Button fx:id="updateButton" layoutX="272.0" layoutY="351.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="55.0" text="Update" />
       <TextField fx:id="nameOfPlaylist" alignment="CENTER" layoutX="382.0" layoutY="40.0" promptText="Choose a name" />
+      <Button layoutX="397.0" layoutY="389.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="38.0" text="+" />
+      <Button layoutX="474.0" layoutY="389.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="38.0" text="-" />
    </children>
 </AnchorPane>
