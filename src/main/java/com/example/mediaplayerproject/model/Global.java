@@ -1,5 +1,10 @@
 package com.example.mediaplayerproject.model;
 
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.AnchorPane;
+
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Global {

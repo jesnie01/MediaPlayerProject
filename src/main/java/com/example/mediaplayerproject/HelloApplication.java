@@ -1,5 +1,4 @@
 package com.example.mediaplayerproject;
-
 import com.example.mediaplayerproject.model.Global;
 import com.example.mediaplayerproject.model.MediaInfo;
 import com.example.mediaplayerproject.model.SearchDB;
@@ -7,7 +6,6 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
