@@ -85,4 +85,5 @@ public class SearchDB {
         PreparedStatement preparedStatement = connection.prepareCall("SELECT * FROM tblMediaPlaylist INNER JOIN tblMediaInfo ON tblMediaPlaylist.fldMediaId = tblMediaInfo.fldMediaId WHERE fldPlaylistId = (SELECT fldPlaylistId FROM tblPlaylist WHERE fldPlaylistTitle = '" + playlistName + "')");
         return preparedStatement.executeQuery();
     }
+
 }

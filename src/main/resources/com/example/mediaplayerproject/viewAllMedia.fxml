@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 
-<AnchorPane prefHeight="355.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mediaplayerproject.controller.ViewAllMediaController">
+<AnchorPane fx:id="allMediaView" prefHeight="355.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mediaplayerproject.controller.ViewAllMediaController">
    <children>
       <Pane layoutY="28.0" prefHeight="200.0" prefWidth="200.0">
          <children>
@@ -24,8 +29,9 @@
                </padding>
             </RadioButton>
             <ListView fx:id="mediaList" layoutX="8.0" layoutY="31.0" prefHeight="284.0" prefWidth="463.0" />
-            <Button fx:id="showMedia" layoutX="423.0" layoutY="4.0" mnemonicParsing="false" onAction="#onButtonShowMediaClick" text="Show Media" />
          </children>
       </Pane>
+      <Button fx:id="showMedia" layoutX="389.0" layoutY="28.0" mnemonicParsing="false" onAction="#onButtonShowMediaClick" text="Show Media" />
+      <Button fx:id="playSelecetedMedia" layoutX="488.0" layoutY="178.0" mnemonicParsing="false" onAction="#onPlaySelecetedMediaClick" text="Play" />
    </children>
 </AnchorPane>
