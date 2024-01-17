@@ -1,12 +1,16 @@
 package com.example.mediaplayerproject.controller;
 
+import com.example.mediaplayerproject.HelloApplication;
 import com.example.mediaplayerproject.model.Global;
 import com.example.mediaplayerproject.model.SearchDB;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -20,6 +24,7 @@ public class viewPlaylistsController  {
     private ListView playlistListView;
     @FXML
     private ListView listViewOfMediaInCurrentPlaylist;
+
 
     @FXML
     protected void onButtonClickSearchPlaylists() throws SQLException {
