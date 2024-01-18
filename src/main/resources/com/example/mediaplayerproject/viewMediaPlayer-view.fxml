@@ -22,7 +22,7 @@
                   <Insets />
                </HBox.margin>
             </Label>
-            <ProgressBar maxWidth="1.7976931348623157E308" prefHeight="10.0" prefWidth="502.0" progress="0.0">
+            <ProgressBar fx:id="VideoProgressBar" maxWidth="1.7976931348623157E308" prefHeight="10.0" prefWidth="502.0" progress="0.0">
                <padding>
                   <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                </padding>

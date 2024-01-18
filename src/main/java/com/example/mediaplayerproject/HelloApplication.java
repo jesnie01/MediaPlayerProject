@@ -14,9 +14,11 @@ public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         //FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("createAndEditPlaylist.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 800, 600);
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("MainLayout.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 800, 500);
         stage.setTitle("Media Player");
+        stage.setMinWidth(800);
+        stage.setMinHeight(500);
         stage.setScene(scene);
         stage.show();
         try {

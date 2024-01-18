@@ -1,5 +1,6 @@
 package com.example.mediaplayerproject;
 
+import com.example.mediaplayerproject.model.Global;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,39 +11,50 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
 
 import java.io.File;
 import java.io.IOException;
 
 public class ViewController {
     @FXML
-    private Button buttonPlay;
-    @FXML
-    private Button buttonPause;
-    @FXML
-    private Button buttonStop;
-    @FXML
-    private Button buttonPrev;
-    @FXML
-    private Button buttonNext;
-    @FXML
-    private MediaPlayer mediaPlayer;
-    @FXML
     private AnchorPane dynamicView;
 
+    MediaPlayer player = Global.mediaPlayer;
+    MediaView view = Global.mediaView;
     @FXML
-    private void SwitchToView1() {
-        loadView("viewMediaPlayer-view.fxml");
+    private void SwitchToAllMedia() {
+        loadView("viewAllMedia.fxml");
+        Global.stopMedia(player, view);
     }
 
     @FXML
-    private void SwitchToView2() {
+    private void SwitchToAllPlaylists() {
         loadView("viewPlaylists-view.fxml");
+        Global.stopMedia(player, view);
     }
     @FXML
-    private void SwitchToView3() {
+    private void SwitchToTestView() {
+        loadView("viewMediaPlayer-view.fxml");
+        Global.stopMedia(player, view);
+    }
+    @FXML
+    private void SwitchToEditPlaylist() {
+        loadView("createAndEditPlaylist.fxml");
+    }
+    @FXML
+    private void SwitchToCreatePlaylist() {
+        loadView("createAndEditPlaylist.fxml");
+    }
+    @FXML
+    private void SwitchToHowTo() {
+        loadView("");
+    }
+    @FXML
+    private void SwitchToAboutUs() {
         loadView("viewAllMedia.fxml");
     }
+
 /*
     public void onButtonPlayClick() {
         mediaPlayer.play();
