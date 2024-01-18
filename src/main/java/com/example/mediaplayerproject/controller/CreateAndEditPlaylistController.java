@@ -54,15 +54,17 @@ public class CreateAndEditPlaylistController {
      @FXML
      public void plOnMouseClick(MouseEvent mouseEvent) throws SQLException {
           currentPlaylistView.getItems().clear();
-          nameOfPlaylist.setText(allPlaylistsView.getSelectionModel().selectedItemProperty().getValue().toString());
-          ResultSet resultSet = SearchDB.searchMediaInPlaylist(allPlaylistsView.getSelectionModel().selectedItemProperty().getValue().toString());
-          Global.playlistMedia.clear();
-          while (resultSet.next()) {
-               Global.playlistMedia.add(resultSet.getString(5));
+          if (allPlaylistsView.getSelectionModel().getSelectedItem() != null) {
+               nameOfPlaylist.setText(allPlaylistsView.getSelectionModel().selectedItemProperty().getValue().toString());
+               ResultSet resultSet = SearchDB.searchMediaInPlaylist(allPlaylistsView.getSelectionModel().selectedItemProperty().getValue().toString());
+               Global.playlistMedia.clear();
+               while (resultSet.next()) {
+                    Global.playlistMedia.add(resultSet.getString(5));
 
-          }
-          for (String s : Global.playlistMedia) {
-               currentPlaylistView.getItems().add(s);
+               }
+               for (String s : Global.playlistMedia) {
+                    currentPlaylistView.getItems().add(s);
+               }
           }
      }
      public void onButtonClickSearch() {
@@ -80,7 +82,9 @@ public class CreateAndEditPlaylistController {
           }
      }
      public void onButtonClickRemove() {
-          currentPlaylistView.getItems().remove(currentPlaylistView.getSelectionModel().getSelectedItem());
+          if (currentPlaylistView.getSelectionModel().getSelectedItem() != null) {
+               currentPlaylistView.getItems().remove(currentPlaylistView.getSelectionModel().getSelectedItem());
+          }
      }
      public void onButtonClickCreate() {
 
