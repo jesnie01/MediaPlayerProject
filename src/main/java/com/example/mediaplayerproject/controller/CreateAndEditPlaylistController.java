@@ -75,14 +75,12 @@ public class CreateAndEditPlaylistController {
 
      }
      public void onButtonClickAdd() {
-          String tempString = allMediaView.getSelectionModel().selectedItemProperty().getValue().toString();
-          if (!tempString.isEmpty()) {
-               currentPlaylistView.getItems().add(tempString);
+          if (allMediaView.getSelectionModel().getSelectedItem() != null) {
+               currentPlaylistView.getItems().add(allMediaView.getSelectionModel().selectedItemProperty().getValue().toString());
           }
-
      }
      public void onButtonClickRemove() {
-
+          currentPlaylistView.getItems().remove(currentPlaylistView.getSelectionModel().getSelectedItem());
      }
      public void onButtonClickCreate() {
 
