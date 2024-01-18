@@ -72,5 +72,6 @@ public class ViewAllMediaController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 }

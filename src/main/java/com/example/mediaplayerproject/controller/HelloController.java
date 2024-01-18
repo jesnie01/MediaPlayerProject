@@ -67,20 +67,6 @@ public class HelloController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) { //Need to change the link below to drag info from database
 
-        try {
-            ResultSet resultSet = SearchDB.searchMedia();
-            while (resultSet.next()) {
-                MediaInfo tempMedia = new MediaInfo();
-                tempMedia.setMediaId(resultSet.getInt(1));
-                tempMedia.setMediaTitle(resultSet.getString(2));
-                //TBD Add creatorNames as arraylist here!
-                tempMedia.setMediaPath(resultSet.getString(4));
-                Global.allMedia.add(tempMedia);
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-
         file = new File(Global.allMedia.get(Global.currentIndexOfMediaInPlaylist).getMediaPath()).getAbsoluteFile();
         media = new Media(file.toURI().toString());
         mediaPlayer = new MediaPlayer(media);
