@@ -75,6 +75,10 @@ public class CreateAndEditPlaylistController {
 
      }
      public void onButtonClickAdd() {
+          String tempString = allMediaView.getSelectionModel().selectedItemProperty().getValue().toString();
+          if (!tempString.isEmpty()) {
+               currentPlaylistView.getItems().add(tempString);
+          }
 
      }
      public void onButtonClickRemove() {
