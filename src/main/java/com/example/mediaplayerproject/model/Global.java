@@ -11,6 +11,9 @@ import java.util.ArrayList;
 
 public class Global {
 
+    public static MediaPlayer mediaPlayer;
+    public static MediaView mediaView;
+
     public static void stopMedia(MediaPlayer mediaPlayer, MediaView mediaView){
         if (mediaView != null){
             mediaPlayer.dispose();

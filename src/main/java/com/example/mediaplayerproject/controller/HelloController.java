@@ -39,7 +39,7 @@ public class HelloController implements Initializable {
     @FXML
     private Button buttonNext;
     @FXML
-    private MediaView mediaView = new MediaView();
+    private MediaView mediaView =  Global.mediaView;
     @FXML
     private Label durationLabel; //Prompt text = Duration
     @FXML
@@ -47,11 +47,12 @@ public class HelloController implements Initializable {
     @FXML
     private Slider volumeSlider = new Slider();
 
-
     private File file = new File("src\\media\\getTheFuckOuttaHere.mp4").getAbsoluteFile(); //filepath
 
     private Media media = new Media(file.toURI().toString()); //changes filepath to readable media
-    private MediaPlayer mediaPlayer = new MediaPlayer(media);
+    private MediaPlayer mediaPlayer = Global.mediaPlayer;
+
+
     //private mediaPlayer = new MediaPlayer(media); //add media to mediaplayer
 
 

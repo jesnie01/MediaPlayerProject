@@ -1,5 +1,6 @@
 package com.example.mediaplayerproject;
 
+import com.example.mediaplayerproject.model.Global;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,6 +11,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
 
 import java.io.File;
 import java.io.IOException;
@@ -18,18 +20,23 @@ public class ViewController {
     @FXML
     private AnchorPane dynamicView;
 
+    MediaPlayer player = Global.mediaPlayer;
+    MediaView view = Global.mediaView;
     @FXML
     private void SwitchToAllMedia() {
         loadView("viewAllMedia.fxml");
+        Global.stopMedia(player, view);
     }
 
     @FXML
     private void SwitchToAllPlaylists() {
         loadView("viewPlaylists-view.fxml");
+        Global.stopMedia(player, view);
     }
     @FXML
     private void SwitchToTestView() {
-        loadView("creatAndEditPlaylist.fxml");
+        loadView("viewMediaPlayer-view.fxml");
+        Global.stopMedia(player, view);
     }
     @FXML
     private void SwitchToEditPlaylist() {
@@ -37,7 +44,7 @@ public class ViewController {
     }
     @FXML
     private void SwitchToCreatePlaylist() {
-        loadView("");
+        loadView("creatAndEditPlaylist.fxml");
     }
     @FXML
     private void SwitchToHowTo() {
