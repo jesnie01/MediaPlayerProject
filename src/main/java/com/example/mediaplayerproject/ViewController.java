@@ -16,33 +16,38 @@ import java.io.IOException;
 
 public class ViewController {
     @FXML
-    private Button buttonPlay;
-    @FXML
-    private Button buttonPause;
-    @FXML
-    private Button buttonStop;
-    @FXML
-    private Button buttonPrev;
-    @FXML
-    private Button buttonNext;
-    @FXML
-    private MediaPlayer mediaPlayer;
-    @FXML
     private AnchorPane dynamicView;
 
     @FXML
-    private void SwitchToView1() {
-        loadView("viewMediaPlayer-view.fxml");
+    private void SwitchToAllMedia() {
+        loadView("viewAllMedia.fxml");
     }
 
     @FXML
-    private void SwitchToView2() {
+    private void SwitchToAllPlaylists() {
         loadView("viewPlaylists-view.fxml");
     }
     @FXML
-    private void SwitchToView3() {
+    private void SwitchToTestView() {
+        loadView("creatAndEditPlaylist.fxml");
+    }
+    @FXML
+    private void SwitchToEditPlaylist() {
+        loadView("creatAndEditPlaylist.fxml");
+    }
+    @FXML
+    private void SwitchToCreatePlaylist() {
+        loadView("");
+    }
+    @FXML
+    private void SwitchToHowTo() {
+        loadView("");
+    }
+    @FXML
+    private void SwitchToAboutUs() {
         loadView("viewAllMedia.fxml");
     }
+
 /*
     public void onButtonPlayClick() {
         mediaPlayer.play();

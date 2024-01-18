@@ -140,6 +140,7 @@ public class HelloController implements Initializable {
         mediaView.setMediaPlayer(null);
     }
 
+
     public void onButtonPrevClick(ActionEvent actionEvent) {
         mediaPlayer.dispose();
         if (Global.currentIndexOfMediaInPlaylist > 0) {
