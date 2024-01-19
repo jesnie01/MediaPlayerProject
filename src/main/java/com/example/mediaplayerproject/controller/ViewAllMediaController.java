@@ -37,14 +37,14 @@ public class ViewAllMediaController {
     String relativePath = "src\\main\\resources\\com\\example\\mediaplayerproject\\viewMediaPlayer-view.fxml";
 
 
-    @FXML
+    /*@FXML
     private void onButtonShowMediaClick()
         {
             mediaList.getItems().clear(); //Clear the list, to avoid dublicates
             for (int i = 0; i < Global.allMedia.size(); i++) {
                 mediaList.getItems().add(Global.allMedia.get(i).getMediaTitle()); //Displays each element from the allMedia Array to the list
             }
-        }
+        }*/
     @FXML
     protected void onButtonPartialSearchClick() throws SQLException {
         mediaList.getItems().clear();

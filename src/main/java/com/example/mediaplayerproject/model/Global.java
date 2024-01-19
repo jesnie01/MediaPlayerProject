@@ -22,7 +22,7 @@ public class Global {
     }
     public static ArrayList<MediaInfo> allMedia = new ArrayList<>();
 
-    public static ArrayList<String> playlistMedia = new ArrayList<>();
+    public static ArrayList<MediaInfo> playlistMedia = new ArrayList<>();
 
     public static int currentIndexOfMediaInPlaylist = 0;
 

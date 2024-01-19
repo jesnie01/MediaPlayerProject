@@ -50,11 +50,15 @@ public class viewPlaylistsController  {
         ResultSet resultSet = SearchDB.searchMediaInPlaylist(playlistListView.getSelectionModel().selectedItemProperty().getValue().toString());
         Global.playlistMedia.clear();
         while (resultSet.next()) {
-            Global.playlistMedia.add(resultSet.getString(5));
+            for (int i = 0; i < Global.allMedia.size(); i++) {
+                if(resultSet.getString(5).equals(Global.allMedia.get(i).getMediaTitle())){
+                    Global.playlistMedia.add(Global.allMedia.get(i));
+                }
+            }
 
         }
-        for (String s : Global.playlistMedia) {
-            listViewOfMediaInCurrentPlaylist.getItems().add(s);
+        for (int i = 0; i < Global.playlistMedia.size(); i++) {
+            listViewOfMediaInCurrentPlaylist.getItems().add(Global.playlistMedia.get(i).getMediaTitle());
         }
     }
 }
