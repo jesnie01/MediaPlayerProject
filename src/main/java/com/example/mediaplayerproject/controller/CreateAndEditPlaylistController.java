@@ -140,6 +140,7 @@ public class CreateAndEditPlaylistController {
      @FXML
      private void onButtonClickDelete() throws SQLException {
           deletePlaylist();
+          refreshAllPlaylists();
      }
      private void addToPlaylist(String nameOfMedia, int IdOfPlaylist) throws SQLException {
           for (int i = 0; i < Global.allMedia.size(); i++) {
