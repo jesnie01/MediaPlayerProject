@@ -31,20 +31,8 @@ public class ViewAllMediaController {
     private RadioButton searchToggleArtist;
     @FXML
     private RadioButton searchToggleFilename;
-
-    private String fxmlFile = "viewMediaPlayer-view.fxml";
     SearchDB searchDB = new SearchDB();
-    String relativePath = "src\\main\\resources\\com\\example\\mediaplayerproject\\viewMediaPlayer-view.fxml";
 
-
-    /*@FXML
-    private void onButtonShowMediaClick()
-        {
-            mediaList.getItems().clear(); //Clear the list, to avoid dublicates
-            for (int i = 0; i < Global.allMedia.size(); i++) {
-                mediaList.getItems().add(Global.allMedia.get(i).getMediaTitle()); //Displays each element from the allMedia Array to the list
-            }
-        }*/
     @FXML
     protected void onButtonPartialSearchClick() throws SQLException {
         mediaList.getItems().clear();
@@ -62,13 +50,13 @@ public class ViewAllMediaController {
         for (int i = 0; i < Global.allMedia.size(); i++) {
             if (selectedItem.equals(Global.allMedia.get(i).getMediaTitle())) { //Check the array allMedia for a match
                 Global.playlistMedia.clear();
-                Global.playlistMedia.add(Global.allMedia.get(i));
-                Global.currentIndexOfMediaInPlaylist = 0; //Adds the index the matching media to the playlist queue
+                Global.playlistMedia.add(Global.allMedia.get(i)); //Adds the match of MediaTitle to the playlist
+                Global.currentIndexOfMediaInPlaylist = 0; //Reset the index
             }
         }
         try { //Loads the view of the mediaplayer with the matching index of the selected media, ready to play
-            System.out.println("Loading view: " + fxmlFile);
-            AnchorPane newView = FXMLLoader.load(new File(relativePath).toURI().toURL());
+            System.out.println("Loading view: " + Global.fxmlFile);
+            AnchorPane newView = FXMLLoader.load(new File(Global.relativePath).toURI().toURL());
             allMediaView.getChildren().removeAll();
             allMediaView.getChildren().setAll(newView);
         } catch (IOException e) {

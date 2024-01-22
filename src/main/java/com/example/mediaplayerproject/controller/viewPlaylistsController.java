@@ -83,8 +83,8 @@ public class viewPlaylistsController  {
             }
         }
         try { //Loads the view of the mediaplayer with the matching index of the selected media, ready to play
-            System.out.println("Loading view: " + fxmlFile);
-            AnchorPane newView = FXMLLoader.load(new File(relativePath).toURI().toURL());
+            System.out.println("Loading view: " + Global.fxmlFile);
+            AnchorPane newView = FXMLLoader.load(new File(Global.relativePath).toURI().toURL());
             allPlaylistView.getChildren().removeAll();
             allPlaylistView.getChildren().setAll(newView);
         } catch (IOException e) {
@@ -92,6 +92,10 @@ public class viewPlaylistsController  {
         }
     }
 
+    /**
+     * Method to determine the index of the first media of the playlist
+     * @param mouseEvent
+     */
     public void onMediaSelectedClick(MouseEvent mouseEvent) {
         if(listViewOfMediaInCurrentPlaylist.getSelectionModel().getSelectedItem()!=null){
             Global.currentIndexOfMediaInPlaylist = listViewOfMediaInCurrentPlaylist.getItems().indexOf(listViewOfMediaInCurrentPlaylist.getSelectionModel().getSelectedItem());
