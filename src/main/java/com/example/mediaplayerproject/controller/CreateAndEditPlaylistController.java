@@ -141,6 +141,8 @@ public class CreateAndEditPlaylistController {
      private void onButtonClickDelete() throws SQLException {
           deletePlaylist();
           refreshAllPlaylists();
+          currentPlaylistView.getItems().clear();
+          nameOfPlaylist.setText(null);
      }
      private void addToPlaylist(String nameOfMedia, int IdOfPlaylist) throws SQLException {
           for (int i = 0; i < Global.allMedia.size(); i++) {
