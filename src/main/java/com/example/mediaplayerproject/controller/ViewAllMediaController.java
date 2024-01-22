@@ -33,6 +33,10 @@ public class ViewAllMediaController {
     private RadioButton searchToggleFilename;
     SearchDB searchDB = new SearchDB();
 
+    /**
+     * Searches for the partial matches depending on Radial Button selected (Title, Creator)
+     * @throws SQLException
+     */
     @FXML
     protected void onButtonPartialSearchClick() throws SQLException {
         mediaList.getItems().clear();
@@ -45,6 +49,9 @@ public class ViewAllMediaController {
         }
     }
 
+    /**
+     * Changes the view to mediaplayer, and loads the selected item into said mediaplayer, ready to play.
+     */
     public void onPlaySelectedMediaClick() {
         String selectedItem = mediaList.getSelectionModel().getSelectedItem().toString(); //Fetch the title of selected media
         for (int i = 0; i < Global.allMedia.size(); i++) {

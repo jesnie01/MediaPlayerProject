@@ -22,65 +22,71 @@ public class ViewController {
 
     MediaPlayer player = Global.mediaPlayer;
     MediaView view = Global.mediaView;
+
+    /**
+     * Changes the view to ViewMedia
+     */
     @FXML
     private void SwitchToAllMedia() {
         loadView("viewAllMedia.fxml");
         Global.stopMedia(player, view);
     }
 
+    /**
+     * Changes the view to ViewPlaylists
+     */
     @FXML
     private void SwitchToAllPlaylists() {
         loadView("viewPlaylists-view.fxml");
         Global.stopMedia(player, view);
     }
+
+    /**
+     * Changes view to MediaPlayer (this option is not visible by default)
+     */
     @FXML
     private void SwitchToTestView() {
         loadView("viewMediaPlayer-view.fxml");
         Global.stopMedia(player, view);
     }
+
+    /**
+     * Changes view to EditPlaylist
+     */
     @FXML
     private void SwitchToEditPlaylist() {
         loadView("createAndEditPlaylist.fxml");
     }
+
+    /**
+     * Changes view to CreatePlaylist
+     */
     @FXML
     private void SwitchToCreatePlaylist() {
         loadView("createAndEditPlaylist.fxml");
     }
+
+    /**
+     * Changes view to HowTo
+     */
     @FXML
     private void SwitchToHowTo() {
         loadView("");
     }
+
+    /**
+     * Changes view to AboutUs
+     */
     @FXML
     private void SwitchToAboutUs() {
         loadView("viewAllMedia.fxml");
     }
 
-/*
-    public void onButtonPlayClick() {
-        mediaPlayer.play();
-    }
-
-    public void onButtonPauseClick() {
-        mediaPlayer.pause();
-    }
-
-    public void onButtonStopClick() {
-        mediaPlayer.stop();
-    }
-
-    public void onButtonPrevClick(ActionEvent actionEvent){}
-
-    public void onButtonNextClick() {
-
-        mediaPlayer.dispose();
-        file = new File("src\\media\\laughMeme.mp4").getAbsoluteFile();
-        Media media = new Media(file.toURI().toString());
-        mediaPlayer = new MediaPlayer(media);
-        mediaView.setMediaPlayer(mediaPlayer);
-        //mediaPlayer.setAutoPlay(true);
-        }
-        */
-
+    /**
+     * Changes the current view (excluding the Top Menu) depending on the chosen menu option.
+     * Loads a new fxml file depending on the chosen menu option
+     * @param fxmlFile
+     */
     private void loadView(String fxmlFile) {
 
         try {

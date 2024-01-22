@@ -69,7 +69,7 @@ public class HelloController implements Initializable {
 
         file = new File(Global.playlistMedia.get(Global.currentIndexOfMediaInPlaylist).getMediaPath()).getAbsoluteFile();
         media = new Media(file.toURI().toString());
-        mediaPlayer = new MediaPlayer(media);
+        mediaPlayer = new MediaPlayer(media); //Adds sound of the mediafile to the mediaplayer
 
         mediaView.setMediaPlayer(mediaPlayer); //add videocontent to the mediaview (without this line, it will only play sounds)
         mediaPlayer.setAutoPlay(false); //disable autoplay, so we can control the media using buttons
@@ -83,53 +83,33 @@ public class HelloController implements Initializable {
         });
     }
 
-
-    /*@FXML
-    protected void onButtonHelloClick() throws SQLException {
-        Connection connection = DBConnection.getDbConnection().makeConnection();
-        PreparedStatement preparedStatement = connection.prepareCall("SELECT fldMediaTitle FROM tblMediaInfo");
-        ResultSet resultSet = preparedStatement.executeQuery();
-
-        mediaList.getItems().clear(); // Stops the list from duplicating itself every click
-        while(resultSet.next()) {
-            String tempString = resultSet.getString(1); // gets everything from fldMediaTitle as String values
-            mediaList.getItems().add(tempString); // gets elements from ListView and replaces them with fldMediaTitle
-        }
-
-        connection.close();
-    }
-
+    /**
+     * Plays selected media
      */
-
     public void onButtonPlayClick() {
         mediaPlayer.play();
     }
 
+    /**
+     * Pauses selected media
+     */
     public void onButtonPauseClick() {
         mediaPlayer.pause();
     }
-    /*@FXML
-    protected void onButtonPartialSearchClick() throws SQLException {
-        boolean searchToggleBool = searchToggleArtist.isSelected();
-        //Checks the searchbox on button click for a partial match in artist name
-        ArrayList<String> searchedList = searchDB.searchPartial(searchBox.getText(), searchToggleBool);
-        mediaList.getItems().clear();
-        //if found, adds them to an ArrayList and displays it in a ListView
-        for (String s : searchedList) {
-            mediaList.getItems().add(s);
-        }
-    }
 
+    /**
+     * Stops selected media and removes the display from the mediaplayer
      */
-
     public void onButtonStopClick() {
         mediaPlayer.dispose();
         mediaView.setMediaPlayer(null);
     }
 
-
-    public void onButtonPrevClick(ActionEvent actionEvent) {
-        mediaPlayer.dispose();
+    /**
+     * Displays the media of the previous index of the playlist in the mediaplayer, ready to play
+     */
+    public void onButtonPrevClick() {
+        mediaPlayer.dispose(); //Flushes the mediaplayer
         if (Global.currentIndexOfMediaInPlaylist > 0) {
             Global.currentIndexOfMediaInPlaylist--;
         } else {
@@ -142,6 +122,9 @@ public class HelloController implements Initializable {
         mediaView.setMediaPlayer(mediaPlayer);
     }
 
+    /**
+     * Displays the media of the next index of the playlist in the mediaplayer, ready to play
+     */
     public void onButtonNextClick() {
         mediaPlayer.dispose();
         if (Global.currentIndexOfMediaInPlaylist < Global.playlistMedia.size() - 1) {
@@ -157,24 +140,4 @@ public class HelloController implements Initializable {
         //mediaPlayer.setAutoPlay(true);
 
     }
-    /*
-    @FXML
-    protected void onButtonClickPlaylistHanndler() {
-        String tempString = "Added ";
-        tempString += mediaList.getSelectionModel().getSelectedItem().toString();
-        toAddToPlaylist.add(tempString);
-    }
-    @FXML
-    protected void onButtonClickSPlist() {
-        mediaList.getItems().clear();
-        for (String i : toAddToPlaylist) {
-            mediaList.getItems().add(i);
-        }
-    }
-    @FXML
-    protected void onButtonClickClearPlaylist() {
-        toAddToPlaylist.clear();
-        mediaList.getItems().clear();
-    }
-  */
 }

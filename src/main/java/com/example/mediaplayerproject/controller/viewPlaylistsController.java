@@ -5,6 +5,7 @@ import com.example.mediaplayerproject.model.SearchDB;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -20,14 +21,13 @@ import java.util.ArrayList;
 
 public class viewPlaylistsController  {
     public AnchorPane allPlaylistView;
+    public Label playlistLabel;
     @FXML
     private TextField playlistSearchField;
     @FXML
     private ListView playlistListView;
     @FXML
     private ListView listViewOfMediaInCurrentPlaylist;
-    private String fxmlFile = "viewMediaPlayer-view.fxml"; //skal gøres global
-    String relativePath = "src\\main\\resources\\com\\example\\mediaplayerproject\\viewMediaPlayer-view.fxml"; //skal gøres global
 
     @FXML
     protected void onButtonClickSearchPlaylists() throws SQLException {
@@ -52,9 +52,17 @@ public class viewPlaylistsController  {
         deleteStatement.setString(1, (String) playlistListView.getSelectionModel().getSelectedItem());
         deleteStatement.executeUpdate();
     }
+
+    /**
+     * Shows a list of media on the selected playlist
+     * @param mouseEvent
+     * @throws SQLException
+     */
     @FXML
     public void clickGetList(MouseEvent mouseEvent) throws SQLException {
         listViewOfMediaInCurrentPlaylist.getItems().clear();
+        String currentPlaylist = playlistListView.getSelectionModel().getSelectedItem().toString();
+        playlistLabel.setText(currentPlaylist);
         ResultSet resultSet = SearchDB.searchMediaInPlaylist(playlistListView.getSelectionModel().selectedItemProperty().getValue().toString());
         Global.playlistMedia.clear();
         while (resultSet.next()) {
@@ -70,16 +78,17 @@ public class viewPlaylistsController  {
         }
     }
 
+    /**
+     * Changes view to the mediaplayer and loads the selected playlist with the selected media as current index, ready to play,
+     * if no media is selected, it will load the first media on the playlist as current index
+     * @param actionEvent onMouseClick
+     */
     public void onPlayCurrentSelectedPlaylistButtonClick(ActionEvent actionEvent) {
-        for (int i = 0; i < Global.playlistMedia.size(); i++) { //for testing
-            System.out.println(Global.playlistMedia.get(i).getMediaTitle());
-        }
-        System.out.println(Global.currentIndexOfMediaInPlaylist); //for testing
         String selectedItem = playlistListView.getSelectionModel().getSelectedItem().toString(); //Fetch the title of selected media
         for (int i = 0; i < Global.playlistMedia.size(); i++) {
             if (selectedItem.equals(Global.playlistMedia.get(i).getMediaTitle())) { //Check the array allMedia for a match
-                Global.playlistMedia.clear();
-                Global.playlistMedia.add(Global.allMedia.get(i));
+                Global.playlistMedia.clear(); //Clears the playlist
+                Global.playlistMedia.add(Global.allMedia.get(i)); //Add matching media to playlist
             }
         }
         try { //Loads the view of the mediaplayer with the matching index of the selected media, ready to play
@@ -93,13 +102,13 @@ public class viewPlaylistsController  {
     }
 
     /**
-     * Method to determine the index of the first media of the playlist
+     * Changes starting index of the playlist to currently selected media
      * @param mouseEvent
      */
     public void onMediaSelectedClick(MouseEvent mouseEvent) {
         if(listViewOfMediaInCurrentPlaylist.getSelectionModel().getSelectedItem()!=null){
-            Global.currentIndexOfMediaInPlaylist = listViewOfMediaInCurrentPlaylist.getItems().indexOf(listViewOfMediaInCurrentPlaylist.getSelectionModel().getSelectedItem());
-        }
+            Global.currentIndexOfMediaInPlaylist = listViewOfMediaInCurrentPlaylist.getSelectionModel().getSelectedIndex();
+        }else{Global.currentIndexOfMediaInPlaylist = 0;}
     }
 }
 
