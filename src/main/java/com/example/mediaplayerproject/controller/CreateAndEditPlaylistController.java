@@ -44,15 +44,7 @@ public class CreateAndEditPlaylistController {
      private ListView currentPlaylistView;
 
      public void onButtonClickRefresh() throws SQLException {
-          allPlaylistsView.getItems().clear();
-          allMediaView.getItems().clear();
-          ResultSet resultSet = SearchDB.searchPlaylists();
-          while (resultSet.next()) {
-               allPlaylistsView.getItems().add(resultSet.getString(2));
-          }
-          for (int i = 0; i < Global.allMedia.size(); i++) {
-               allMediaView.getItems().add(Global.allMedia.get(i).getMediaTitle());
-          }
+          refreshAllPlaylists();
      }
      @FXML
      public void plOnMouseClick(MouseEvent mouseEvent) throws SQLException {
@@ -71,9 +63,6 @@ public class CreateAndEditPlaylistController {
           }
      }
      public void onButtonClickSearch() {
-
-     }
-     public void onButtonClickDelete() {
 
      }
      public void onButtonClickUpdate() {
@@ -105,7 +94,13 @@ public class CreateAndEditPlaylistController {
                while (resultSet.next()) {
                     tempResults.add(resultSet.getInt(1));
                }
-               removeFromPlaylist(tempResults.get(tempIndexOfSelectedMedia));
+               boolean playlistIsCreated = false;
+               for (int i = 0; i < allPlaylistsView.getItems().size(); i++) {
+                    if (allPlaylistsView.getItems().get(i).toString().equals(nameOfPlaylist.getText())) {
+                         removeFromPlaylist(tempResults.get(tempIndexOfSelectedMedia));
+                         break;
+                    }
+               }
           }
      }
      @FXML
@@ -121,12 +116,15 @@ public class CreateAndEditPlaylistController {
                }
           }
           if (!isInResultSet) {
-               Connection connection = DBConnection.makeConnection(); // Db connection
-               String InsertSQL = "INSERT INTO tblPlaylist(fldPlaylistTitle, fldPlaylistOwner) values (?, ?)"; // SQL insert statement
-               PreparedStatement insertStatement = connection.prepareStatement(InsertSQL);
-               insertStatement.setString(1, nameOfPlaylist.getText()); //sets the placeholder '?' to a String from the textbox
-               insertStatement.setString(2, Global.User);
-               insertStatement.executeUpdate();
+               createPlaylist();
+               addMediaToNewPlaylist();
+               refreshAllPlaylists();
+//               Connection connection = DBConnection.makeConnection(); // Db connection
+//               String InsertSQL = "INSERT INTO tblPlaylist(fldPlaylistTitle, fldPlaylistOwner) values (?, ?)"; // SQL insert statement
+//               PreparedStatement insertStatement = connection.prepareStatement(InsertSQL);
+//               insertStatement.setString(1, nameOfPlaylist.getText()); //sets the placeholder '?' to a String from the textbox
+//               insertStatement.setString(2, Global.User);
+//               insertStatement.executeUpdate();
           }
 
 
@@ -138,6 +136,10 @@ public class CreateAndEditPlaylistController {
 //               allMediaView.getItems().add(resultSet.getString(2)); //adds columnIndex:2 to the listview as String
 //               //columnindex:2 = fldPlaylistTitle
 //          }
+     }
+     @FXML
+     private void onButtonClickDelete() throws SQLException {
+          deletePlaylist();
      }
      private void addToPlaylist(String nameOfMedia, int IdOfPlaylist) throws SQLException {
           for (int i = 0; i < Global.allMedia.size(); i++) {
@@ -159,5 +161,42 @@ public class CreateAndEditPlaylistController {
           preparedStatement.setInt(1,MediaPlaylistId);
           preparedStatement.executeUpdate();
      }
-
+     private void createPlaylist() throws SQLException {
+          Connection connection = DBConnection.makeConnection(); // Db connection
+          String InsertSQL = "INSERT INTO tblPlaylist(fldPlaylistTitle, fldPlaylistOwner) values (?, ?)"; // SQL insert statement
+          PreparedStatement insertStatement = connection.prepareStatement(InsertSQL);
+          insertStatement.setString(1, nameOfPlaylist.getText()); //sets the placeholder '?' to a String from the textbox
+          insertStatement.setString(2, Global.User);
+          insertStatement.executeUpdate();
+     }
+     private void addMediaToNewPlaylist() throws SQLException {
+          ResultSet resultSet = SearchDB.searchPlaylists();
+          int tempPlaylistId = -1;
+          while (resultSet.next()) {
+               if (resultSet.getString(2).equals(nameOfPlaylist.getText())) {
+                    tempPlaylistId = resultSet.getInt(1);
+               }
+          }
+          for (int i = 0; i < currentPlaylistView.getItems().size(); i++) {
+               addToPlaylist(currentPlaylistView.getItems().get(i).toString(), tempPlaylistId);
+          }
+     }
+     private void refreshAllPlaylists() throws SQLException {
+          allPlaylistsView.getItems().clear();
+          allMediaView.getItems().clear();
+          ResultSet resultSet = SearchDB.searchPlaylists();
+          while (resultSet.next()) {
+               allPlaylistsView.getItems().add(resultSet.getString(2));
+          }
+          for (int i = 0; i < Global.allMedia.size(); i++) {
+               allMediaView.getItems().add(Global.allMedia.get(i).getMediaTitle());
+          }
+     }
+     private void deletePlaylist() throws SQLException {
+          Connection connection = com.example.mediaplayerproject.model.DBConnection.makeConnection();
+          String deleteSQL = "DELETE FROM tblPlayList WHERE fldPlaylistTitle = ?";
+          PreparedStatement deleteStatement = connection.prepareStatement(deleteSQL);
+          deleteStatement.setString(1, (String) allPlaylistsView.getSelectionModel().getSelectedItem());
+          deleteStatement.executeUpdate();
+     }
 }
