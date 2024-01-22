@@ -2,11 +2,16 @@ package com.example.mediaplayerproject.controller;
 
 import com.example.mediaplayerproject.model.Global;
 import com.example.mediaplayerproject.model.SearchDB;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 
+import java.io.File;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,12 +19,15 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class viewPlaylistsController  {
+    public AnchorPane allPlaylistView;
     @FXML
     private TextField playlistSearchField;
     @FXML
     private ListView playlistListView;
     @FXML
     private ListView listViewOfMediaInCurrentPlaylist;
+    private String fxmlFile = "viewMediaPlayer-view.fxml"; //skal gøres global
+    String relativePath = "src\\main\\resources\\com\\example\\mediaplayerproject\\viewMediaPlayer-view.fxml"; //skal gøres global
 
     @FXML
     protected void onButtonClickSearchPlaylists() throws SQLException {
@@ -55,9 +63,6 @@ public class viewPlaylistsController  {
                     Global.playlistMedia.add(Global.allMedia.get(i));
                 }
             }
-            for (int i = 0; i < Global.playlistMedia.size(); i++) { //For testing
-                System.out.println(Global.playlistMedia.get(i).getMediaTitle());
-            }
 
         }
         for (int i = 0; i < Global.playlistMedia.size(); i++) {
@@ -65,5 +70,32 @@ public class viewPlaylistsController  {
         }
     }
 
+    public void onPlayCurrentSelectedPlaylistButtonClick(ActionEvent actionEvent) {
+        for (int i = 0; i < Global.playlistMedia.size(); i++) { //for testing
+            System.out.println(Global.playlistMedia.get(i).getMediaTitle());
+        }
+        System.out.println(Global.currentIndexOfMediaInPlaylist); //for testing
+        String selectedItem = playlistListView.getSelectionModel().getSelectedItem().toString(); //Fetch the title of selected media
+        for (int i = 0; i < Global.playlistMedia.size(); i++) {
+            if (selectedItem.equals(Global.playlistMedia.get(i).getMediaTitle())) { //Check the array allMedia for a match
+                Global.playlistMedia.clear();
+                Global.playlistMedia.add(Global.allMedia.get(i));
+            }
+        }
+        try { //Loads the view of the mediaplayer with the matching index of the selected media, ready to play
+            System.out.println("Loading view: " + fxmlFile);
+            AnchorPane newView = FXMLLoader.load(new File(relativePath).toURI().toURL());
+            allPlaylistView.getChildren().removeAll();
+            allPlaylistView.getChildren().setAll(newView);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void onMediaSelectedClick(MouseEvent mouseEvent) {
+        if(listViewOfMediaInCurrentPlaylist.getSelectionModel().getSelectedItem()!=null){
+            Global.currentIndexOfMediaInPlaylist = listViewOfMediaInCurrentPlaylist.getItems().indexOf(listViewOfMediaInCurrentPlaylist.getSelectionModel().getSelectedItem());
+        }
+    }
 }
 

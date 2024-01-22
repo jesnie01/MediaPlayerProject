@@ -63,7 +63,7 @@ public class ViewAllMediaController {
             if (selectedItem.equals(Global.allMedia.get(i).getMediaTitle())) { //Check the array allMedia for a match
                 Global.playlistMedia.clear();
                 Global.playlistMedia.add(Global.allMedia.get(i));
-                Global.currentIndexOfMediaInPlaylist = i; //Adds the index the matching media to the playlist queue
+                Global.currentIndexOfMediaInPlaylist = 0; //Adds the index the matching media to the playlist queue
             }
         }
         try { //Loads the view of the mediaplayer with the matching index of the selected media, ready to play
