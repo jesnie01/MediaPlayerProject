@@ -31,7 +31,6 @@
             <ListView fx:id="mediaList" layoutX="8.0" layoutY="31.0" prefHeight="284.0" prefWidth="463.0" />
          </children>
       </Pane>
-      <Button fx:id="showMedia" layoutX="389.0" layoutY="28.0" mnemonicParsing="false" onAction="#onButtonShowMediaClick" text="Show Media" />
       <Button fx:id="playSelecetedMedia" layoutX="488.0" layoutY="178.0" mnemonicParsing="false" onAction="#onPlaySelectedMediaClick" text="Play" />
    </children>
 </AnchorPane>

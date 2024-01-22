@@ -55,11 +55,15 @@ public class viewPlaylistsController  {
                     Global.playlistMedia.add(Global.allMedia.get(i));
                 }
             }
+            for (int i = 0; i < Global.playlistMedia.size(); i++) { //For testing
+                System.out.println(Global.playlistMedia.get(i).getMediaTitle());
+            }
 
         }
         for (int i = 0; i < Global.playlistMedia.size(); i++) {
             listViewOfMediaInCurrentPlaylist.getItems().add(Global.playlistMedia.get(i).getMediaTitle());
         }
     }
+
 }
 

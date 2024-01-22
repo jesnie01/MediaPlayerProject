@@ -60,7 +60,9 @@ public class ViewAllMediaController {
     public void onPlaySelectedMediaClick() {
         String selectedItem = mediaList.getSelectionModel().getSelectedItem().toString(); //Fetch the title of selected media
         for (int i = 0; i < Global.allMedia.size(); i++) {
-            if (selectedItem.equalsIgnoreCase(Global.allMedia.get(i).getMediaTitle())) { //Check the array allMedia for a match
+            if (selectedItem.equals(Global.allMedia.get(i).getMediaTitle())) { //Check the array allMedia for a match
+                Global.playlistMedia.clear();
+                Global.playlistMedia.add(Global.allMedia.get(i));
                 Global.currentIndexOfMediaInPlaylist = i; //Adds the index the matching media to the playlist queue
             }
         }
