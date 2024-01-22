@@ -27,4 +27,8 @@ public class Global {
 
     public static int currentIndexOfMediaInPlaylist = 0;
 
+    public static String fxmlFile = "viewMediaPlayer-view.fxml";
+
+    public static String relativePath = "src\\main\\resources\\com\\example\\mediaplayerproject\\viewMediaPlayer-view.fxml";
+
 }
