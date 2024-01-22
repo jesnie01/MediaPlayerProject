@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class Global {
 
-    public static String User = "bob";
+    public static String User = "bob1";
     public static MediaPlayer mediaPlayer;
     public static MediaView mediaView;
 
