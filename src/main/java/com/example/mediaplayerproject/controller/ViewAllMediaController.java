@@ -37,14 +37,14 @@ public class ViewAllMediaController {
     String relativePath = "src\\main\\resources\\com\\example\\mediaplayerproject\\viewMediaPlayer-view.fxml";
 
 
-    @FXML
+    /*@FXML
     private void onButtonShowMediaClick()
         {
             mediaList.getItems().clear(); //Clear the list, to avoid dublicates
             for (int i = 0; i < Global.allMedia.size(); i++) {
                 mediaList.getItems().add(Global.allMedia.get(i).getMediaTitle()); //Displays each element from the allMedia Array to the list
             }
-        }
+        }*/
     @FXML
     protected void onButtonPartialSearchClick() throws SQLException {
         mediaList.getItems().clear();
@@ -60,8 +60,10 @@ public class ViewAllMediaController {
     public void onPlaySelectedMediaClick() {
         String selectedItem = mediaList.getSelectionModel().getSelectedItem().toString(); //Fetch the title of selected media
         for (int i = 0; i < Global.allMedia.size(); i++) {
-            if (selectedItem.equalsIgnoreCase(Global.allMedia.get(i).getMediaTitle())) { //Check the array allMedia for a match
-                Global.currentIndexOfMediaInPlaylist = i; //Adds the index the matching media to the playlist queue
+            if (selectedItem.equals(Global.allMedia.get(i).getMediaTitle())) { //Check the array allMedia for a match
+                Global.playlistMedia.clear();
+                Global.playlistMedia.add(Global.allMedia.get(i));
+                Global.currentIndexOfMediaInPlaylist = 0; //Adds the index the matching media to the playlist queue
             }
         }
         try { //Loads the view of the mediaplayer with the matching index of the selected media, ready to play

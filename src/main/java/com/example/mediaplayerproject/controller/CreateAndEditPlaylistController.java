@@ -54,11 +54,15 @@ public class CreateAndEditPlaylistController {
                ResultSet resultSet = SearchDB.searchMediaInPlaylist(allPlaylistsView.getSelectionModel().selectedItemProperty().getValue().toString());
                Global.playlistMedia.clear();
                while (resultSet.next()) {
-                    Global.playlistMedia.add(resultSet.getString(5));
+                    for (int i = 0; i < Global.allMedia.size(); i++) {
+                         if(resultSet.getString(5).equals(Global.allMedia.get(i).toString())){
+                              Global.playlistMedia.add(Global.allMedia.get(i));
+                         }
+                    }
 
                }
-               for (String s : Global.playlistMedia) {
-                    currentPlaylistView.getItems().add(s);
+               for (int i = 0; i < Global.playlistMedia.size(); i++) {
+                    currentPlaylistView.getItems().add(Global.playlistMedia.get(i).getMediaTitle());
                }
           }
      }

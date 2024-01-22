@@ -67,7 +67,7 @@ public class HelloController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) { //Need to change the link below to drag info from database
 
-        file = new File(Global.allMedia.get(Global.currentIndexOfMediaInPlaylist).getMediaPath()).getAbsoluteFile();
+        file = new File(Global.playlistMedia.get(Global.currentIndexOfMediaInPlaylist).getMediaPath()).getAbsoluteFile();
         media = new Media(file.toURI().toString());
         mediaPlayer = new MediaPlayer(media);
 
@@ -133,10 +133,10 @@ public class HelloController implements Initializable {
         if (Global.currentIndexOfMediaInPlaylist > 0) {
             Global.currentIndexOfMediaInPlaylist--;
         } else {
-            Global.currentIndexOfMediaInPlaylist = Global.allMedia.size() - 1;
+            Global.currentIndexOfMediaInPlaylist = Global.playlistMedia.size() - 1;
         }
 
-        file = new File(Global.allMedia.get(Global.currentIndexOfMediaInPlaylist).getMediaPath()).getAbsoluteFile();
+        file = new File(Global.playlistMedia.get(Global.currentIndexOfMediaInPlaylist).getMediaPath()).getAbsoluteFile();
         media = new Media(file.toURI().toString());
         mediaPlayer = new MediaPlayer(media);
         mediaView.setMediaPlayer(mediaPlayer);
@@ -144,13 +144,13 @@ public class HelloController implements Initializable {
 
     public void onButtonNextClick() {
         mediaPlayer.dispose();
-        if (Global.currentIndexOfMediaInPlaylist < Global.allMedia.size() - 1) {
+        if (Global.currentIndexOfMediaInPlaylist < Global.playlistMedia.size() - 1) {
             Global.currentIndexOfMediaInPlaylist++;
         } else {
             Global.currentIndexOfMediaInPlaylist = 0;
         }
 
-        file = new File(Global.allMedia.get(Global.currentIndexOfMediaInPlaylist).getMediaPath()).getAbsoluteFile();
+        file = new File(Global.playlistMedia.get(Global.currentIndexOfMediaInPlaylist).getMediaPath()).getAbsoluteFile();
         media = new Media(file.toURI().toString());
         mediaPlayer = new MediaPlayer(media);
         mediaView.setMediaPlayer(mediaPlayer);
