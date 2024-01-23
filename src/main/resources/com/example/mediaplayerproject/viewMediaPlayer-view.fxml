@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.media.*?>
-
-<AnchorPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mediaplayerproject.controller.HelloController">
-<AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mediaplayerproject.controller.HelloController">
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.media.MediaView?>
+V
+<AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mediaplayerproject.controller.HelloController">
    <children>
       <MediaView fx:id="mediaView" fitHeight="350.0" fitWidth="400.0" layoutX="136.0" layoutY="17.0" AnchorPane.bottomAnchor="133.0" AnchorPane.leftAnchor="136.0" AnchorPane.rightAnchor="264.0" AnchorPane.topAnchor="17.0" />
       <StackPane fx:id="playListToggle" disable="true" layoutX="392.0" layoutY="55.0" prefHeight="274.0" prefWidth="200.0" visible="false">
@@ -41,13 +46,16 @@
       </HBox>
       <HBox alignment="CENTER" layoutY="383.1999816894531" prefHeight="18.0" prefWidth="600.0">
          <children>
-             <Button fx:id="togglePlaylist" mnemonicParsing="false" onAction="#onTogglePlaylistClick" text="Button" />
              <Button fx:id="buttonPlay" mnemonicParsing="false" onAction="#btnPlay" text="Play" />
              <Button fx:id="buttonPause" mnemonicParsing="false" onAction="#btnPause" text="Pause" />
                <Button fx:id="buttonStop" mnemonicParsing="false" onAction="#btnStop" text="Stop" />
              <Button fx:id="buttonPrev" mnemonicParsing="false" onAction="#btnPrev" text="Prev" />
              <Button fx:id="buttonNext" mnemonicParsing="false" onAction="#btnNext" text="Next" />
             <Slider fx:id="volumeSlider" majorTickUnit="50.0" minorTickCount="4" showTickLabels="true" showTickMarks="true" value="50.0" />
+             <Button fx:id="togglePlaylist" mnemonicParsing="false" onAction="#onTogglePlaylistClick" text="List">
+               <HBox.margin>
+                  <Insets left="50.0" />
+               </HBox.margin></Button>
          </children>
       </HBox>
    </children>
