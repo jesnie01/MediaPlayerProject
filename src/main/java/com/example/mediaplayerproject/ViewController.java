@@ -4,6 +4,8 @@ import com.example.mediaplayerproject.model.Global;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
@@ -12,15 +14,20 @@ import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
+import javafx.scene.Scene;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.IllegalFormatWidthException;
+
+import static com.example.mediaplayerproject.model.Global.mediaPlayer;
 
 public class ViewController {
     @FXML
     private AnchorPane dynamicView;
-
-    MediaPlayer player = Global.mediaPlayer;
+    @FXML
+    private GridPane MainGridpane;
+    MediaPlayer player = mediaPlayer;
     MediaView view = Global.mediaView;
     @FXML
     private void SwitchToAllMedia() {
@@ -41,18 +48,22 @@ public class ViewController {
     @FXML
     private void SwitchToEditPlaylist() {
         loadView("creatAndEditPlaylist.fxml");
+        Global.stopMedia(player, view);
     }
     @FXML
     private void SwitchToCreatePlaylist() {
         loadView("creatAndEditPlaylist.fxml");
+        Global.stopMedia(player, view);
     }
     @FXML
     private void SwitchToHowTo() {
         loadView("");
+        Global.stopMedia(player, view);
     }
     @FXML
     private void SwitchToAboutUs() {
         loadView("viewAllMedia.fxml");
+        Global.stopMedia(player, view);
     }
 
 /*
@@ -81,15 +92,22 @@ public class ViewController {
         }
         */
 
-    private void loadView(String fxmlFile) {
+        private void loadView(String fxmlFile) {
+            try {
+                System.out.println("Loading view: " + fxmlFile);
+                AnchorPane newView = FXMLLoader.load(getClass().getResource(fxmlFile));
+                dynamicView.getChildren().removeAll();
+                dynamicView.getChildren().setAll(newView);
 
-        try {
-            System.out.println("Loading view: " + fxmlFile);
-            AnchorPane newView = FXMLLoader.load(getClass().getResource(fxmlFile));
-            dynamicView.getChildren().removeAll();
-            dynamicView.getChildren().setAll(newView);
-        } catch (IOException e) {
-            e.printStackTrace();
+                for (Node node : dynamicView.getChildren()) {
+                    AnchorPane.setTopAnchor(node, 0.0);
+                    AnchorPane.setRightAnchor(node, 0.0);
+                    AnchorPane.setBottomAnchor(node, 0.0);
+                    AnchorPane.setLeftAnchor(node, 0.0);
+                }
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
-    }
 }

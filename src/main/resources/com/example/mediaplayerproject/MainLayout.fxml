@@ -9,16 +9,9 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="450.0" minWidth="600.0" prefHeight="450.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mediaplayerproject.ViewController">
-  <columnConstraints>
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-  </columnConstraints>
-  <rowConstraints>
-    <RowConstraints maxHeight="56.60001220703125" minHeight="6.200017356872557" vgrow="NEVER" />
-    <RowConstraints maxHeight="1600.0" minHeight="10.0" prefHeight="327.19996337890626" vgrow="SOMETIMES" />
-  </rowConstraints>
+<GridPane fx:id="MainGridpane" maxHeight="1080.0" maxWidth="1920.0" prefHeight="425.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mediaplayerproject.ViewController">
    <children>
-      <MenuBar maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="17.0" prefWidth="600.0">
+      <MenuBar maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="17.0" prefWidth="650.0">
         <menus>
           <Menu mnemonicParsing="false" text="View">
             <items>
@@ -46,10 +39,17 @@
             </Menu>
         </menus>
       </MenuBar>
-      <AnchorPane fx:id="dynamicView" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+      <AnchorPane fx:id="dynamicView" maxHeight="1080.0" maxWidth="1920.0" prefHeight="383.0" prefWidth="650.0" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="1" GridPane.vgrow="SOMETIMES">
          <children>
-            <TextArea maxHeight="1500.0" maxWidth="1800.0" prefHeight="329.0" prefWidth="600.0" text="Test view 1&#10;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <TextArea maxHeight="1500.0" maxWidth="1800.0" prefHeight="223.0" prefWidth="370.0" text="Test view 1&#10;" AnchorPane.bottomAnchor="202.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="280.0" AnchorPane.topAnchor="0.0" />
          </children>
       </AnchorPane>
    </children>
+   <columnConstraints>
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints maxHeight="25.0" minHeight="25.0" />
+      <RowConstraints vgrow="ALWAYS" />
+   </rowConstraints>
 </GridPane>

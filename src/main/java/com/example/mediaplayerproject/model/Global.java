@@ -2,6 +2,7 @@ package com.example.mediaplayerproject.model;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
@@ -15,7 +16,7 @@ public class Global {
     public static MediaView mediaView;
 
     public static void stopMedia(MediaPlayer mediaPlayer, MediaView mediaView){
-        if (mediaView != null){
+        if (mediaView != null && mediaPlayer != null){
             mediaPlayer.dispose();
             mediaView.setMediaPlayer(null);
         }

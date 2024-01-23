@@ -1,32 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.media.MediaView?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mediaplayerproject.controller.HelloController">
+<AnchorPane fx:id="mediaAnchorpane" prefHeight="400.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mediaplayerproject.controller.HelloController">
    <children>
-      <MediaView fx:id="mediaView" fitHeight="350.0" fitWidth="400.0" layoutX="100.0" layoutY="-0.8000001907348633" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="5.0" />
-      <HBox alignment="CENTER" layoutY="365.0" prefHeight="22.0" prefWidth="600.0">
+      <GridPane fx:id="mediaGridpane" alignment="CENTER" gridLinesVisible="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="344.0" prefWidth="650.0" style="-fx-background-color: #000000;" AnchorPane.bottomAnchor="56.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <columnConstraints>
+          <ColumnConstraints fx:id="mediaGridpaneColumn" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints fx:id="mediaGridpaneRow" minHeight="10.0" prefHeight="30.0" vgrow="always" />
+        </rowConstraints>
+         <children>
+            <MediaView fx:id="mediaView" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+               <viewport>
+                  <Rectangle2D />
+               </viewport>
+            </MediaView>
+         </children>
+      </GridPane>
+      <HBox alignment="CENTER" layoutY="365.0" prefHeight="22.0" prefWidth="650.0" AnchorPane.bottomAnchor="33.6" AnchorPane.leftAnchor="1.1368683772161603E-13" AnchorPane.rightAnchor="1.1368683772161603E-13">
          <children>
             <Label text="00:00:00">
-               <padding>
-                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-               </padding>
                <HBox.margin>
                   <Insets />
                </HBox.margin>
             </Label>
-            <ProgressBar fx:id="VideoProgressBar" maxWidth="1.7976931348623157E308" prefHeight="10.0" prefWidth="502.0" progress="0.0">
-               <padding>
-                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-               </padding>
-            </ProgressBar>
+            <ProgressBar fx:id="VideoProgressBar" maxWidth="1.7976931348623157E308" prefHeight="10.0" prefWidth="502.0" progress="0.0" />
             <Label text="00:00:00">
                <padding>
                   <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
@@ -37,14 +48,18 @@
             </Label>
          </children>
       </HBox>
-      <HBox alignment="CENTER" layoutY="383.1999816894531" prefHeight="18.0" prefWidth="600.0">
+      <HBox alignment="CENTER" layoutY="360.0" prefHeight="38.0" prefWidth="650.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
+            <Button fx:id="buttonToggle" mnemonicParsing="false" onAction="#onToggleClick" text="Toggle" />
+             <Button fx:id="buttonPrev" mnemonicParsing="false" onAction="#onButtonPrevClick" text="Prev" />
              <Button fx:id="buttonPlay" mnemonicParsing="false" onAction="#onButtonPlayClick" text="Play" />
              <Button fx:id="buttonPause" mnemonicParsing="false" onAction="#onButtonPauseClick" text="Pause" />
                <Button fx:id="buttonStop" mnemonicParsing="false" onAction="#onButtonStopClick" text="Stop" />
-             <Button fx:id="buttonPrev" mnemonicParsing="false" onAction="#onButtonPrevClick" text="Prev" />
              <Button fx:id="buttonNext" mnemonicParsing="false" onAction="#onButtonNextClick" text="Next" />
-            <Slider fx:id="volumeSlider" majorTickUnit="50.0" minorTickCount="4" showTickLabels="true" showTickMarks="true" value="50.0" />
+            <Slider fx:id="volumeSlider" majorTickUnit="50.0" minorTickCount="4" prefHeight="38.0" prefWidth="136.0" showTickLabels="true" showTickMarks="true" value="50.0">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin></Slider>
          </children>
       </HBox>
    </children>

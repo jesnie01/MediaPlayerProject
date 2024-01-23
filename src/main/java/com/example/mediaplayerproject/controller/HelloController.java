@@ -4,6 +4,7 @@ import com.example.mediaplayerproject.model.DBConnection;
 import com.example.mediaplayerproject.model.Global;
 import com.example.mediaplayerproject.model.MediaInfo;
 import com.example.mediaplayerproject.model.SearchDB;
+import javafx.application.Platform;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
 import javafx.beans.value.ChangeListener;
@@ -11,11 +12,14 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.*;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
-
+import javafx.event.Event;
+import javafx.event.EventType;
 import java.io.File;
 import java.net.URL;
 import java.sql.Connection;
@@ -25,7 +29,17 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+
 public class HelloController implements Initializable {
+    @FXML
+    public AnchorPane mediaAnchorpane;
+    public Button buttonToggle;
+    @FXML
+    public GridPane mediaGridpane;
+    @FXML
+    public RowConstraints mediaGridpaneRow;
+    @FXML
+    public ColumnConstraints mediaGridpaneColumn;
     @FXML
     private Label welcomeText;
     @FXML
@@ -66,7 +80,6 @@ public class HelloController implements Initializable {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) { //Need to change the link below to drag info from database
-
         try {
             ResultSet resultSet = SearchDB.searchMedia();
             while (resultSet.next()) {
@@ -84,10 +97,15 @@ public class HelloController implements Initializable {
         file = new File(Global.allMedia.get(Global.currentIndexOfMediaInPlaylist).getMediaPath()).getAbsoluteFile();
         media = new Media(file.toURI().toString());
         mediaPlayer = new MediaPlayer(media);
-
         mediaView.setMediaPlayer(mediaPlayer); //add videocontent to the mediaview (without this line, it will only play sounds)
         mediaPlayer.setAutoPlay(false); //disable autoplay, so we can control the media using buttons
         volumeSlider.setValue(mediaPlayer.getVolume() * 100);
+        AnchorPane.setTopAnchor(mediaView, 0.0);
+        AnchorPane.setBottomAnchor(mediaView, 0.0);
+        AnchorPane.setLeftAnchor(mediaView, 0.0);
+        AnchorPane.setRightAnchor(mediaView, 0.0);
+        mediaView.fitWidthProperty().bind(mediaGridpane.widthProperty());
+        mediaView.fitHeightProperty().bind(mediaGridpane.heightProperty());
 
         volumeSlider.valueProperty().addListener(new InvalidationListener() {
             @Override
@@ -114,7 +132,6 @@ public class HelloController implements Initializable {
     }
 
      */
-
     public void onButtonPlayClick() {
         mediaPlayer.play();
     }
@@ -140,7 +157,6 @@ public class HelloController implements Initializable {
         mediaPlayer.dispose();
         mediaView.setMediaPlayer(null);
     }
-
 
     public void onButtonPrevClick(ActionEvent actionEvent) {
         mediaPlayer.dispose();
@@ -170,6 +186,26 @@ public class HelloController implements Initializable {
         mediaView.setMediaPlayer(mediaPlayer);
         //mediaPlayer.setAutoPlay(true);
 
+    }
+
+    public void onToggleClick(ActionEvent actionEvent) {
+        /*
+        AnchorPane.setTopAnchor(mediaView, 0.0);
+        AnchorPane.setBottomAnchor(mediaView, 0.0);
+        AnchorPane.setLeftAnchor(mediaView, 0.0);
+        AnchorPane.setRightAnchor(mediaView, 0.0);
+        mediaView.fitWidthProperty().bind(mediaGridpane.widthProperty());
+        mediaView.fitHeightProperty().bind(mediaGridpane.heightProperty());
+
+        GridPane.setFillHeight(mediaView, true);
+        GridPane.setFillWidth(mediaView, true);
+         */
+        AnchorPane.setTopAnchor(mediaView, 0.0);
+        AnchorPane.setBottomAnchor(mediaView, 0.0);
+        AnchorPane.setLeftAnchor(mediaView, 0.0);
+        AnchorPane.setRightAnchor(mediaView, 0.0);
+        mediaView.fitWidthProperty().bind(mediaGridpane.widthProperty());
+        mediaView.fitHeightProperty().bind(mediaGridpane.heightProperty());
     }
     /*
     @FXML

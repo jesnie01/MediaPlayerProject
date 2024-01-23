@@ -2,6 +2,7 @@ package com.example.mediaplayerproject.controller;
 
 import com.example.mediaplayerproject.model.Global;
 import com.example.mediaplayerproject.model.SearchDB;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
@@ -36,6 +37,8 @@ public class viewPlaylistsController  {
                 playlistListView.getItems().add("Nothing found");
         }
     }
+
+    /*
     @FXML
     public void onButtonClickDeletePlaylist() throws SQLException {
         Connection connection = com.example.mediaplayerproject.model.DBConnection.makeConnection();
@@ -44,6 +47,8 @@ public class viewPlaylistsController  {
         deleteStatement.setString(1, (String) playlistListView.getSelectionModel().getSelectedItem());
         deleteStatement.executeUpdate();
     }
+
+     */
     @FXML
     public void clickGetList(MouseEvent mouseEvent) throws SQLException {
         listViewOfMediaInCurrentPlaylist.getItems().clear();
@@ -56,6 +61,9 @@ public class viewPlaylistsController  {
         for (String s : Global.playlistMedia) {
             listViewOfMediaInCurrentPlaylist.getItems().add(s);
         }
+    }
+
+    public void onButtonClickPlayPlaylist(ActionEvent actionEvent) {
     }
 }
 
