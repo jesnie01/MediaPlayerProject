@@ -47,12 +47,12 @@ public class ViewController {
     }
     @FXML
     private void SwitchToEditPlaylist() {
-        loadView("creatAndEditPlaylist.fxml");
+        loadView("CreateAndEditPlaylist.fxml");
         Global.stopMedia(player, view);
     }
     @FXML
     private void SwitchToCreatePlaylist() {
-        loadView("creatAndEditPlaylist.fxml");
+        loadView("CreateAndEditPlaylist.fxml");
         Global.stopMedia(player, view);
     }
     @FXML

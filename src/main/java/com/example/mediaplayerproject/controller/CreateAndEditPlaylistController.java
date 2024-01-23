@@ -5,7 +5,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 import java.net.URL;
 import java.util.ResourceBundle;
-public class CreatAndEditPlaylistController {
+public class CreateAndEditPlaylistController {
     @FXML private static ListView allMediaView;
     @FXML private static ListView allPlaylistsView;
     @FXML private static ListView allPlaylistsView1;
