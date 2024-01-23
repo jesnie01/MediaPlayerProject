@@ -45,7 +45,6 @@ public class CreateAndEditPlaylistController {
 
      public void onButtonClickRefresh() throws SQLException {
           refreshAllPlaylists();
-          currentPlaylistView.getItems().add("FUCK YOU");
      }
      @FXML
      public void plOnMouseClick(MouseEvent mouseEvent) throws SQLException {
