@@ -28,7 +28,6 @@ public class HelloApplication extends Application {
                 MediaInfo tempMedia = new MediaInfo();
                 tempMedia.setMediaId(resultSet.getInt(1));
                 tempMedia.setMediaTitle(resultSet.getString(2));
-                //TBD Add creatorNames as arraylist here!
                 tempMedia.setMediaPath(resultSet.getString(4));
                 Global.allMedia.add(tempMedia);
             }

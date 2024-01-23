@@ -43,11 +43,11 @@ public class CreateAndEditPlaylistController {
      @FXML
      private ListView currentPlaylistView;
 
-     public void onButtonClickRefresh() throws SQLException {
+     public void btnRefresh() throws SQLException {
           refreshAllPlaylists();
      }
      @FXML
-     public void plOnMouseClick(MouseEvent mouseEvent) throws SQLException {
+     public void selectPlaylist(MouseEvent mouseEvent) throws SQLException {
           currentPlaylistView.getItems().clear();
           if (allPlaylistsView.getSelectionModel().getSelectedItem() != null) {
                nameOfPlaylist.setText(allPlaylistsView.getSelectionModel().selectedItemProperty().getValue().toString());
@@ -66,13 +66,10 @@ public class CreateAndEditPlaylistController {
                }
           }
      }
-     public void onButtonClickSearch() {
+     public void btnSearch() {
 
      }
-     public void onButtonClickUpdate() {
-
-     }
-     public void onButtonClickAdd() throws SQLException {
+     public void btnAdd() throws SQLException {
           if (allMediaView.getSelectionModel().getSelectedItem() != null) {
                String tempSelectedItem = allMediaView.getSelectionModel().selectedItemProperty().getValue().toString();
                int tempSelectedPlaylist = -1;
@@ -87,7 +84,7 @@ public class CreateAndEditPlaylistController {
                }
           }
      }
-     public void onButtonClickRemove() throws SQLException {
+     public void btnRemove() throws SQLException {
           if (currentPlaylistView.getSelectionModel().getSelectedItem() != null) {
                String tempSelectedItem = currentPlaylistView.getSelectionModel().selectedItemProperty().getValue().toString();
                int tempIndexOfSelectedMedia = currentPlaylistView.getItems().indexOf(tempSelectedItem);
@@ -102,7 +99,7 @@ public class CreateAndEditPlaylistController {
           }
      }
      @FXML
-     private void onButtonClickCreate() throws SQLException { // button that creates a record in tblPlaylists
+     private void btnCreate() throws SQLException { // button that creates a record in tblPlaylists
           ResultSet resultSet = SearchDB.searchPlaylists();
 
           boolean isInResultSet = false;
@@ -117,16 +114,10 @@ public class CreateAndEditPlaylistController {
                createPlaylist();
                addMediaToNewPlaylist();
                refreshAllPlaylists();
-//               Connection connection = DBConnection.makeConnection(); // Db connection
-//               String InsertSQL = "INSERT INTO tblPlaylist(fldPlaylistTitle, fldPlaylistOwner) values (?, ?)"; // SQL insert statement
-//               PreparedStatement insertStatement = connection.prepareStatement(InsertSQL);
-//               insertStatement.setString(1, nameOfPlaylist.getText()); //sets the placeholder '?' to a String from the textbox
-//               insertStatement.setString(2, Global.User);
-//               insertStatement.executeUpdate();
           }
      }
      @FXML
-     private void onButtonClickDelete() throws SQLException {
+     private void btnDelete() throws SQLException {
           deletePlaylist();
           refreshAllPlaylists();
           currentPlaylistView.getItems().clear();

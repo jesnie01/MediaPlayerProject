@@ -58,13 +58,13 @@ public class HelloController implements Initializable {
     private MediaPlayer mediaPlayer = Global.mediaPlayer;
 
     /**
-     * This method is invoked automatically in the beginning. Used for initializing, loading data etc.
+     * This method is invoked automatically in the beginning. Used for initializing the mediaplayer, loading data etc.
      *
      * @param location
      * @param resources
      */
     @Override
-    public void initialize(URL location, ResourceBundle resources) { //Need to change the link below to drag info from database
+    public void initialize(URL location, ResourceBundle resources) { //Initializes the mediaplayer
 
         file = new File(Global.playlistMedia.get(Global.currentIndexOfMediaInPlaylist).getMediaPath()).getAbsoluteFile();
         media = new Media(file.toURI().toString());
@@ -143,7 +143,7 @@ public class HelloController implements Initializable {
     }
 
     @FXML
-    public void onTogglePlaylistClick(ActionEvent actionEvent) {
+    public void btnList(ActionEvent actionEvent) {
 
         if(playListToggle.isVisible())
         {
@@ -161,25 +161,4 @@ public class HelloController implements Initializable {
             }
         }
     }
-
-    /*
-    @FXML
-    protected void onButtonClickPlaylistHanndler() {
-        String tempString = "Added ";
-        tempString += mediaList.getSelectionModel().getSelectedItem().toString();
-        toAddToPlaylist.add(tempString);
-    }
-    @FXML
-    protected void onButtonClickSPlist() {
-        mediaList.getItems().clear();
-        for (String i : toAddToPlaylist) {
-            mediaList.getItems().add(i);
-        }
-    }
-    @FXML
-    protected void onButtonClickClearPlaylist() {
-        toAddToPlaylist.clear();
-        mediaList.getItems().clear();
-    }
-  */
 }

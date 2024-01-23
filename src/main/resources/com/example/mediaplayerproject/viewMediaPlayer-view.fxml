@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.media.MediaView?>
-V
+
 <AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mediaplayerproject.controller.HelloController">
    <children>
       <MediaView fx:id="mediaView" fitHeight="350.0" fitWidth="400.0" layoutX="136.0" layoutY="17.0" AnchorPane.bottomAnchor="133.0" AnchorPane.leftAnchor="136.0" AnchorPane.rightAnchor="264.0" AnchorPane.topAnchor="17.0" />
@@ -52,7 +52,7 @@ V
              <Button fx:id="buttonPrev" mnemonicParsing="false" onAction="#btnPrev" text="Prev" />
              <Button fx:id="buttonNext" mnemonicParsing="false" onAction="#btnNext" text="Next" />
             <Slider fx:id="volumeSlider" majorTickUnit="50.0" minorTickCount="4" showTickLabels="true" showTickMarks="true" value="50.0" />
-             <Button fx:id="togglePlaylist" mnemonicParsing="false" onAction="#onTogglePlaylistClick" text="List">
+             <Button fx:id="togglePlaylist" mnemonicParsing="false" onAction="#btnList" text="List">
                <HBox.margin>
                   <Insets left="50.0" />
                </HBox.margin></Button>
