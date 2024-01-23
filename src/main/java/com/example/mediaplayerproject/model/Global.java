@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 public class Global {
 
+    public static String User = "bob1";
     public static MediaPlayer mediaPlayer;
     public static MediaView mediaView;
 
@@ -23,8 +24,12 @@ public class Global {
     }
     public static ArrayList<MediaInfo> allMedia = new ArrayList<>();
 
-    public static ArrayList<String> playlistMedia = new ArrayList<>();
+    public static ArrayList<MediaInfo> playlistMedia = new ArrayList<>();
 
     public static int currentIndexOfMediaInPlaylist = 0;
+
+    public static String fxmlFile = "viewMediaPlayer-view.fxml";
+
+    public static String relativePath = "src\\main\\resources\\com\\example\\mediaplayerproject\\viewMediaPlayer-view.fxml";
 
 }

@@ -14,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.*;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -28,7 +29,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-
 
 public class HelloController implements Initializable {
     @FXML
@@ -60,43 +60,28 @@ public class HelloController implements Initializable {
     private Label titleLabel; //Dette skal laves om til current duration i sangen?
     @FXML
     private Slider volumeSlider = new Slider();
+    @FXML
+    private ListView playlistView;
+    @FXML
+    private StackPane playListToggle;
 
     private File file = new File("src\\media\\getTheFuckOuttaHere.mp4").getAbsoluteFile(); //filepath
 
     private Media media = new Media(file.toURI().toString()); //changes filepath to readable media
     private MediaPlayer mediaPlayer = Global.mediaPlayer;
 
-
-    //private mediaPlayer = new MediaPlayer(media); //add media to mediaplayer
-
-
-    private ArrayList<String> toAddToPlaylist = new ArrayList<>();
-
     /**
-     * This method is invoked automatically in the beginning. Used for initializing, loading data etc.
+     * This method is invoked automatically in the beginning. Used for initializing the mediaplayer, loading data etc.
      *
      * @param location
      * @param resources
      */
     @Override
-    public void initialize(URL location, ResourceBundle resources) { //Need to change the link below to drag info from database
-        try {
-            ResultSet resultSet = SearchDB.searchMedia();
-            while (resultSet.next()) {
-                MediaInfo tempMedia = new MediaInfo();
-                tempMedia.setMediaId(resultSet.getInt(1));
-                tempMedia.setMediaTitle(resultSet.getString(2));
-                //TBD Add creatorNames as arraylist here!
-                tempMedia.setMediaPath(resultSet.getString(4));
-                Global.allMedia.add(tempMedia);
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+    public void initialize(URL location, ResourceBundle resources) { //Initializes the mediaplayer
 
-        file = new File(Global.allMedia.get(Global.currentIndexOfMediaInPlaylist).getMediaPath()).getAbsoluteFile();
+        file = new File(Global.playlistMedia.get(Global.currentIndexOfMediaInPlaylist).getMediaPath()).getAbsoluteFile();
         media = new Media(file.toURI().toString());
-        mediaPlayer = new MediaPlayer(media);
+        mediaPlayer = new MediaPlayer(media); //Adds sound of the mediafile to the mediaplayer
         mediaView.setMediaPlayer(mediaPlayer); //add videocontent to the mediaview (without this line, it will only play sounds)
         mediaPlayer.setAutoPlay(false); //disable autoplay, so we can control the media using buttons
         volumeSlider.setValue(mediaPlayer.getVolume() * 100);
@@ -115,72 +100,59 @@ public class HelloController implements Initializable {
         });
     }
 
-
-    /*@FXML
-    protected void onButtonHelloClick() throws SQLException {
-        Connection connection = DBConnection.getDbConnection().makeConnection();
-        PreparedStatement preparedStatement = connection.prepareCall("SELECT fldMediaTitle FROM tblMediaInfo");
-        ResultSet resultSet = preparedStatement.executeQuery();
-
-        mediaList.getItems().clear(); // Stops the list from duplicating itself every click
-        while(resultSet.next()) {
-            String tempString = resultSet.getString(1); // gets everything from fldMediaTitle as String values
-            mediaList.getItems().add(tempString); // gets elements from ListView and replaces them with fldMediaTitle
-        }
-
-        connection.close();
-    }
-
+    /**
+     * Plays displayed media
      */
-    public void onButtonPlayClick() {
+    public void btnPlay() {
         mediaPlayer.play();
     }
 
-    public void onButtonPauseClick() {
+    /**
+     * Pauses displayed media
+     */
+    public void btnPause() {
         mediaPlayer.pause();
     }
-    /*@FXML
-    protected void onButtonPartialSearchClick() throws SQLException {
-        boolean searchToggleBool = searchToggleArtist.isSelected();
-        //Checks the searchbox on button click for a partial match in artist name
-        ArrayList<String> searchedList = searchDB.searchPartial(searchBox.getText(), searchToggleBool);
-        mediaList.getItems().clear();
-        //if found, adds them to an ArrayList and displays it in a ListView
-        for (String s : searchedList) {
-            mediaList.getItems().add(s);
-        }
-    }
 
+    /**
+     * Stops displayed media and removes the media from the mediaplayer
      */
-
-    public void onButtonStopClick() {
+    public void btnStop() {
         mediaPlayer.dispose();
         mediaView.setMediaPlayer(null);
+        playlistView.getItems().clear();
+        Global.playlistMedia.clear();
     }
 
-    public void onButtonPrevClick(ActionEvent actionEvent) {
-        mediaPlayer.dispose();
+    /**
+     * Displays the media of the previous index of the playlist in the mediaplayer, ready to play
+     */
+    public void btnPrev() {
+        mediaPlayer.dispose(); //Flushes the mediaplayer
         if (Global.currentIndexOfMediaInPlaylist > 0) {
             Global.currentIndexOfMediaInPlaylist--;
         } else {
-            Global.currentIndexOfMediaInPlaylist = Global.allMedia.size() - 1;
+            Global.currentIndexOfMediaInPlaylist = Global.playlistMedia.size() - 1;
         }
 
-        file = new File(Global.allMedia.get(Global.currentIndexOfMediaInPlaylist).getMediaPath()).getAbsoluteFile();
+        file = new File(Global.playlistMedia.get(Global.currentIndexOfMediaInPlaylist).getMediaPath()).getAbsoluteFile();
         media = new Media(file.toURI().toString());
         mediaPlayer = new MediaPlayer(media);
         mediaView.setMediaPlayer(mediaPlayer);
     }
 
-    public void onButtonNextClick() {
+    /**
+     * Displays the media of the next index of the playlist in the mediaplayer, ready to play
+     */
+    public void btnNext() {
         mediaPlayer.dispose();
-        if (Global.currentIndexOfMediaInPlaylist < Global.allMedia.size() - 1) {
+        if (Global.currentIndexOfMediaInPlaylist < Global.playlistMedia.size() - 1) {
             Global.currentIndexOfMediaInPlaylist++;
         } else {
             Global.currentIndexOfMediaInPlaylist = 0;
         }
 
-        file = new File(Global.allMedia.get(Global.currentIndexOfMediaInPlaylist).getMediaPath()).getAbsoluteFile();
+        file = new File(Global.playlistMedia.get(Global.currentIndexOfMediaInPlaylist).getMediaPath()).getAbsoluteFile();
         media = new Media(file.toURI().toString());
         mediaPlayer = new MediaPlayer(media);
         mediaView.setMediaPlayer(mediaPlayer);
@@ -188,43 +160,23 @@ public class HelloController implements Initializable {
 
     }
 
-    public void onToggleClick(ActionEvent actionEvent) {
-        /*
-        AnchorPane.setTopAnchor(mediaView, 0.0);
-        AnchorPane.setBottomAnchor(mediaView, 0.0);
-        AnchorPane.setLeftAnchor(mediaView, 0.0);
-        AnchorPane.setRightAnchor(mediaView, 0.0);
-        mediaView.fitWidthProperty().bind(mediaGridpane.widthProperty());
-        mediaView.fitHeightProperty().bind(mediaGridpane.heightProperty());
+    @FXML
+    public void btnList(ActionEvent actionEvent) {
 
-        GridPane.setFillHeight(mediaView, true);
-        GridPane.setFillWidth(mediaView, true);
-         */
-        AnchorPane.setTopAnchor(mediaView, 0.0);
-        AnchorPane.setBottomAnchor(mediaView, 0.0);
-        AnchorPane.setLeftAnchor(mediaView, 0.0);
-        AnchorPane.setRightAnchor(mediaView, 0.0);
-        mediaView.fitWidthProperty().bind(mediaGridpane.widthProperty());
-        mediaView.fitHeightProperty().bind(mediaGridpane.heightProperty());
-    }
-    /*
-    @FXML
-    protected void onButtonClickPlaylistHanndler() {
-        String tempString = "Added ";
-        tempString += mediaList.getSelectionModel().getSelectedItem().toString();
-        toAddToPlaylist.add(tempString);
-    }
-    @FXML
-    protected void onButtonClickSPlist() {
-        mediaList.getItems().clear();
-        for (String i : toAddToPlaylist) {
-            mediaList.getItems().add(i);
+        if(playListToggle.isVisible())
+        {
+            playListToggle.setVisible(false);
+            playListToggle.setDisable(true);
+        }
+        else
+        {
+            playListToggle.setVisible(true);
+            playListToggle.setDisable(false);
+            playlistView.getItems().clear();
+            for(int i = 0; i < Global.playlistMedia.size(); i++)
+            {
+                playlistView.getItems().add(Global.playlistMedia.get(i).getMediaTitle());
+            }
         }
     }
-    @FXML
-    protected void onButtonClickClearPlaylist() {
-        toAddToPlaylist.clear();
-        mediaList.getItems().clear();
-    }
-  */
 }
