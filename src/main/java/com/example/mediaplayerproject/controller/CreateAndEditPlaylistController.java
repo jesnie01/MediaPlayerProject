@@ -45,6 +45,7 @@ public class CreateAndEditPlaylistController {
 
      public void onButtonClickRefresh() throws SQLException {
           refreshAllPlaylists();
+          currentPlaylistView.getItems().add("FUCK YOU");
      }
      @FXML
      public void plOnMouseClick(MouseEvent mouseEvent) throws SQLException {
@@ -55,7 +56,7 @@ public class CreateAndEditPlaylistController {
                Global.playlistMedia.clear();
                while (resultSet.next()) {
                     for (int i = 0; i < Global.allMedia.size(); i++) {
-                         if(resultSet.getString(5).equals(Global.allMedia.get(i).toString())){
+                         if(resultSet.getString(5).equals(Global.allMedia.get(i).getMediaTitle().toString())){
                               Global.playlistMedia.add(Global.allMedia.get(i));
                          }
                     }
@@ -98,13 +99,7 @@ public class CreateAndEditPlaylistController {
                while (resultSet.next()) {
                     tempResults.add(resultSet.getInt(1));
                }
-               boolean playlistIsCreated = false;
-               for (int i = 0; i < allPlaylistsView.getItems().size(); i++) {
-                    if (allPlaylistsView.getItems().get(i).toString().equals(nameOfPlaylist.getText())) {
-                         removeFromPlaylist(tempResults.get(tempIndexOfSelectedMedia));
-                         break;
-                    }
-               }
+               removeFromPlaylist(tempResults.get(tempIndexOfSelectedMedia));
           }
      }
      @FXML
