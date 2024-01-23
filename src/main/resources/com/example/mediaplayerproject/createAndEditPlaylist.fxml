@@ -1,24 +1,94 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mediaplayerproject.controller.CreateAndEditPlaylistController">
+<AnchorPane prefHeight="400.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mediaplayerproject.controller.CreatAndEditPlaylistController">
    <children>
-      <ListView fx:id="allPlaylistsView" layoutX="14.0" layoutY="47.0" onMouseClicked="#plOnMouseClick" prefHeight="300.0" prefWidth="150.0" />
-      <ListView fx:id="allMediaView" layoutX="201.0" layoutY="47.0" prefHeight="300.0" prefWidth="150.0" />
-      <Button fx:id="searchButton" disable="true" layoutX="351.0" layoutY="14.0" mnemonicParsing="false" onAction="#onButtonClickSearch" text="Search" />
-      <TextField fx:id="searchField" layoutX="201.0" layoutY="14.0" promptText="Search all media" />
-      <Button fx:id="addItemButton" layoutX="373.0" layoutY="129.0" mnemonicParsing="false" onAction="#onButtonClickAdd" text="-&gt;" />
-      <Button fx:id="removeItemButton" layoutX="373.0" layoutY="178.0" mnemonicParsing="false" onAction="#onButtonClickRemove" text="&lt;-" />
-      <TextField fx:id="nameOfPlaylist" alignment="CENTER" layoutX="425.0" layoutY="14.0" promptText="Choose a name" />
-      <Button fx:id="createButton" layoutX="532.0" layoutY="356.0" mnemonicParsing="false" onAction="#onButtonClickCreate" text="Create" />
-      <Button fx:id="deleteButton" layoutX="113.0" layoutY="356.0" mnemonicParsing="false" onAction="#onButtonClickDelete" text="Delete" />
-      <ListView fx:id="currentPlaylistView" layoutX="417.0" layoutY="47.0" prefHeight="300.0" prefWidth="166.0" />
-      <Label fx:id="playlistName" layoutX="59.0" layoutY="18.0" text="All playlists" />
-      <Button fx:id="refreshButton" layoutX="14.0" layoutY="356.0" mnemonicParsing="false" onAction="#onButtonClickRefresh" text="Refresh" />
+      <GridPane hgap="40.0" layoutX="-80.8" layoutY="45.0" prefHeight="307.0" prefWidth="721.0" vgap="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints maxHeight="148.59998168945313" minHeight="10.0" prefHeight="34.0" vgrow="NEVER" />
+          <RowConstraints maxHeight="2000.0" minHeight="10.0" prefHeight="319.2000244140625" vgrow="ALWAYS" />
+            <RowConstraints maxHeight="351.59999389648436" minHeight="10.0" prefHeight="31.199975585937523" vgrow="NEVER" />
+        </rowConstraints>
+         <children>
+            <Label text="All playlists" textAlignment="JUSTIFY" GridPane.halignment="CENTER">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <ListView fx:id="allMediaView" prefHeight="2000.0" prefWidth="175.0" GridPane.rowIndex="1" />
+            <ListView fx:id="allPlaylistsView" prefHeight="2000.0" prefWidth="175.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <ListView fx:id="allPlaylistsView1" prefHeight="2000.0" prefWidth="175.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+            </ListView>
+            <TextField fx:id="searchField" prefHeight="26.0" prefWidth="0.0" promptText="Search all media" GridPane.columnIndex="1" />
+            <Button fx:id="searchButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="55.0" text="Search" GridPane.columnIndex="1" GridPane.halignment="RIGHT" />
+            <TextField fx:id="nameOfPlaylist" alignment="CENTER" promptText="Choose a name" GridPane.columnIndex="2" />
+            <Button mnemonicParsing="false" text="Delete" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+            <GridPane GridPane.rowIndex="2">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
+              </rowConstraints>
+               <children>
+                  <Button mnemonicParsing="false" text="Create" GridPane.halignment="CENTER" />
+                  <Button mnemonicParsing="false" text="Refresh" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+               </children>
+            </GridPane>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </GridPane>
+      <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="ALWAYS" maxWidth="418.5999755859375" minWidth="10.0" prefWidth="234.00001220703126" />
+          <ColumnConstraints hgrow="ALWAYS" maxWidth="461.4000091552735" minWidth="10.0" prefWidth="182.9999755859375" />
+            <ColumnConstraints hgrow="NEVER" maxWidth="461.4000091552735" minWidth="10.0" prefWidth="40.60003662109375" />
+            <ColumnConstraints hgrow="ALWAYS" maxWidth="461.4000091552735" minWidth="10.0" prefWidth="193.39996337890625" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <GridPane GridPane.columnIndex="2" GridPane.rowIndex="1">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Button fx:id="addItemButton" mnemonicParsing="false" prefHeight="14.0" prefWidth="30.0" text="-&gt;" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                  <Button fx:id="removeItemButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="30.0" text="&lt;-" GridPane.halignment="CENTER" />
+               </children>
+            </GridPane>
+         </children>
+      </GridPane>
    </children>
 </AnchorPane>

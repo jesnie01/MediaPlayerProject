@@ -6,8 +6,14 @@
 <?import javafx.scene.media.*?>
 
 <AnchorPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mediaplayerproject.controller.HelloController">
+<AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mediaplayerproject.controller.HelloController">
    <children>
-      <MediaView fx:id="mediaView" fitHeight="350.0" fitWidth="400.0" layoutX="100.0" layoutY="-0.8000001907348633" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="5.0" />
+      <MediaView fx:id="mediaView" fitHeight="350.0" fitWidth="400.0" layoutX="136.0" layoutY="17.0" AnchorPane.bottomAnchor="133.0" AnchorPane.leftAnchor="136.0" AnchorPane.rightAnchor="264.0" AnchorPane.topAnchor="17.0" />
+      <StackPane fx:id="playListToggle" disable="true" layoutX="392.0" layoutY="55.0" prefHeight="274.0" prefWidth="200.0" visible="false">
+         <children>
+            <ListView fx:id="playlistView" prefHeight="275.0" prefWidth="200.0" />
+         </children>
+      </StackPane>
       <HBox alignment="CENTER" layoutY="365.0" prefHeight="22.0" prefWidth="600.0">
          <children>
             <Label text="00:00:00">
@@ -35,6 +41,7 @@
       </HBox>
       <HBox alignment="CENTER" layoutY="383.1999816894531" prefHeight="18.0" prefWidth="600.0">
          <children>
+             <Button fx:id="togglePlaylist" mnemonicParsing="false" onAction="#onTogglePlaylistClick" text="Button" />
              <Button fx:id="buttonPlay" mnemonicParsing="false" onAction="#btnPlay" text="Play" />
              <Button fx:id="buttonPause" mnemonicParsing="false" onAction="#btnPause" text="Pause" />
                <Button fx:id="buttonStop" mnemonicParsing="false" onAction="#btnStop" text="Stop" />

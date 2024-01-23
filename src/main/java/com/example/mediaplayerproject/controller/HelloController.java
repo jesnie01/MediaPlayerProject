@@ -12,6 +12,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.layout.StackPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
@@ -46,6 +47,10 @@ public class HelloController implements Initializable {
     private Label titleLabel; //Dette skal laves om til current duration i sangen?
     @FXML
     private Slider volumeSlider = new Slider();
+    @FXML
+    private ListView playlistView;
+    @FXML
+    private StackPane playListToggle;
 
     private File file = new File("src\\media\\getTheFuckOuttaHere.mp4").getAbsoluteFile(); //filepath
 
@@ -97,6 +102,8 @@ public class HelloController implements Initializable {
     public void btnStop() {
         mediaPlayer.dispose();
         mediaView.setMediaPlayer(null);
+        playlistView.getItems().clear();
+        Global.playlistMedia.clear();
     }
 
     /**
@@ -134,4 +141,45 @@ public class HelloController implements Initializable {
         //mediaPlayer.setAutoPlay(true);
 
     }
+
+    @FXML
+    public void onTogglePlaylistClick(ActionEvent actionEvent) {
+
+        if(playListToggle.isVisible())
+        {
+            playListToggle.setVisible(false);
+            playListToggle.setDisable(true);
+        }
+        else
+        {
+            playListToggle.setVisible(true);
+            playListToggle.setDisable(false);
+            playlistView.getItems().clear();
+            for(int i = 0; i < Global.playlistMedia.size(); i++)
+            {
+                playlistView.getItems().add(Global.playlistMedia.get(i).getMediaTitle());
+            }
+        }
+    }
+
+    /*
+    @FXML
+    protected void onButtonClickPlaylistHanndler() {
+        String tempString = "Added ";
+        tempString += mediaList.getSelectionModel().getSelectedItem().toString();
+        toAddToPlaylist.add(tempString);
+    }
+    @FXML
+    protected void onButtonClickSPlist() {
+        mediaList.getItems().clear();
+        for (String i : toAddToPlaylist) {
+            mediaList.getItems().add(i);
+        }
+    }
+    @FXML
+    protected void onButtonClickClearPlaylist() {
+        toAddToPlaylist.clear();
+        mediaList.getItems().clear();
+    }
+  */
 }
