@@ -50,12 +50,12 @@
       </HBox>
       <HBox alignment="CENTER" layoutY="360.0" prefHeight="38.0" prefWidth="650.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <Button fx:id="buttonToggle" mnemonicParsing="false" onAction="#onToggleClick" text="Toggle" />
-             <Button fx:id="buttonPrev" mnemonicParsing="false" onAction="#onButtonPrevClick" text="Prev" />
-             <Button fx:id="buttonPlay" mnemonicParsing="false" onAction="#onButtonPlayClick" text="Play" />
-             <Button fx:id="buttonPause" mnemonicParsing="false" onAction="#onButtonPauseClick" text="Pause" />
-               <Button fx:id="buttonStop" mnemonicParsing="false" onAction="#onButtonStopClick" text="Stop" />
-             <Button fx:id="buttonNext" mnemonicParsing="false" onAction="#onButtonNextClick" text="Next" />
+            <Button fx:id="buttonToggle" mnemonicParsing="false" onAction="#btnList" text="Toggle" />
+             <Button fx:id="buttonPrev" mnemonicParsing="false" onAction="#btnPrev" text="Prev" />
+             <Button fx:id="buttonPlay" mnemonicParsing="false" onAction="#btnPlay" text="Play" />
+             <Button fx:id="buttonPause" mnemonicParsing="false" onAction="#btnPause" text="Pause" />
+               <Button fx:id="buttonStop" mnemonicParsing="false" onAction="#btnStop" text="Stop" />
+             <Button fx:id="buttonNext" mnemonicParsing="false" onAction="#btnNext" text="Next" />
             <Slider fx:id="volumeSlider" majorTickUnit="50.0" minorTickCount="4" prefHeight="38.0" prefWidth="136.0" showTickLabels="true" showTickMarks="true" value="50.0">
                <HBox.margin>
                   <Insets />

@@ -11,9 +11,8 @@
    <children>
       <ListView fx:id="mediaList" layoutX="10.0" layoutY="61.0" prefHeight="324.0" prefWidth="630.0" AnchorPane.bottomAnchor="15.199999999999989" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="9.200000000000045" AnchorPane.topAnchor="60.80000000000001" />
       <TextField fx:id="searchBox" layoutX="10.0" layoutY="29.0" prefHeight="13.0" prefWidth="150.0" promptText="search" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="490.79999999999995" AnchorPane.topAnchor="29.0" />
-      <Button fx:id="searchPartialButton" layoutX="159.0" layoutY="29.0" mnemonicParsing="false" onAction="#onButtonPartialSearchClick" prefHeight="25.0" prefWidth="52.0" text="Search" AnchorPane.rightAnchor="439.0" AnchorPane.topAnchor="29.0" />
-      <Button fx:id="showMedia" layoutX="370.0" layoutY="29.0" mnemonicParsing="false" onAction="#onButtonShowMediaClick" text="Show All Media" AnchorPane.rightAnchor="180.0" AnchorPane.topAnchor="28.8" />
-      <Button fx:id="playSelecetedMedia" layoutX="510.0" layoutY="29.0" mnemonicParsing="false" onAction="#onPlaySelectedMediaClick" prefHeight="26.0" prefWidth="125.0" text="Play Selected Media" AnchorPane.rightAnchor="14.400000000000006" AnchorPane.topAnchor="29.0" />
+      <Button fx:id="searchPartialButton" layoutX="159.0" layoutY="29.0" mnemonicParsing="false" onAction="#btnPartialSearch" prefHeight="25.0" prefWidth="52.0" text="Search" AnchorPane.rightAnchor="439.0" AnchorPane.topAnchor="29.0" />
+      <Button fx:id="playSelecetedMedia" layoutX="510.0" layoutY="29.0" mnemonicParsing="false" onAction="#btnPlayMedia" prefHeight="26.0" prefWidth="125.0" text="Play Selected Media" AnchorPane.rightAnchor="14.400000000000006" AnchorPane.topAnchor="29.0" />
       <RadioButton fx:id="searchToggleFilename" alignment="CENTER_LEFT" layoutX="294.0" layoutY="25.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="54.0" text="Title" AnchorPane.rightAnchor="301.6" AnchorPane.topAnchor="25.0">
          <toggleGroup>
             <ToggleGroup fx:id="toggleSearch" />

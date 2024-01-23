@@ -26,7 +26,6 @@ public class ViewController {
     @FXML
     private AnchorPane dynamicView;
     @FXML
-    private GridPane MainGridpane;
     MediaPlayer player = mediaPlayer;
     MediaView view = Global.mediaView;
 
@@ -52,7 +51,7 @@ public class ViewController {
      * Changes view to MediaPlayer (this option is not visible by default)
      */
     @FXML
-    private void SwitchToTestView() {
+    private void SwitchToMediaPlayer() {
         loadView("viewMediaPlayer-view.fxml");
         Global.stopMedia(player, view);
     }

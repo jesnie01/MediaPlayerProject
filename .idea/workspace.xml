@@ -4,14 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ddff0b61-f80f-4af6-a0de-828cd68eb743" name="Changes" comment="renamed media files">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/mediaplayerproject/PseudoMainLayout.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_01_2024_10_51__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_01_2024_10_51__Changes_.xml" afterDir="false" />
+    <list default="true" id="ddff0b61-f80f-4af6-a0de-828cd68eb743" name="Changes" comment="Changed name of controller and view.">
+      <change afterPath="$PROJECT_DIR$/src/media/NoFile.mp4" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/mediaplayerproject/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/mediaplayerproject/HelloApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/mediaplayerproject/ViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/mediaplayerproject/ViewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/mediaplayerproject/controller/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/mediaplayerproject/controller/HelloController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/mediaplayerproject/CreateAndEditPlaylist.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/mediaplayerproject/CreateAndEditPlaylist.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/mediaplayerproject/MainLayout.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/mediaplayerproject/MainLayout.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/mediaplayerproject/viewAllMedia.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/mediaplayerproject/viewAllMedia.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/mediaplayerproject/viewMediaPlayer-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/mediaplayerproject/viewMediaPlayer-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/mediaplayerproject/viewPlaylists-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/mediaplayerproject/viewPlaylists-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,8 +23,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -46,7 +48,7 @@
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
-        <option name="accountId" value="1b74eacf-47ef-488f-8c26-62e30cd3bc47" />
+        <option name="accountId" value="f9a69bb8-1228-4de1-a5bc-2b2a6985ba4f" />
         <option name="url" value="https://github.com/jesnie01/MediaPlayerProject.git" />
       </UrlAndAccount>
     </option>
@@ -80,7 +82,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "SplitView",
+    "git-widget-placeholder": "StopMedia+Ui",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Jesper/IdeaProjects/MediaPlayerProject",
     "node.js.detected.package.eslint": "true",
@@ -95,6 +97,26 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.mediaplayerproject.HelloApplication" />
+      <module name="MediaPlayerProject" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.mediaplayerproject.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.HelloApplication" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -123,6 +145,8 @@
       <workItem from="1704955345060" duration="772000" />
       <workItem from="1704959704077" duration="4220000" />
       <workItem from="1705048990566" duration="1434000" />
+      <workItem from="1705500715312" duration="44155000" />
+      <workItem from="1705930690168" duration="14511000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <option name="closed" value="true" />
@@ -204,7 +228,55 @@
       <option name="project" value="LOCAL" />
       <updated>1705315426727</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Added delete function for selected list in database.">
+      <option name="closed" value="true" />
+      <created>1705408293351</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1705408293351</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Changed nameScheme and started changes to StopMedia.">
+      <option name="closed" value="true" />
+      <created>1705579180598</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1705579180598</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Fixed view change bug, and made global mediaView + mediaPlayer.">
+      <option name="closed" value="true" />
+      <created>1705582445343</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1705582445343</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Fixed mediaView error in viewPlaylists.">
+      <option name="closed" value="true" />
+      <created>1705583119327</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1705583119327</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Finalised resizable views.">
+      <option name="closed" value="true" />
+      <created>1706013668005</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1706013668005</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Changed name of controller and view.">
+      <option name="closed" value="true" />
+      <created>1706014304416</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1706014304417</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -246,7 +318,13 @@
     <MESSAGE value="working patch" />
     <MESSAGE value="Moved classes into the right packages&#10;Made template for MediaInfo class" />
     <MESSAGE value="Test for change in view." />
-    <option name="LAST_COMMIT_MESSAGE" value="Test for change in view." />
+    <MESSAGE value="Added delete function for selected list in database." />
+    <MESSAGE value="Changed nameScheme and started changes to StopMedia." />
+    <MESSAGE value="Fixed view change bug, and made global mediaView + mediaPlayer." />
+    <MESSAGE value="Fixed mediaView error in viewPlaylists." />
+    <MESSAGE value="Finalised resizable views." />
+    <MESSAGE value="Changed name of controller and view." />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed name of controller and view." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

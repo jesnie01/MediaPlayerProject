@@ -17,7 +17,7 @@
             <items>
               <MenuItem mnemonicParsing="false" onAction="#SwitchToAllMedia" text="View all Media" />
                   <MenuItem mnemonicParsing="false" onAction="#SwitchToAllPlaylists" text="View all Playlists" />
-                  <MenuItem mnemonicParsing="false" onAction="#SwitchToTestView" text="TestView" />
+                  <MenuItem mnemonicParsing="false" onAction="#SwitchToMediaPlayer" text="TestView" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">
