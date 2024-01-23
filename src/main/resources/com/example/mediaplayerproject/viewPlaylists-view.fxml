@@ -5,10 +5,9 @@
 
 <AnchorPane fx:id="allPlaylistView" minHeight="39.0" minWidth="200.0" prefHeight="350.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mediaplayerproject.controller.viewPlaylistsController">
      <TextField fx:id="playlistSearchField" layoutX="106.0" layoutY="10.0" minWidth="150.0" prefHeight="26.0" prefWidth="167.0" AnchorPane.bottomAnchor="314.0" AnchorPane.leftAnchor="106.0" AnchorPane.rightAnchor="127.60000000000002" AnchorPane.topAnchor="10.0" />
-     <Button layoutX="272.0" layoutY="11.2" maxHeight="26.0" maxWidth="58.0" mnemonicParsing="false" onAction="#onButtonClickSearchPlaylists" prefHeight="26.0" prefWidth="58.0" text="Search" AnchorPane.rightAnchor="71.0" AnchorPane.topAnchor="11.0" />
-   <Button layoutX="23.0" layoutY="11.0" mnemonicParsing="false" onAction="#onButtonClickDeletePlaylist" text="Delete" AnchorPane.rightAnchor="325.0" />
+     <Button layoutX="272.0" layoutY="11.2" maxHeight="26.0" maxWidth="58.0" mnemonicParsing="false" onAction="#btnSearchPlaylists" prefHeight="26.0" prefWidth="58.0" text="Search" AnchorPane.rightAnchor="71.0" AnchorPane.topAnchor="11.0" />
    <Label fx:id="playlistLabel" layoutX="297.0" layoutY="46.0" text="Selected Playlist" AnchorPane.rightAnchor="75.0" AnchorPane.topAnchor="46.0" />
-    <ListView fx:id="playlistListView" onMouseClicked="#clickGetList" prefHeight="294.0" prefWidth="210.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="179.20000000000002" AnchorPane.topAnchor="45.0" />
-   <ListView fx:id="listViewOfMediaInCurrentPlaylist" layoutX="232.0" layoutY="75.0" onMouseClicked="#onMediaSelectedClick" prefHeight="264.0" prefWidth="158.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="76.0" />
-   <Button layoutX="348.0" layoutY="11.0" mnemonicParsing="false" onAction="#onPlayCurrentSelectedPlaylistButtonClick" text="Play" />
+    <ListView fx:id="playlistListView" onMouseClicked="#selectPlaylist" prefHeight="294.0" prefWidth="210.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="179.20000000000002" AnchorPane.topAnchor="45.0" />
+   <ListView fx:id="listViewOfMediaInCurrentPlaylist" layoutX="232.0" layoutY="75.0" onMouseClicked="#selectMedia" prefHeight="264.0" prefWidth="158.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="76.0" />
+   <Button layoutX="348.0" layoutY="11.0" mnemonicParsing="false" onAction="#btnPlayPlaylist" text="Play" />
 </AnchorPane>

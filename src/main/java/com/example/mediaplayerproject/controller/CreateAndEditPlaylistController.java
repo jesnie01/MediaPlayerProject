@@ -132,16 +132,6 @@ public class CreateAndEditPlaylistController {
                insertStatement.setString(2, Global.User);
                insertStatement.executeUpdate();
           }
-
-
-
-
-//          ResultSet resultSet = SearchDB.searchPlaylists(); // select * from tblPlaylists
-//
-//          while (resultSet.next()) { // while column has anything at all
-//               allMediaView.getItems().add(resultSet.getString(2)); //adds columnIndex:2 to the listview as String
-//               //columnindex:2 = fldPlaylistTitle
-//          }
      }
      private void addToPlaylist(String nameOfMedia, int IdOfPlaylist) throws SQLException {
           for (int i = 0; i < Global.allMedia.size(); i++) {
@@ -153,7 +143,6 @@ public class CreateAndEditPlaylistController {
                     preparedStatement.setInt(2, IdOfPlaylist);
                     preparedStatement.executeUpdate();
                }
-               //return (Global.allMedia.get(i).getMediaTitle().equals(nameOfMedia) ? -1 : Global.allMedia.get(i).getMediaId());
           }
      }
      private void removeFromPlaylist(int MediaPlaylistId) throws SQLException {

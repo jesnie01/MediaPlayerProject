@@ -30,7 +30,7 @@ public class viewPlaylistsController  {
     private ListView listViewOfMediaInCurrentPlaylist;
 
     @FXML
-    protected void onButtonClickSearchPlaylists() throws SQLException {
+    protected void btnSearchPlaylists() throws SQLException {
         playlistListView.getItems().clear();  //clears the list so results wont duplicate on click
         ResultSet resultSet = SearchDB.searchPlaylists();
 
@@ -44,14 +44,6 @@ public class viewPlaylistsController  {
                 playlistListView.getItems().add("Nothing found");
         }
     }
-    @FXML
-    public void onButtonClickDeletePlaylist() throws SQLException {
-        Connection connection = com.example.mediaplayerproject.model.DBConnection.makeConnection();
-        String deleteSQL = "DELETE FROM tblPlayList WHERE fldPlaylistTitle = ?";
-        PreparedStatement deleteStatement = connection.prepareStatement(deleteSQL);
-        deleteStatement.setString(1, (String) playlistListView.getSelectionModel().getSelectedItem());
-        deleteStatement.executeUpdate();
-    }
 
     /**
      * Shows a list of media on the selected playlist
@@ -59,7 +51,7 @@ public class viewPlaylistsController  {
      * @throws SQLException
      */
     @FXML
-    public void clickGetList(MouseEvent mouseEvent) throws SQLException {
+    public void selectPlaylist(MouseEvent mouseEvent) throws SQLException {
         listViewOfMediaInCurrentPlaylist.getItems().clear();
         String currentPlaylist = playlistListView.getSelectionModel().getSelectedItem().toString();
         playlistLabel.setText(currentPlaylist);
@@ -79,11 +71,23 @@ public class viewPlaylistsController  {
     }
 
     /**
+     * Changes starting index of the playlist to currently selected media
+     * @param mouseEvent
+     */
+    @FXML
+    public void selectMedia(MouseEvent mouseEvent) {
+        if(listViewOfMediaInCurrentPlaylist.getSelectionModel().getSelectedItem()!=null){
+            Global.currentIndexOfMediaInPlaylist = listViewOfMediaInCurrentPlaylist.getSelectionModel().getSelectedIndex();
+        }else{Global.currentIndexOfMediaInPlaylist = 0;}
+    }
+
+    /**
      * Changes view to the mediaplayer and loads the selected playlist with the selected media as current index, ready to play,
      * if no media is selected, it will load the first media on the playlist as current index
      * @param actionEvent onMouseClick
      */
-    public void onPlayCurrentSelectedPlaylistButtonClick(ActionEvent actionEvent) {
+    @FXML
+    public void btnPlayPlaylist(ActionEvent actionEvent) {
         String selectedItem = playlistListView.getSelectionModel().getSelectedItem().toString(); //Fetch the title of selected media
         for (int i = 0; i < Global.playlistMedia.size(); i++) {
             if (selectedItem.equals(Global.playlistMedia.get(i).getMediaTitle())) { //Check the array allMedia for a match
@@ -99,16 +103,6 @@ public class viewPlaylistsController  {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    /**
-     * Changes starting index of the playlist to currently selected media
-     * @param mouseEvent
-     */
-    public void onMediaSelectedClick(MouseEvent mouseEvent) {
-        if(listViewOfMediaInCurrentPlaylist.getSelectionModel().getSelectedItem()!=null){
-            Global.currentIndexOfMediaInPlaylist = listViewOfMediaInCurrentPlaylist.getSelectionModel().getSelectedIndex();
-        }else{Global.currentIndexOfMediaInPlaylist = 0;}
     }
 }
 

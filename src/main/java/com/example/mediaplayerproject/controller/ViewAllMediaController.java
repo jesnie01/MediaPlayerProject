@@ -38,7 +38,7 @@ public class ViewAllMediaController {
      * @throws SQLException
      */
     @FXML
-    protected void onButtonPartialSearchClick() throws SQLException {
+    protected void btnPartialSearch() throws SQLException {
         mediaList.getItems().clear();
         boolean searchToggleBool = searchToggleArtist.isSelected();
         //Checks the searchbox on button click for a partial match in artist name
@@ -52,7 +52,7 @@ public class ViewAllMediaController {
     /**
      * Changes the view to mediaplayer, and loads the selected item into said mediaplayer, ready to play.
      */
-    public void onPlaySelectedMediaClick() {
+    public void btnPlayMedia() {
         String selectedItem = mediaList.getSelectionModel().getSelectedItem().toString(); //Fetch the title of selected media
         for (int i = 0; i < Global.allMedia.size(); i++) {
             if (selectedItem.equals(Global.allMedia.get(i).getMediaTitle())) { //Check the array allMedia for a match

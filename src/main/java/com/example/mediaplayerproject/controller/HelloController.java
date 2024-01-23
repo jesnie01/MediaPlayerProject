@@ -52,12 +52,6 @@ public class HelloController implements Initializable {
     private Media media = new Media(file.toURI().toString()); //changes filepath to readable media
     private MediaPlayer mediaPlayer = Global.mediaPlayer;
 
-
-    //private mediaPlayer = new MediaPlayer(media); //add media to mediaplayer
-
-
-    private ArrayList<String> toAddToPlaylist = new ArrayList<>();
-
     /**
      * This method is invoked automatically in the beginning. Used for initializing, loading data etc.
      *
@@ -84,23 +78,23 @@ public class HelloController implements Initializable {
     }
 
     /**
-     * Plays selected media
+     * Plays displayed media
      */
-    public void onButtonPlayClick() {
+    public void btnPlay() {
         mediaPlayer.play();
     }
 
     /**
-     * Pauses selected media
+     * Pauses displayed media
      */
-    public void onButtonPauseClick() {
+    public void btnPause() {
         mediaPlayer.pause();
     }
 
     /**
-     * Stops selected media and removes the display from the mediaplayer
+     * Stops displayed media and removes the media from the mediaplayer
      */
-    public void onButtonStopClick() {
+    public void btnStop() {
         mediaPlayer.dispose();
         mediaView.setMediaPlayer(null);
     }
@@ -108,7 +102,7 @@ public class HelloController implements Initializable {
     /**
      * Displays the media of the previous index of the playlist in the mediaplayer, ready to play
      */
-    public void onButtonPrevClick() {
+    public void btnPrev() {
         mediaPlayer.dispose(); //Flushes the mediaplayer
         if (Global.currentIndexOfMediaInPlaylist > 0) {
             Global.currentIndexOfMediaInPlaylist--;
@@ -125,7 +119,7 @@ public class HelloController implements Initializable {
     /**
      * Displays the media of the next index of the playlist in the mediaplayer, ready to play
      */
-    public void onButtonNextClick() {
+    public void btnNext() {
         mediaPlayer.dispose();
         if (Global.currentIndexOfMediaInPlaylist < Global.playlistMedia.size() - 1) {
             Global.currentIndexOfMediaInPlaylist++;

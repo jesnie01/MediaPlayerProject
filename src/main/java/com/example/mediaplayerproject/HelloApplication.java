@@ -20,9 +20,11 @@ public class HelloApplication extends Application {
         stage.setMinHeight(500);
         stage.setScene(scene);
         stage.show();
-        try {
+        try { /*Loads the info from the media of the database into an arraylist,
+               to avoid communication via the database as much as possible
+               */
             ResultSet resultSet = SearchDB.searchMedia();
-            while (resultSet.next()) { //Loads the info from the media of the database into an arraylist, to avoid communication via the database as much as possible
+            while (resultSet.next()) {
                 MediaInfo tempMedia = new MediaInfo();
                 tempMedia.setMediaId(resultSet.getInt(1));
                 tempMedia.setMediaTitle(resultSet.getString(2));
