@@ -49,13 +49,11 @@ public class MediaPlayerController implements Initializable {
     @FXML
     private Button buttonNext;
     @FXML
-    private ListView playlistView;
-    @FXML
-    private StackPane playListToggle;
+    private ListView currentPlaylist;
     @FXML
     private Label totalTime; //Prompt text = Duration
     @FXML
-    private Label testTime; //Dette skal laves om til current duration i sangen?
+    private Label currentTime; //Dette skal laves om til current duration i sangen?
     @FXML
     private Slider volumeSlider = new Slider();
     @FXML
@@ -127,7 +125,7 @@ public class MediaPlayerController implements Initializable {
             int hours = (int) (newTime.toSeconds() / 3600);
             int minutes = (int) ((newTime.toSeconds() % 3600) / 60);
             int seconds = (int) (newTime.toSeconds() % 60);
-            testTime.setText(String.format("%02d:%02d:%02d",hours, minutes, seconds));
+            currentTime.setText(String.format("%02d:%02d:%02d",hours, minutes, seconds));
         });
     }
 
@@ -144,7 +142,7 @@ public class MediaPlayerController implements Initializable {
     public void btnStop() {
         mediaPlayer.dispose();
         mediaView.setMediaPlayer(null);
-        playlistView.getItems().clear();
+        currentPlaylist.getItems().clear();
         GlobalInfo.playlistMedia.clear();
     }
 
@@ -182,19 +180,19 @@ public class MediaPlayerController implements Initializable {
 
     @FXML
     public void btnList(ActionEvent actionEvent) {
-        if(playListToggle.isVisible())
+        if(currentPlaylist.isVisible())
         {
-            playListToggle.setVisible(false);
-            playListToggle.setDisable(true);
+            currentPlaylist.setVisible(false);
+            currentPlaylist.setDisable(true);
         }
         else
         {
-            playListToggle.setVisible(true);
-            playListToggle.setDisable(false);
-            playlistView.getItems().clear();
+            currentPlaylist.setVisible(true);
+            currentPlaylist.setDisable(false);
+            currentPlaylist.getItems().clear();
             for(int i = 0; i < GlobalInfo.playlistMedia.size(); i++)
             {
-                playlistView.getItems().add(GlobalInfo.playlistMedia.get(i).getMediaTitle());
+                currentPlaylist.getItems().add(GlobalInfo.playlistMedia.get(i).getMediaTitle());
             }
         }
     }
