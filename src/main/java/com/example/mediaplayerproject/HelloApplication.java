@@ -32,6 +32,7 @@ public class HelloApplication extends Application {
                 tempMedia.setMediaPath(resultSet.getString(4));
                 GlobalInfo.allMedia.add(tempMedia);
             }
+            GlobalInfo.playlistMedia.add(GlobalInfo.allMedia.get(0));
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
