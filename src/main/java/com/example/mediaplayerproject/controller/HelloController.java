@@ -11,6 +11,8 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.*;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.MouseDragEvent;
@@ -20,6 +22,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
+import javafx.util.Duration;
 
 import java.io.File;
 import java.net.URL;
@@ -86,6 +89,27 @@ public class HelloController implements Initializable {
                 mediaPlayer.setVolume(volumeSlider.getValue() / 100);
             }
         });
+
+//        VideoProgressBar.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
+//            System.out.println(e.getX());
+//            System.out.println(e.getY());
+//        });
+
+        VideoProgressBar.addEventHandler(MouseEvent.MOUSE_DRAGGED, e -> {
+            mediaPlayer.pause();
+            VideoProgressBar.setProgress(e.getX()/VideoProgressBar.getWidth());
+        });
+
+        VideoProgressBar.addEventHandler(MouseEvent.MOUSE_RELEASED, e -> {
+            mediaPlayer.seek(Duration.seconds(mediaPlayer.getTotalDuration().toSeconds()*(e.getX()/VideoProgressBar.getWidth())));
+            mediaPlayer.play();
+        });
+    }
+
+
+    public void doStuff(MouseEvent e)
+    {
+        //noget
     }
 
     /**
@@ -123,6 +147,7 @@ public class HelloController implements Initializable {
         playlistView.getItems().clear();
         Global.playlistMedia.clear();
     }
+
 
     /**
      * Displays the media of the previous index of the playlist in the mediaplayer, ready to play
@@ -178,35 +203,6 @@ public class HelloController implements Initializable {
                 playlistView.getItems().add(Global.playlistMedia.get(i).getMediaTitle());
             }
         }
-    }
-
-    public void dragDone(DragEvent dragEvent) {
-        System.out.println(VideoProgressBar.getProgress());
-    }
-
-    public void dragDetect(MouseEvent mouseEvent) {
-        System.out.println("drag detected!");
-    }
-
-    public void dragDropped(DragEvent dragEvent) {
-        System.out.println("drag dropped!");
-    }
-
-    public void dragEntered(DragEvent dragEvent) {
-        VideoProgressBar.setProgress(dragEvent.getX());
-        System.out.println("drag entered!");
-    }
-
-    public void dragMouseReleased(MouseDragEvent mouseDragEvent) {
-        System.out.println("mouse drag released!");
-    }
-
-    public void dragExit(DragEvent dragEvent) {
-        System.out.println("FUCK YOU!");
-    }
-
-    public void dragOver(DragEvent dragEvent) {
-        System.out.println("drag over!");
     }
 
     /*
