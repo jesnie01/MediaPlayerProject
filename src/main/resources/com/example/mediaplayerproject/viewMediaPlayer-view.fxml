@@ -23,7 +23,7 @@
                   <Insets />
                </HBox.margin>
             </Label>
-            <ProgressBar fx:id="VideoProgressBar" maxWidth="1.7976931348623157E308" onDragDetected="#dragDetect" onDragDone="#dragDone" onDragDropped="#dragDropped" onDragEntered="#dragEntered" onDragExited="#dragExit" onDragOver="#dragOver" onMouseDragReleased="#dragMouseReleased" prefHeight="19.0" prefWidth="418.0" progress="0.0">
+            <ProgressBar fx:id="VideoProgressBar" maxWidth="1.7976931348623157E308" prefHeight="19.0" prefWidth="418.0" progress="0.0">
                <padding>
                   <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                </padding>
