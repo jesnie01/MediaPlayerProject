@@ -3,6 +3,7 @@ import com.example.mediaplayerproject.model.GlobalInfo;
 import com.example.mediaplayerproject.model.SearchDB;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
@@ -56,9 +57,17 @@ public class AllMediaController {
         }
         try { //Loads the view of the mediaplayer with the matching index of the selected media, ready to play
             System.out.println("Loading view: " + GlobalInfo.fxmlFile);
-            AnchorPane newView = FXMLLoader.load(new File(GlobalInfo.relativePath).toURI().toURL());
+            AnchorPane newView = FXMLLoader.load(getClass().getClassLoader().getResource(GlobalInfo.fxmlFile));
             allMediaView.getChildren().removeAll();
             allMediaView.getChildren().setAll(newView);
+
+            for (Node node : allMediaView.getChildren()) {
+                AnchorPane.setTopAnchor(node, 0.0);
+                AnchorPane.setRightAnchor(node, 0.0);
+                AnchorPane.setBottomAnchor(node, 0.0);
+                AnchorPane.setLeftAnchor(node, 0.0);
+            }
+
         } catch (IOException e) {
             e.printStackTrace();
         }

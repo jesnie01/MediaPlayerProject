@@ -7,15 +7,13 @@ import javafx.scene.Node;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
-
 import java.io.IOException;
 
-import static com.example.mediaplayerproject.model.GlobalInfo.mediaPlayer;
 
 public class MainLayoutController {
     @FXML
     private AnchorPane dynamicView;
-    MediaPlayer player = mediaPlayer;
+    MediaPlayer player = GlobalInfo.mediaPlayer;
     MediaView view = GlobalInfo.mediaView;
 
     /**

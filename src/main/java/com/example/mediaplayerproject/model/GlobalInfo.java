@@ -9,13 +9,6 @@ public class GlobalInfo {
     public static String User = "bob1";
     public static MediaPlayer mediaPlayer;
     public static MediaView mediaView;
-
-    public static void stopMedia(MediaPlayer mediaPlayer, MediaView mediaView){
-        if (mediaView != null && mediaPlayer != null){
-            mediaPlayer.dispose();
-            mediaView.setMediaPlayer(null);
-        }
-    }
     public static ArrayList<MediaInfo> allMedia = new ArrayList<>();
 
     public static ArrayList<MediaInfo> playlistMedia = new ArrayList<>();
@@ -26,4 +19,10 @@ public class GlobalInfo {
 
     public static String relativePath = "src\\main\\resources\\com\\example\\mediaplayerproject\\MediaPlayerView.fxml";
 
+    public static void stopMedia(MediaPlayer mediaPlayer, MediaView mediaView){
+        if (mediaView != null && mediaPlayer != null){
+            mediaPlayer.dispose();
+            mediaView.setMediaPlayer(null);
+        }
+    }
 }

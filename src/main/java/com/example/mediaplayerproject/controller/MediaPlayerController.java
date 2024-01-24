@@ -6,6 +6,7 @@ import javafx.beans.Observable;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.*;
@@ -64,10 +65,11 @@ public class MediaPlayerController implements Initializable {
         mediaView.setMediaPlayer(mediaPlayer); //add videocontent to the mediaview (without this line, it will only play sounds)
         mediaPlayer.setAutoPlay(false); //disable autoplay, so we can control the media using buttons
         volumeSlider.setValue(mediaPlayer.getVolume() * 100);
-        AnchorPane.setTopAnchor(mediaView, 0.0);
-        AnchorPane.setBottomAnchor(mediaView, 0.0);
-        AnchorPane.setLeftAnchor(mediaView, 0.0);
-        AnchorPane.setRightAnchor(mediaView, 0.0);
+
+        mediaAnchorpane.setTopAnchor(mediaView, 0.0);
+        mediaAnchorpane.setBottomAnchor(mediaView, 0.0);
+        mediaAnchorpane.setLeftAnchor(mediaView, 0.0);
+        mediaAnchorpane.setRightAnchor(mediaView, 0.0);
         mediaView.fitWidthProperty().bind(mediaGridpane.widthProperty());
         mediaView.fitHeightProperty().bind(mediaGridpane.heightProperty());
         volumeSlider.valueProperty().addListener(new InvalidationListener() {
