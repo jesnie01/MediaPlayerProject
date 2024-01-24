@@ -9,7 +9,7 @@
         <Button layoutX="241.0" maxHeight="26.0" maxWidth="52.0" mnemonicParsing="false" onAction="#btnSearchPlaylists" prefHeight="26.0" prefWidth="52.0" text="Search" AnchorPane.rightAnchor="334.5999999999999" AnchorPane.topAnchor="0.0" />
       <Button layoutX="510.0" layoutY="1.0" mnemonicParsing="false" onAction="#btnPlayPlaylist" prefHeight="26.0" prefWidth="78.0" text="Play Playlist" AnchorPane.rightAnchor="40.0" />
     </AnchorPane>
-   <Label fx:id="playlistLabel" layoutX="297.0" layoutY="46.0" text="Label" AnchorPane.rightAnchor="75.0" AnchorPane.topAnchor="46.0" />
+   <Label fx:id="playlistLabel" layoutX="297.0" layoutY="46.0" AnchorPane.rightAnchor="75.0" AnchorPane.topAnchor="46.0" />
     <ListView fx:id="playlistListView" onMouseClicked="#selectPlaylist" prefHeight="294.0" prefWidth="210.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="179.20000000000002" AnchorPane.topAnchor="45.0" />
    <ListView fx:id="listViewOfMediaInCurrentPlaylist" layoutX="232.0" layoutY="75.0" onMouseClicked="#selectMedia" prefHeight="264.0" prefWidth="158.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="76.0" />
 </AnchorPane>

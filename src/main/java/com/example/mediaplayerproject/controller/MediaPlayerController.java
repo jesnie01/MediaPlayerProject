@@ -145,14 +145,10 @@ public class MediaPlayerController implements Initializable {
         if (GlobalInfo.mediaSelected) {
             mediaPlayer.dispose();
             mediaView.setMediaPlayer(null);
-            playlistView.getItems().clear();
+            currentPlaylist.getItems().clear();
             GlobalInfo.playlistMedia.clear();
             System.out.println("Media Selected: " + GlobalInfo.mediaSelected);
         }
-        mediaPlayer.dispose();
-        mediaView.setMediaPlayer(null);
-        currentPlaylist.getItems().clear();
-        GlobalInfo.playlistMedia.clear();
     }
     /**
      * Displays the media of the previous index of the playlist in the mediaplayer, ready to play
