@@ -1,7 +1,7 @@
 package com.example.mediaplayerproject.controller;
 
 import com.example.mediaplayerproject.model.DBConnection;
-import com.example.mediaplayerproject.model.Global;
+import com.example.mediaplayerproject.model.GlobalInfo;
 import com.example.mediaplayerproject.model.MediaInfo;
 import com.example.mediaplayerproject.model.SearchDB;
 import javafx.beans.InvalidationListener;
@@ -12,11 +12,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.*;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
+import javafx.util.Duration;
 
 import java.io.File;
 import java.net.URL;
@@ -47,7 +49,6 @@ public class MediaPlayerController implements Initializable {
     @FXML
     private Button buttonNext;
     @FXML
-    @FXML
     private ListView playlistView;
     @FXML
     private StackPane playListToggle;
@@ -57,10 +58,6 @@ public class MediaPlayerController implements Initializable {
     private Label testTime; //Dette skal laves om til current duration i sangen?
     @FXML
     private Slider volumeSlider = new Slider();
-    @FXML
-    private ListView playlistView;
-    @FXML
-    private StackPane playListToggle;
     @FXML
     private ProgressBar VideoProgressBar = new ProgressBar();
 
@@ -113,12 +110,6 @@ public class MediaPlayerController implements Initializable {
             mediaPlayer.seek(Duration.seconds(mediaPlayer.getTotalDuration().toSeconds()*(e.getX()/VideoProgressBar.getWidth())));
             mediaPlayer.play();
         });
-    }
-
-
-    public void doStuff(MouseEvent e)
-    {
-        //noget
     }
 
     /**
