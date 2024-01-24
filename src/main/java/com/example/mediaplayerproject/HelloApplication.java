@@ -16,7 +16,7 @@ public class HelloApplication extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("MainLayoutView.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 650, 450);
-        stage.setTitle("Media Player");
+        stage.setTitle("Media Meme Player");
         stage.setMinWidth(664);
         stage.setMinHeight(488);
         stage.setScene(scene);

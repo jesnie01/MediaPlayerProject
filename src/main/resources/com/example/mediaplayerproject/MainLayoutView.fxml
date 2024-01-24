@@ -15,27 +15,27 @@
         <menus>
           <Menu mnemonicParsing="false" text="View">
             <items>
-              <MenuItem mnemonicParsing="false" onAction="#SwitchToAllMedia" text="View all Media" />
-                  <MenuItem mnemonicParsing="false" onAction="#SwitchToAllPlaylists" text="View all Playlists" />
-                  <MenuItem mnemonicParsing="false" onAction="#SwitchToMediaPlayer" text="TestView" />
+              <MenuItem mnemonicParsing="false" onAction="#MediasView" text="View all Media" />
+                  <MenuItem mnemonicParsing="false" onAction="#PlaylistsView" text="View all Playlists" />
+                  <MenuItem mnemonicParsing="false" onAction="#MediaplayerView" text="TestView" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">
             <items>
-              <MenuItem mnemonicParsing="false" onAction="#SwitchToEditPlaylist" text="Edit a Playlist" />
+              <MenuItem mnemonicParsing="false" onAction="#EditCreateView" text="Edit a Playlist" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Create">
             <items>
-              <MenuItem mnemonicParsing="false" onAction="#SwitchToCreatePlaylist" text="Create a Playlist" />
+              <MenuItem mnemonicParsing="false" onAction="#CreateEditView" text="Create a Playlist" />
             </items>
           </Menu>
             <Menu mnemonicParsing="false" text="How to">
               <items>
-                <MenuItem mnemonicParsing="false" onAction="#SwitchToHowTo" text="How to use Mediaplayer" />
+                <MenuItem mnemonicParsing="false" onAction="#HowToView" text="How to use Mediaplayer" />
               </items>
             </Menu>
-            <Menu mnemonicParsing="false" onAction="#SwitchToAboutUs" text="About">
+            <Menu mnemonicParsing="false" onAction="#AboutUsView" text="About">
             </Menu>
         </menus>
       </MenuBar>

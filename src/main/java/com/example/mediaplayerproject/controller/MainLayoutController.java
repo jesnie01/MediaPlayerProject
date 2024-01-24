@@ -15,7 +15,6 @@ import static com.example.mediaplayerproject.model.GlobalInfo.mediaPlayer;
 public class MainLayoutController {
     @FXML
     private AnchorPane dynamicView;
-    @FXML
     MediaPlayer player = mediaPlayer;
     MediaView view = GlobalInfo.mediaView;
 
@@ -23,8 +22,8 @@ public class MainLayoutController {
      * Changes the view to ViewMedia
      */
     @FXML
-    private void SwitchToAllMedia() {
-        loadView("AllMediaView.fxml");
+    private void MediasView() {
+        loadView("/com/example/MediaPlayerProject/AllMediaView.fxml");
         GlobalInfo.stopMedia(player, view);
     }
 
@@ -32,7 +31,7 @@ public class MainLayoutController {
      * Changes the view to ViewPlaylists
      */
     @FXML
-    private void SwitchToAllPlaylists() {
+    private void PlaylistsView() {
         loadView("PlaylistView.fxml");
         GlobalInfo.stopMedia(player, view);
     }
@@ -41,7 +40,7 @@ public class MainLayoutController {
      * Changes view to MediaPlayer (this option is not visible by default)
      */
     @FXML
-    private void SwitchToMediaPlayer() {
+    private void MediaplayerView() {
         loadView("MediaPlayerView.fxml");
         GlobalInfo.stopMedia(player, view);
     }
@@ -50,7 +49,7 @@ public class MainLayoutController {
      * Changes view to EditPlaylist
      */
     @FXML
-    private void SwitchToEditPlaylist() {
+    private void EditCreateView() {
         loadView("CreateEditPlaylistView.fxml");
         GlobalInfo.stopMedia(player, view);
     }
@@ -59,7 +58,7 @@ public class MainLayoutController {
      * Changes view to CreatePlaylist
      */
     @FXML
-    private void SwitchToCreatePlaylist() {
+    private void CreateEditView() {
         loadView("CreateEditPlaylistView.fxml");
         GlobalInfo.stopMedia(player, view);
     }
@@ -68,7 +67,7 @@ public class MainLayoutController {
      * Changes view to HowTo
      */
     @FXML
-    private void SwitchToHowTo() {
+    private void HowToView() {
         loadView("");
         GlobalInfo.stopMedia(player, view);
     }
@@ -77,11 +76,10 @@ public class MainLayoutController {
      * Changes view to AboutUs
      */
     @FXML
-    private void SwitchToAboutUs() {
+    private void AboutUsView() {
         loadView("AllMediaView.fxml");
         GlobalInfo.stopMedia(player, view);
     }
-
          /**
          * Changes the current view (excluding the Top Menu) depending on the chosen menu option.
          * Loads a new fxml file depending on the chosen menu option
@@ -100,7 +98,6 @@ public class MainLayoutController {
                     AnchorPane.setBottomAnchor(node, 0.0);
                     AnchorPane.setLeftAnchor(node, 0.0);
                 }
-
             } catch (IOException e) {
                 e.printStackTrace();
             }
