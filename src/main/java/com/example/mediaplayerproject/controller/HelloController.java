@@ -12,6 +12,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.input.DragEvent;
+import javafx.scene.input.MouseDragEvent;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.input.TransferMode;
 import javafx.scene.layout.StackPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -42,15 +46,17 @@ public class HelloController implements Initializable {
     @FXML
     private MediaView mediaView =  Global.mediaView;
     @FXML
-    private Label durationLabel; //Prompt text = Duration
+    private Label totalTime; //Prompt text = Duration
     @FXML
-    private Label titleLabel; //Dette skal laves om til current duration i sangen?
+    private Label testTime; //Dette skal laves om til current duration i sangen?
     @FXML
     private Slider volumeSlider = new Slider();
     @FXML
     private ListView playlistView;
     @FXML
     private StackPane playListToggle;
+    @FXML
+    private ProgressBar VideoProgressBar = new ProgressBar();
 
     private File file = new File("src\\media\\getTheFuckOuttaHere.mp4").getAbsoluteFile(); //filepath
 
@@ -87,6 +93,18 @@ public class HelloController implements Initializable {
      */
     public void btnPlay() {
         mediaPlayer.play();
+        int tHours = (int) (mediaPlayer.getTotalDuration().toSeconds() / 3600);
+        int tMinutes = (int) ((mediaPlayer.getTotalDuration().toSeconds() % 3600) / 60);
+        int tSeconds = (int) (mediaPlayer.getTotalDuration().toSeconds() % 60);
+        totalTime.setText(String.format("%02d:%02d:%02d",tHours, tMinutes, tSeconds));
+
+        mediaPlayer.currentTimeProperty().addListener((observable, oldTime, newTime) -> {
+            VideoProgressBar.setProgress(newTime.toMillis() / mediaPlayer.getTotalDuration().toMillis());
+            int hours = (int) (newTime.toSeconds() / 3600);
+            int minutes = (int) ((newTime.toSeconds() % 3600) / 60);
+            int seconds = (int) (newTime.toSeconds() % 60);
+            testTime.setText(String.format("%02d:%02d:%02d",hours, minutes, seconds));
+        });
     }
 
     /**
@@ -160,6 +178,35 @@ public class HelloController implements Initializable {
                 playlistView.getItems().add(Global.playlistMedia.get(i).getMediaTitle());
             }
         }
+    }
+
+    public void dragDone(DragEvent dragEvent) {
+        System.out.println(VideoProgressBar.getProgress());
+    }
+
+    public void dragDetect(MouseEvent mouseEvent) {
+        System.out.println("drag detected!");
+    }
+
+    public void dragDropped(DragEvent dragEvent) {
+        System.out.println("drag dropped!");
+    }
+
+    public void dragEntered(DragEvent dragEvent) {
+        VideoProgressBar.setProgress(dragEvent.getX());
+        System.out.println("drag entered!");
+    }
+
+    public void dragMouseReleased(MouseDragEvent mouseDragEvent) {
+        System.out.println("mouse drag released!");
+    }
+
+    public void dragExit(DragEvent dragEvent) {
+        System.out.println("FUCK YOU!");
+    }
+
+    public void dragOver(DragEvent dragEvent) {
+        System.out.println("drag over!");
     }
 
     /*
