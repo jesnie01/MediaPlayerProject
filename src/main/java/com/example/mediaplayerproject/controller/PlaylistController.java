@@ -50,6 +50,7 @@ public class PlaylistController {
      */
     @FXML
     public void selectPlaylist(MouseEvent mouseEvent) throws SQLException {
+        GlobalInfo.mediaSelected = true;
         listViewOfMediaInCurrentPlaylist.getItems().clear();
         String currentPlaylist = playlistListView.getSelectionModel().getSelectedItem().toString();
         playlistLabel.setText(currentPlaylist);
@@ -66,6 +67,7 @@ public class PlaylistController {
         for (int i = 0; i < GlobalInfo.playlistMedia.size(); i++) {
             listViewOfMediaInCurrentPlaylist.getItems().add(GlobalInfo.playlistMedia.get(i).getMediaTitle());
         }
+        GlobalInfo.currentIndexOfMediaInPlaylist = 0;
     }
 
     /**
@@ -77,7 +79,8 @@ public class PlaylistController {
         if(listViewOfMediaInCurrentPlaylist.getSelectionModel().getSelectedItem()!=null){
             GlobalInfo.currentIndexOfMediaInPlaylist = listViewOfMediaInCurrentPlaylist.getSelectionModel().getSelectedIndex();
         }else{
-            GlobalInfo.currentIndexOfMediaInPlaylist = 0;}
+            GlobalInfo.currentIndexOfMediaInPlaylist = 0;
+        }
     }
 
     /**

@@ -57,9 +57,9 @@ public class MediaPlayerController implements Initializable {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) { //Initializes the mediaplayer
-        /*
-        file = new File(Global.playlistMedia.get(Global.currentIndexOfMediaInPlaylist).getMediaPath()).getAbsoluteFile();
-        */
+        if(GlobalInfo.mediaSelected) {
+            file = new File(GlobalInfo.playlistMedia.get(GlobalInfo.currentIndexOfMediaInPlaylist).getMediaPath()).getAbsoluteFile();
+        }
         media = new Media(file.toURI().toString());
         mediaPlayer = new MediaPlayer(media); //Adds sound of the mediafile to the mediaplayer
         mediaView.setMediaPlayer(mediaPlayer); //add videocontent to the mediaview (without this line, it will only play sounds)
@@ -83,52 +83,67 @@ public class MediaPlayerController implements Initializable {
      * Plays displayed media
      */
     public void btnPlay() {
-        mediaPlayer.play();
+        if (GlobalInfo.mediaSelected) {
+            mediaPlayer.play();
+            System.out.println("Media Selected: " + GlobalInfo.mediaSelected);
+        }
     }
     /**
      * Pauses displayed media
      */
     public void btnPause() {
-        mediaPlayer.pause();
+        if (GlobalInfo.mediaSelected) {
+            mediaPlayer.pause();
+            System.out.println("Media Selected: " + GlobalInfo.mediaSelected);
+        }
     }
     /**
      * Stops displayed media and removes the media from the mediaplayer
      */
     public void btnStop() {
-        mediaPlayer.dispose();
-        mediaView.setMediaPlayer(null);
-        playlistView.getItems().clear();
-        GlobalInfo.playlistMedia.clear();
+        if (GlobalInfo.mediaSelected) {
+            mediaPlayer.dispose();
+            mediaView.setMediaPlayer(null);
+            playlistView.getItems().clear();
+            GlobalInfo.playlistMedia.clear();
+            System.out.println("Media Selected: " + GlobalInfo.mediaSelected);
+        }
     }
     /**
      * Displays the media of the previous index of the playlist in the mediaplayer, ready to play
      */
     public void btnPrev() {
-        mediaPlayer.dispose(); //Flushes the mediaplayer
-        if (GlobalInfo.currentIndexOfMediaInPlaylist > 0) {
-            GlobalInfo.currentIndexOfMediaInPlaylist--;
-        } else {
-            GlobalInfo.currentIndexOfMediaInPlaylist = GlobalInfo.playlistMedia.size() - 1;
+        System.out.println("Media Selected: " + GlobalInfo.mediaSelected);
+        if (GlobalInfo.mediaSelected) {
+            mediaPlayer.dispose(); //Flushes the mediaplayer
+            if (GlobalInfo.currentIndexOfMediaInPlaylist > 0) {
+                GlobalInfo.currentIndexOfMediaInPlaylist--;
+            } else {
+                GlobalInfo.currentIndexOfMediaInPlaylist = GlobalInfo.playlistMedia.size() - 1;
+            }
+            file = new File(GlobalInfo.playlistMedia.get(GlobalInfo.currentIndexOfMediaInPlaylist).getMediaPath()).getAbsoluteFile();
+            media = new Media(file.toURI().toString());
+            mediaPlayer = new MediaPlayer(media);
+            mediaView.setMediaPlayer(mediaPlayer);
         }
-        file = new File(GlobalInfo.playlistMedia.get(GlobalInfo.currentIndexOfMediaInPlaylist).getMediaPath()).getAbsoluteFile();
-        media = new Media(file.toURI().toString());
-        mediaPlayer = new MediaPlayer(media);
-        mediaView.setMediaPlayer(mediaPlayer);
     }
     /**
      * Displays the media of the next index of the playlist in the mediaplayer, ready to play
      */
     public void btnNext() {
-        mediaPlayer.dispose();
-        if (GlobalInfo.currentIndexOfMediaInPlaylist < GlobalInfo.playlistMedia.size() - 1) {
-            GlobalInfo.currentIndexOfMediaInPlaylist++;
-        } else {
-            GlobalInfo.currentIndexOfMediaInPlaylist = 0;
+        if (GlobalInfo.mediaSelected) {
+            System.out.println("Media Selected: " + GlobalInfo.mediaSelected);
+            mediaPlayer.dispose();
+            if (GlobalInfo.currentIndexOfMediaInPlaylist < GlobalInfo.playlistMedia.size() - 1) {
+                GlobalInfo.currentIndexOfMediaInPlaylist++;
+            } else {
+                GlobalInfo.currentIndexOfMediaInPlaylist = 0;
+            }
+            file = new File(GlobalInfo.playlistMedia.get(GlobalInfo.currentIndexOfMediaInPlaylist).getMediaPath()).getAbsoluteFile();
+            media = new Media(file.toURI().toString());
+            mediaPlayer = new MediaPlayer(media);
+            mediaView.setMediaPlayer(mediaPlayer);
         }
-        file = new File(GlobalInfo.playlistMedia.get(GlobalInfo.currentIndexOfMediaInPlaylist).getMediaPath()).getAbsoluteFile();
-        media = new Media(file.toURI().toString());
-        mediaPlayer = new MediaPlayer(media);
-        mediaView.setMediaPlayer(mediaPlayer);
     }
     @FXML
     public void btnList(ActionEvent actionEvent) {

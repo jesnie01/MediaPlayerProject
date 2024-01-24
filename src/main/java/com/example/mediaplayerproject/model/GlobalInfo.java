@@ -5,6 +5,7 @@ import javafx.scene.media.MediaView;
 import java.util.ArrayList;
 
 public class GlobalInfo {
+    public static boolean mediaSelected = false;
 
     public static String User = "bob1";
     public static MediaPlayer mediaPlayer;

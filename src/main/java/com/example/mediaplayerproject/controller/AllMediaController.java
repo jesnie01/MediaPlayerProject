@@ -47,13 +47,19 @@ public class AllMediaController {
      * Changes the view to mediaplayer, and loads the selected item into said mediaplayer, ready to play.
      */
     public void btnPlayMedia() {
-        String selectedItem = mediaList.getSelectionModel().getSelectedItem().toString(); //Fetch the title of selected media
-        for (int i = 0; i < GlobalInfo.allMedia.size(); i++) {
-            if (selectedItem.equals(GlobalInfo.allMedia.get(i).getMediaTitle())) { //Check the array allMedia for a match
-                GlobalInfo.playlistMedia.clear();
-                GlobalInfo.playlistMedia.add(GlobalInfo.allMedia.get(i)); //Adds the match of MediaTitle to the playlist
-                GlobalInfo.currentIndexOfMediaInPlaylist = 0; //Reset the index
+        if(mediaList.getSelectionModel().getSelectedItem()!=null) {
+            String selectedItem = mediaList.getSelectionModel().getSelectedItem().toString(); //Fetch the title of selected media
+            GlobalInfo.mediaSelected = true;
+            for (int i = 0; i < GlobalInfo.allMedia.size(); i++) {
+                if (selectedItem.equals(GlobalInfo.allMedia.get(i).getMediaTitle())) { //Check the array allMedia for a match
+                    GlobalInfo.playlistMedia.clear();
+                    GlobalInfo.playlistMedia.add(GlobalInfo.allMedia.get(i)); //Adds the match of MediaTitle to the playlist
+                    GlobalInfo.currentIndexOfMediaInPlaylist = 0; //Reset the index
+                }
             }
+        }else {
+            GlobalInfo.mediaSelected = false;
+            GlobalInfo.playlistMedia.clear();
         }
         try { //Loads the view of the mediaplayer with the matching index of the selected media, ready to play
             System.out.println("Loading view: " + GlobalInfo.fxmlFile);

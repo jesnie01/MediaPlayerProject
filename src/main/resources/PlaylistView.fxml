@@ -11,5 +11,5 @@
     </AnchorPane>
    <Label fx:id="playlistLabel" layoutX="297.0" layoutY="46.0" text="Label" AnchorPane.rightAnchor="75.0" AnchorPane.topAnchor="46.0" />
     <ListView fx:id="playlistListView" onMouseClicked="#selectPlaylist" prefHeight="294.0" prefWidth="210.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="179.20000000000002" AnchorPane.topAnchor="45.0" />
-   <ListView fx:id="listViewOfMediaInCurrentPlaylist" layoutX="232.0" layoutY="75.0" prefHeight="264.0" prefWidth="158.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="76.0" />
+   <ListView fx:id="listViewOfMediaInCurrentPlaylist" layoutX="232.0" layoutY="75.0" onMouseClicked="#selectMedia" prefHeight="264.0" prefWidth="158.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="76.0" />
 </AnchorPane>
