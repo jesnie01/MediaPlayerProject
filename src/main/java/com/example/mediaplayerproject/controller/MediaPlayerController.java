@@ -1,20 +1,30 @@
 package com.example.mediaplayerproject.controller;
 
-import com.example.mediaplayerproject.model.GlobalInfo;
+import com.example.mediaplayerproject.model.DBConnection;
+import com.example.mediaplayerproject.model.Global;
+import com.example.mediaplayerproject.model.MediaInfo;
+import com.example.mediaplayerproject.model.SearchDB;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.*;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
+
 import java.io.File;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class MediaPlayerController implements Initializable {
@@ -37,16 +47,25 @@ public class MediaPlayerController implements Initializable {
     @FXML
     private Button buttonNext;
     @FXML
+    @FXML
     private ListView playlistView;
     @FXML
     private StackPane playListToggle;
     @FXML
-    private Label durationLabel; //Prompt text = Duration
+    private Label totalTime; //Prompt text = Duration
     @FXML
-    private Label titleLabel; //Dette skal laves om til current duration i sangen?
+    private Label testTime; //Dette skal laves om til current duration i sangen?
     @FXML
     private Slider volumeSlider = new Slider();
+    @FXML
+    private ListView playlistView;
+    @FXML
+    private StackPane playListToggle;
+    @FXML
+    private ProgressBar VideoProgressBar = new ProgressBar();
+
     private File file = new File("src\\media\\NoFile.mp4").getAbsoluteFile(); //filepath
+
     private Media media = new Media(file.toURI().toString()); //changes filepath to readable media
     private MediaPlayer mediaPlayer = GlobalInfo.mediaPlayer;
     /**
@@ -62,6 +81,7 @@ public class MediaPlayerController implements Initializable {
         */
         media = new Media(file.toURI().toString());
         mediaPlayer = new MediaPlayer(media); //Adds sound of the mediafile to the mediaplayer
+
         mediaView.setMediaPlayer(mediaPlayer); //add videocontent to the mediaview (without this line, it will only play sounds)
         mediaPlayer.setAutoPlay(false); //disable autoplay, so we can control the media using buttons
         volumeSlider.setValue(mediaPlayer.getVolume() * 100);
@@ -78,19 +98,55 @@ public class MediaPlayerController implements Initializable {
                 mediaPlayer.setVolume(volumeSlider.getValue() / 100);
             }
         });
+
+//        VideoProgressBar.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
+//            System.out.println(e.getX());
+//            System.out.println(e.getY());
+//        });
+
+        VideoProgressBar.addEventHandler(MouseEvent.MOUSE_DRAGGED, e -> {
+            mediaPlayer.pause();
+            VideoProgressBar.setProgress(e.getX()/VideoProgressBar.getWidth());
+        });
+
+        VideoProgressBar.addEventHandler(MouseEvent.MOUSE_RELEASED, e -> {
+            mediaPlayer.seek(Duration.seconds(mediaPlayer.getTotalDuration().toSeconds()*(e.getX()/VideoProgressBar.getWidth())));
+            mediaPlayer.play();
+        });
     }
+
+
+    public void doStuff(MouseEvent e)
+    {
+        //noget
+    }
+
     /**
      * Plays displayed media
      */
     public void btnPlay() {
         mediaPlayer.play();
+        int tHours = (int) (mediaPlayer.getTotalDuration().toSeconds() / 3600);
+        int tMinutes = (int) ((mediaPlayer.getTotalDuration().toSeconds() % 3600) / 60);
+        int tSeconds = (int) (mediaPlayer.getTotalDuration().toSeconds() % 60);
+        totalTime.setText(String.format("%02d:%02d:%02d",tHours, tMinutes, tSeconds));
+
+        mediaPlayer.currentTimeProperty().addListener((observable, oldTime, newTime) -> {
+            VideoProgressBar.setProgress(newTime.toMillis() / mediaPlayer.getTotalDuration().toMillis());
+            int hours = (int) (newTime.toSeconds() / 3600);
+            int minutes = (int) ((newTime.toSeconds() % 3600) / 60);
+            int seconds = (int) (newTime.toSeconds() % 60);
+            testTime.setText(String.format("%02d:%02d:%02d",hours, minutes, seconds));
+        });
     }
+
     /**
      * Pauses displayed media
      */
     public void btnPause() {
         mediaPlayer.pause();
     }
+
     /**
      * Stops displayed media and removes the media from the mediaplayer
      */
@@ -100,6 +156,7 @@ public class MediaPlayerController implements Initializable {
         playlistView.getItems().clear();
         GlobalInfo.playlistMedia.clear();
     }
+
     /**
      * Displays the media of the previous index of the playlist in the mediaplayer, ready to play
      */
@@ -115,6 +172,7 @@ public class MediaPlayerController implements Initializable {
         mediaPlayer = new MediaPlayer(media);
         mediaView.setMediaPlayer(mediaPlayer);
     }
+
     /**
      * Displays the media of the next index of the playlist in the mediaplayer, ready to play
      */
@@ -130,6 +188,7 @@ public class MediaPlayerController implements Initializable {
         mediaPlayer = new MediaPlayer(media);
         mediaView.setMediaPlayer(mediaPlayer);
     }
+
     @FXML
     public void btnList(ActionEvent actionEvent) {
         if(playListToggle.isVisible())
