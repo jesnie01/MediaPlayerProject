@@ -1,7 +1,6 @@
 package com.example.mediaplayerproject.model;
 
 import java.util.ArrayList;
-import java.util.PrimitiveIterator;
 
 public class MediaInfo {
     private int mediaId;

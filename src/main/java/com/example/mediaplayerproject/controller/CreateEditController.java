@@ -1,7 +1,7 @@
 package com.example.mediaplayerproject.controller;
 
 import com.example.mediaplayerproject.model.*;
-import com.example.mediaplayerproject.model.Global;
+import com.example.mediaplayerproject.model.GlobalInfo;
 import com.example.mediaplayerproject.model.SearchDB;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -15,7 +15,7 @@ import java.sql.SQLException;
 import java.sql.*;
 import java.util.ArrayList;
 
-public class CreateAndEditPlaylistController {
+public class CreateEditController {
      @FXML
      private Label playlistName;
      @FXML
@@ -52,17 +52,17 @@ public class CreateAndEditPlaylistController {
           if (allPlaylistsView.getSelectionModel().getSelectedItem() != null) {
                nameOfPlaylist.setText(allPlaylistsView.getSelectionModel().selectedItemProperty().getValue().toString());
                ResultSet resultSet = SearchDB.searchMediaInPlaylist(allPlaylistsView.getSelectionModel().selectedItemProperty().getValue().toString());
-               Global.playlistMedia.clear();
+               GlobalInfo.playlistMedia.clear();
                while (resultSet.next()) {
-                    for (int i = 0; i < Global.allMedia.size(); i++) {
-                         if(resultSet.getString(5).equals(Global.allMedia.get(i).getMediaTitle().toString())){
-                              Global.playlistMedia.add(Global.allMedia.get(i));
+                    for (int i = 0; i < GlobalInfo.allMedia.size(); i++) {
+                         if(resultSet.getString(5).equals(GlobalInfo.allMedia.get(i).getMediaTitle().toString())){
+                              GlobalInfo.playlistMedia.add(GlobalInfo.allMedia.get(i));
                          }
                     }
 
                }
-               for (int i = 0; i < Global.playlistMedia.size(); i++) {
-                    currentPlaylistView.getItems().add(Global.playlistMedia.get(i).getMediaTitle());
+               for (int i = 0; i < GlobalInfo.playlistMedia.size(); i++) {
+                    currentPlaylistView.getItems().add(GlobalInfo.playlistMedia.get(i).getMediaTitle());
                }
           }
      }
@@ -105,7 +105,7 @@ public class CreateAndEditPlaylistController {
           boolean isInResultSet = false;
 
           while (resultSet.next()) {
-               if (resultSet.getString(2).equals(nameOfPlaylist.getText()) && resultSet.getString(3).equals(Global.User)) {
+               if (resultSet.getString(2).equals(nameOfPlaylist.getText()) && resultSet.getString(3).equals(GlobalInfo.User)) {
                     isInResultSet = true;
                     break;
                }
@@ -124,12 +124,12 @@ public class CreateAndEditPlaylistController {
           nameOfPlaylist.setText(null);
      }
      private void addToPlaylist(String nameOfMedia, int IdOfPlaylist) throws SQLException {
-          for (int i = 0; i < Global.allMedia.size(); i++) {
-               if (Global.allMedia.get(i).getMediaTitle().equals(nameOfMedia)) {
+          for (int i = 0; i < GlobalInfo.allMedia.size(); i++) {
+               if (GlobalInfo.allMedia.get(i).getMediaTitle().equals(nameOfMedia)) {
                     Connection connection = DBConnection.makeConnection();
                     String insertSQL = "INSERT INTO tblMediaPlaylist(fldMediaId, fldPlaylistId) values (?, ?)";
                     PreparedStatement preparedStatement = connection.prepareStatement(insertSQL);
-                    preparedStatement.setInt(1, Global.allMedia.get(i).getMediaId());
+                    preparedStatement.setInt(1, GlobalInfo.allMedia.get(i).getMediaId());
                     preparedStatement.setInt(2, IdOfPlaylist);
                     preparedStatement.executeUpdate();
                }
@@ -147,7 +147,7 @@ public class CreateAndEditPlaylistController {
           String InsertSQL = "INSERT INTO tblPlaylist(fldPlaylistTitle, fldPlaylistOwner) values (?, ?)"; // SQL insert statement
           PreparedStatement insertStatement = connection.prepareStatement(InsertSQL);
           insertStatement.setString(1, nameOfPlaylist.getText()); //sets the placeholder '?' to a String from the textbox
-          insertStatement.setString(2, Global.User);
+          insertStatement.setString(2, GlobalInfo.User);
           insertStatement.executeUpdate();
      }
      private void addMediaToNewPlaylist() throws SQLException {
@@ -169,8 +169,8 @@ public class CreateAndEditPlaylistController {
           while (resultSet.next()) {
                allPlaylistsView.getItems().add(resultSet.getString(2));
           }
-          for (int i = 0; i < Global.allMedia.size(); i++) {
-               allMediaView.getItems().add(Global.allMedia.get(i).getMediaTitle());
+          for (int i = 0; i < GlobalInfo.allMedia.size(); i++) {
+               allMediaView.getItems().add(GlobalInfo.allMedia.get(i).getMediaTitle());
           }
      }
      private void deletePlaylist() throws SQLException {

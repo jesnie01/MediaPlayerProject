@@ -1,6 +1,6 @@
 package com.example.mediaplayerproject.controller;
 
-import com.example.mediaplayerproject.model.Global;
+import com.example.mediaplayerproject.model.GlobalInfo;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
 import javafx.event.ActionEvent;
@@ -16,11 +16,13 @@ import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class HelloController implements Initializable {
+public class MediaPlayerController implements Initializable {
     @FXML
     public AnchorPane mediaAnchorpane;
     @FXML
     public GridPane mediaGridpane;
+    @FXML
+    private MediaView mediaView =  GlobalInfo.mediaView;
     @FXML
     private Label welcomeText;
     @FXML
@@ -34,20 +36,18 @@ public class HelloController implements Initializable {
     @FXML
     private Button buttonNext;
     @FXML
-    private MediaView mediaView =  Global.mediaView;
+    private ListView playlistView;
+    @FXML
+    private StackPane playListToggle;
     @FXML
     private Label durationLabel; //Prompt text = Duration
     @FXML
     private Label titleLabel; //Dette skal laves om til current duration i sangen?
     @FXML
     private Slider volumeSlider = new Slider();
-    @FXML
-    private ListView playlistView;
-    @FXML
-    private StackPane playListToggle;
     private File file = new File("src\\media\\NoFile.mp4").getAbsoluteFile(); //filepath
     private Media media = new Media(file.toURI().toString()); //changes filepath to readable media
-    private MediaPlayer mediaPlayer = Global.mediaPlayer;
+    private MediaPlayer mediaPlayer = GlobalInfo.mediaPlayer;
     /**
      * This method is invoked automatically in the beginning. Used for initializing the mediaplayer, loading data etc.
      *
@@ -96,19 +96,19 @@ public class HelloController implements Initializable {
         mediaPlayer.dispose();
         mediaView.setMediaPlayer(null);
         playlistView.getItems().clear();
-        Global.playlistMedia.clear();
+        GlobalInfo.playlistMedia.clear();
     }
     /**
      * Displays the media of the previous index of the playlist in the mediaplayer, ready to play
      */
     public void btnPrev() {
         mediaPlayer.dispose(); //Flushes the mediaplayer
-        if (Global.currentIndexOfMediaInPlaylist > 0) {
-            Global.currentIndexOfMediaInPlaylist--;
+        if (GlobalInfo.currentIndexOfMediaInPlaylist > 0) {
+            GlobalInfo.currentIndexOfMediaInPlaylist--;
         } else {
-            Global.currentIndexOfMediaInPlaylist = Global.playlistMedia.size() - 1;
+            GlobalInfo.currentIndexOfMediaInPlaylist = GlobalInfo.playlistMedia.size() - 1;
         }
-        file = new File(Global.playlistMedia.get(Global.currentIndexOfMediaInPlaylist).getMediaPath()).getAbsoluteFile();
+        file = new File(GlobalInfo.playlistMedia.get(GlobalInfo.currentIndexOfMediaInPlaylist).getMediaPath()).getAbsoluteFile();
         media = new Media(file.toURI().toString());
         mediaPlayer = new MediaPlayer(media);
         mediaView.setMediaPlayer(mediaPlayer);
@@ -118,12 +118,12 @@ public class HelloController implements Initializable {
      */
     public void btnNext() {
         mediaPlayer.dispose();
-        if (Global.currentIndexOfMediaInPlaylist < Global.playlistMedia.size() - 1) {
-            Global.currentIndexOfMediaInPlaylist++;
+        if (GlobalInfo.currentIndexOfMediaInPlaylist < GlobalInfo.playlistMedia.size() - 1) {
+            GlobalInfo.currentIndexOfMediaInPlaylist++;
         } else {
-            Global.currentIndexOfMediaInPlaylist = 0;
+            GlobalInfo.currentIndexOfMediaInPlaylist = 0;
         }
-        file = new File(Global.playlistMedia.get(Global.currentIndexOfMediaInPlaylist).getMediaPath()).getAbsoluteFile();
+        file = new File(GlobalInfo.playlistMedia.get(GlobalInfo.currentIndexOfMediaInPlaylist).getMediaPath()).getAbsoluteFile();
         media = new Media(file.toURI().toString());
         mediaPlayer = new MediaPlayer(media);
         mediaView.setMediaPlayer(mediaPlayer);
@@ -140,9 +140,9 @@ public class HelloController implements Initializable {
             playListToggle.setVisible(true);
             playListToggle.setDisable(false);
             playlistView.getItems().clear();
-            for(int i = 0; i < Global.playlistMedia.size(); i++)
+            for(int i = 0; i < GlobalInfo.playlistMedia.size(); i++)
             {
-                playlistView.getItems().add(Global.playlistMedia.get(i).getMediaTitle());
+                playlistView.getItems().add(GlobalInfo.playlistMedia.get(i).getMediaTitle());
             }
         }
     }

@@ -1,41 +1,31 @@
-package com.example.mediaplayerproject;
+package com.example.mediaplayerproject.controller;
 
-import com.example.mediaplayerproject.model.Global;
-import javafx.event.ActionEvent;
+import com.example.mediaplayerproject.model.GlobalInfo;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
-import javafx.scene.Scene;
 
-import java.io.File;
 import java.io.IOException;
-import java.util.IllegalFormatWidthException;
 
-import static com.example.mediaplayerproject.model.Global.mediaPlayer;
+import static com.example.mediaplayerproject.model.GlobalInfo.mediaPlayer;
 
-public class ViewController {
+public class MainLayoutController {
     @FXML
     private AnchorPane dynamicView;
     @FXML
     MediaPlayer player = mediaPlayer;
-    MediaView view = Global.mediaView;
+    MediaView view = GlobalInfo.mediaView;
 
     /**
      * Changes the view to ViewMedia
      */
     @FXML
     private void SwitchToAllMedia() {
-        loadView("viewAllMedia.fxml");
-        Global.stopMedia(player, view);
+        loadView("AllMediaView.fxml");
+        GlobalInfo.stopMedia(player, view);
     }
 
     /**
@@ -43,8 +33,8 @@ public class ViewController {
      */
     @FXML
     private void SwitchToAllPlaylists() {
-        loadView("viewPlaylists-view.fxml");
-        Global.stopMedia(player, view);
+        loadView("PlaylistView.fxml");
+        GlobalInfo.stopMedia(player, view);
     }
 
     /**
@@ -52,8 +42,8 @@ public class ViewController {
      */
     @FXML
     private void SwitchToMediaPlayer() {
-        loadView("viewMediaPlayer-view.fxml");
-        Global.stopMedia(player, view);
+        loadView("MediaPlayerView.fxml");
+        GlobalInfo.stopMedia(player, view);
     }
 
     /**
@@ -61,8 +51,8 @@ public class ViewController {
      */
     @FXML
     private void SwitchToEditPlaylist() {
-        loadView("createAndEditPlaylist.fxml");
-        Global.stopMedia(player, view);
+        loadView("CreateEditPlaylistView.fxml");
+        GlobalInfo.stopMedia(player, view);
     }
 
     /**
@@ -70,8 +60,8 @@ public class ViewController {
      */
     @FXML
     private void SwitchToCreatePlaylist() {
-        loadView("createAndEditPlaylist.fxml");
-        Global.stopMedia(player, view);
+        loadView("CreateEditPlaylistView.fxml");
+        GlobalInfo.stopMedia(player, view);
     }
 
     /**
@@ -80,7 +70,7 @@ public class ViewController {
     @FXML
     private void SwitchToHowTo() {
         loadView("");
-        Global.stopMedia(player, view);
+        GlobalInfo.stopMedia(player, view);
     }
 
     /**
@@ -88,8 +78,8 @@ public class ViewController {
      */
     @FXML
     private void SwitchToAboutUs() {
-        loadView("viewAllMedia.fxml");
-        Global.stopMedia(player, view);
+        loadView("AllMediaView.fxml");
+        GlobalInfo.stopMedia(player, view);
     }
 
          /**

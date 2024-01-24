@@ -7,7 +7,7 @@
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="allMediaView" prefHeight="400.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mediaplayerproject.controller.ViewAllMediaController">
+<AnchorPane fx:id="allMediaView" prefHeight="400.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mediaplayerproject.controller.AllMediaController">
    <children>
       <ListView fx:id="mediaList" layoutX="10.0" layoutY="61.0" prefHeight="324.0" prefWidth="630.0" AnchorPane.bottomAnchor="15.199999999999989" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="9.200000000000045" AnchorPane.topAnchor="60.80000000000001" />
       <TextField fx:id="searchBox" layoutX="10.0" layoutY="29.0" prefHeight="13.0" prefWidth="150.0" promptText="search" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="490.79999999999995" AnchorPane.topAnchor="29.0" />

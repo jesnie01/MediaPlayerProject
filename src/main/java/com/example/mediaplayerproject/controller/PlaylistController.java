@@ -1,6 +1,6 @@
 package com.example.mediaplayerproject.controller;
 
-import com.example.mediaplayerproject.model.Global;
+import com.example.mediaplayerproject.model.GlobalInfo;
 import com.example.mediaplayerproject.model.SearchDB;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,13 +13,10 @@ import javafx.scene.layout.AnchorPane;
 
 import java.io.File;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
-public class viewPlaylistsController  {
+public class PlaylistController {
     public AnchorPane allPlaylistView;
     public Label playlistLabel;
     @FXML
@@ -56,17 +53,17 @@ public class viewPlaylistsController  {
         String currentPlaylist = playlistListView.getSelectionModel().getSelectedItem().toString();
         playlistLabel.setText(currentPlaylist);
         ResultSet resultSet = SearchDB.searchMediaInPlaylist(playlistListView.getSelectionModel().selectedItemProperty().getValue().toString());
-        Global.playlistMedia.clear();
+        GlobalInfo.playlistMedia.clear();
         while (resultSet.next()) {
-            for (int i = 0; i < Global.allMedia.size(); i++) {
-                if(resultSet.getString(5).equals(Global.allMedia.get(i).getMediaTitle())){
-                    Global.playlistMedia.add(Global.allMedia.get(i));
+            for (int i = 0; i < GlobalInfo.allMedia.size(); i++) {
+                if(resultSet.getString(5).equals(GlobalInfo.allMedia.get(i).getMediaTitle())){
+                    GlobalInfo.playlistMedia.add(GlobalInfo.allMedia.get(i));
                 }
             }
 
         }
-        for (int i = 0; i < Global.playlistMedia.size(); i++) {
-            listViewOfMediaInCurrentPlaylist.getItems().add(Global.playlistMedia.get(i).getMediaTitle());
+        for (int i = 0; i < GlobalInfo.playlistMedia.size(); i++) {
+            listViewOfMediaInCurrentPlaylist.getItems().add(GlobalInfo.playlistMedia.get(i).getMediaTitle());
         }
     }
 
@@ -77,8 +74,9 @@ public class viewPlaylistsController  {
     @FXML
     public void selectMedia(MouseEvent mouseEvent) {
         if(listViewOfMediaInCurrentPlaylist.getSelectionModel().getSelectedItem()!=null){
-            Global.currentIndexOfMediaInPlaylist = listViewOfMediaInCurrentPlaylist.getSelectionModel().getSelectedIndex();
-        }else{Global.currentIndexOfMediaInPlaylist = 0;}
+            GlobalInfo.currentIndexOfMediaInPlaylist = listViewOfMediaInCurrentPlaylist.getSelectionModel().getSelectedIndex();
+        }else{
+            GlobalInfo.currentIndexOfMediaInPlaylist = 0;}
     }
 
     /**
@@ -89,15 +87,15 @@ public class viewPlaylistsController  {
     @FXML
     public void btnPlayPlaylist(ActionEvent actionEvent) {
         String selectedItem = playlistListView.getSelectionModel().getSelectedItem().toString(); //Fetch the title of selected media
-        for (int i = 0; i < Global.playlistMedia.size(); i++) {
-            if (selectedItem.equals(Global.playlistMedia.get(i).getMediaTitle())) { //Check the array allMedia for a match
-                Global.playlistMedia.clear(); //Clears the playlist
-                Global.playlistMedia.add(Global.allMedia.get(i)); //Add matching media to playlist
+        for (int i = 0; i < GlobalInfo.playlistMedia.size(); i++) {
+            if (selectedItem.equals(GlobalInfo.playlistMedia.get(i).getMediaTitle())) { //Check the array allMedia for a match
+                GlobalInfo.playlistMedia.clear(); //Clears the playlist
+                GlobalInfo.playlistMedia.add(GlobalInfo.allMedia.get(i)); //Add matching media to playlist
             }
         }
         try { //Loads the view of the mediaplayer with the matching index of the selected media, ready to play
-            System.out.println("Loading view: " + Global.fxmlFile);
-            AnchorPane newView = FXMLLoader.load(new File(Global.relativePath).toURI().toURL());
+            System.out.println("Loading view: " + GlobalInfo.fxmlFile);
+            AnchorPane newView = FXMLLoader.load(new File(GlobalInfo.relativePath).toURI().toURL());
             allPlaylistView.getChildren().removeAll();
             allPlaylistView.getChildren().setAll(newView);
         } catch (IOException e) {

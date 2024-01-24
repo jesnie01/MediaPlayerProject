@@ -1,5 +1,5 @@
 package com.example.mediaplayerproject;
-import com.example.mediaplayerproject.model.Global;
+import com.example.mediaplayerproject.model.GlobalInfo;
 import com.example.mediaplayerproject.model.MediaInfo;
 import com.example.mediaplayerproject.model.SearchDB;
 import javafx.application.Application;
@@ -14,7 +14,7 @@ public class HelloApplication extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("MainLayout.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("MainLayoutView.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 650, 450);
         stage.setTitle("Media Player");
         stage.setMinWidth(664);
@@ -30,7 +30,7 @@ public class HelloApplication extends Application {
                 tempMedia.setMediaId(resultSet.getInt(1));
                 tempMedia.setMediaTitle(resultSet.getString(2));
                 tempMedia.setMediaPath(resultSet.getString(4));
-                Global.allMedia.add(tempMedia);
+                GlobalInfo.allMedia.add(tempMedia);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
