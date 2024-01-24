@@ -6,9 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="ddff0b61-f80f-4af6-a0de-828cd68eb743" name="Changes" comment="Changed names for varies classes/controllers/views &amp; deleted irrelevant views/classes.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/mediaplayerproject/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/mediaplayerproject/HelloApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/mediaplayerproject/controller/MainLayoutController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/mediaplayerproject/controller/MainLayoutController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/mediaplayerproject/MainLayoutView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/mediaplayerproject/MainLayoutView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/mediaplayerproject/AllMediaView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/AllMediaView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/mediaplayerproject/CreateEditPlaylistView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/CreateEditPlaylistView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/mediaplayerproject/MediaPlayerView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/MediaPlayerView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/mediaplayerproject/PlaylistView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/PlaylistView.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,6 +94,12 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Java\MediaPlayerProject\src\main\resources\com\example\mediaplayerproject" />
+      <recent name="C:\Java\MediaPlayerProject\src\main\resources" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.mediaplayerproject.HelloApplication" />
@@ -142,7 +150,7 @@
       <workItem from="1705048990566" duration="1434000" />
       <workItem from="1705500715312" duration="44155000" />
       <workItem from="1705930690168" duration="14511000" />
-      <workItem from="1706089970945" duration="3457000" />
+      <workItem from="1706089970945" duration="4957000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <option name="closed" value="true" />
@@ -280,7 +288,15 @@
       <option name="project" value="LOCAL" />
       <updated>1706089401705</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Changed names for varies classes/controllers/views &amp; deleted irrelevant views/classes.">
+      <option name="closed" value="true" />
+      <created>1706094425088</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1706094425088</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

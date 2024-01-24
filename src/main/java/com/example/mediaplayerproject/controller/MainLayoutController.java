@@ -23,7 +23,7 @@ public class MainLayoutController {
      */
     @FXML
     private void MediasView() {
-        loadView("/com/example/MediaPlayerProject/AllMediaView.fxml");
+        loadView("AllMediaView.fxml");
         GlobalInfo.stopMedia(player, view);
     }
 
@@ -88,7 +88,7 @@ public class MainLayoutController {
         private void loadView(String fxmlFile) {
             try {
                 System.out.println("Loading view: " + fxmlFile);
-                AnchorPane newView = FXMLLoader.load(getClass().getResource(fxmlFile));
+                AnchorPane newView = FXMLLoader.load(getClass().getClassLoader().getResource(fxmlFile));
                 dynamicView.getChildren().removeAll();
                 dynamicView.getChildren().setAll(newView);
 
