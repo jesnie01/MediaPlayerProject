@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<GridPane fx:id="MainGridpane" maxHeight="1080.0" maxWidth="1920.0" prefHeight="425.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mediaplayerproject.controller.MainLayoutController">
+<GridPane fx:id="MainGridpane" maxHeight="1080.0" maxWidth="1920.0" prefHeight="425.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mediaplayerproject.controller.MainLayoutController">
    <children>
       <MenuBar maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="17.0" prefWidth="650.0">
         <menus>
@@ -17,7 +12,7 @@
             <items>
               <MenuItem mnemonicParsing="false" onAction="#MediasView" text="View all Media" />
                   <MenuItem mnemonicParsing="false" onAction="#PlaylistsView" text="View all Playlists" />
-                  <MenuItem mnemonicParsing="false" onAction="#MediaplayerView" text="TestView" />
+                  <MenuItem mnemonicParsing="false" onAction="#MediaplayerView" text="Media Player" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">
@@ -41,7 +36,15 @@
       </MenuBar>
       <AnchorPane fx:id="dynamicView" maxHeight="1080.0" maxWidth="1920.0" prefHeight="383.0" prefWidth="650.0" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="1" GridPane.vgrow="SOMETIMES">
          <children>
-            <TextArea maxHeight="1500.0" maxWidth="1800.0" prefHeight="223.0" prefWidth="370.0" text="Test view 1&#10;" AnchorPane.bottomAnchor="202.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="280.0" AnchorPane.topAnchor="0.0" />
+            <Label alignment="CENTER" prefHeight="26.0" prefWidth="650.0" text="Media Player by Jakub, Jannick, Jesper and Mikael">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <TextArea editable="false" layoutY="24.8" maxHeight="1500.0" maxWidth="1800.0" prefHeight="369.0" prefWidth="643.0" text="Greetings and welcome to the extradionary, extravagant, absurd, bizarre, &#10;fantastic, grandiose, implausible, ludicrous, fancy, outrageous, reckless, &#10;ridiculous, blingy, costly, expensive, prodical, unreasonable, balanced,&#10;gorgeous, amazing, exceptional, particular, singular, unimaginable, surprising,&#10;terrific, uncommon, unprecedented, unusual, unique, weird, special, strange,&#10;rare, phenonemal, marvelous, odd, wicked, stupendous, unthinkable,&#10;unwonted, peculiar, heavy, gnarly, heteroclite, deviant, monumental,&#10;overwhelming, mind-boggling, miraculous, breathtaking, astonishing,&#10;astounding, spectacular, tremendous, humongous, wondrous, fearless, bold,&#10;heroic, daring, audacious, and last but not least... pronounced! Mediaplayer.&#10;" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="25.0">
+               <font>
+                  <Font size="18.0" />
+               </font></TextArea>
          </children>
       </AnchorPane>
    </children>

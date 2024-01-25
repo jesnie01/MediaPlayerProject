@@ -90,11 +90,13 @@ public class PlaylistController {
      */
     @FXML
     public void btnPlayPlaylist(ActionEvent actionEvent) {
-        String selectedItem = playlistListView.getSelectionModel().getSelectedItem().toString(); //Fetch the title of selected media
-        for (int i = 0; i < GlobalInfo.playlistMedia.size(); i++) {
-            if (selectedItem.equals(GlobalInfo.playlistMedia.get(i).getMediaTitle())) { //Check the array allMedia for a match
-                GlobalInfo.playlistMedia.clear(); //Clears the playlist
-                GlobalInfo.playlistMedia.add(GlobalInfo.allMedia.get(i)); //Add matching media to playlist
+        if(GlobalInfo.mediaSelected) {
+            String selectedItem = playlistListView.getSelectionModel().getSelectedItem().toString(); //Fetch the title of selected media
+            for (int i = 0; i < GlobalInfo.playlistMedia.size(); i++) {
+                if (selectedItem.equals(GlobalInfo.playlistMedia.get(i).getMediaTitle())) { //Check the array allMedia for a match
+                    GlobalInfo.playlistMedia.clear(); //Clears the playlist
+                    GlobalInfo.playlistMedia.add(GlobalInfo.allMedia.get(i)); //Add matching media to playlist
+                }
             }
         }
         try { //Loads the view of the mediaplayer with the matching index of the selected media, ready to play
