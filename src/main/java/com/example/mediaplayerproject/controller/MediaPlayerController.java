@@ -216,6 +216,5 @@ public class MediaPlayerController implements Initializable {
         media = new Media(file.toURI().toString());
         mediaPlayer = new MediaPlayer(media);
         mediaView.setMediaPlayer(mediaPlayer);
-
     }
 }
