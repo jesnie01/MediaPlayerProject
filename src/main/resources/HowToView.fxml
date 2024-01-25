@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="howToView" prefHeight="400.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mediaplayerproject.controller.HowToController">
+   <children>
+      <TextArea editable="false" prefHeight="400.0" prefWidth="650.0" promptText="How To MediaPlayerUse the Navigation bar to either watch a media or create/edit a playlist.Go to View &gt; All Media to select a media from the library to watch, and press Play Selected Media.You can Search the library for a specific Creator or Title. Leave the Search bar empty to get everything.Go to View &gt;  All Playlists to select a playlist and choose a starting media or start from the beginning.You can Search the library of playlists for a title or leave the bar empty, to get everything.Go to View &gt; MediaPlayer to watch the selected Media.Go to Edit &gt; Playlist to Edit a Playlist.Refresh the list to see the library of playlists. You will see a list of all available medias that can be added to the playlist, and a list of all the media currently on the selected playlist.You can also create a new playlist from this menu or delete a playlist from the library.Go to Create &gt; Playlist to create a Playlist.Refresh the list to see the library of playlists. You will see a list of all available medias that can be added to the playlist, and a list of all the media currently on the selected playlist.You can also edit a new playlist from this menu or delete a playlist from the library.">
+         <font>
+            <Font size="15.0" />
+         </font></TextArea>
+   </children>
+</AnchorPane>
