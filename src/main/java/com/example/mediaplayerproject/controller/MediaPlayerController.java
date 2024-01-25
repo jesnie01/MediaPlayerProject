@@ -61,7 +61,7 @@ public class MediaPlayerController implements Initializable {
     @FXML
     private Slider volumeSlider = new Slider();
     @FXML
-    private ProgressBar VideoProgressBar = new ProgressBar();
+    private ProgressBar videoProgressBar = new ProgressBar();
 
     private File file = new File("src\\media\\NoFile.mp4").getAbsoluteFile(); //filepath
     private Media media = new Media(file.toURI().toString()); //changes filepath to readable media
@@ -96,18 +96,13 @@ public class MediaPlayerController implements Initializable {
             }
         });
 
-//        VideoProgressBar.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
-//            System.out.println(e.getX());
-//            System.out.println(e.getY());
-//        });
-
-        VideoProgressBar.addEventHandler(MouseEvent.MOUSE_DRAGGED, e -> {
+        videoProgressBar.addEventHandler(MouseEvent.MOUSE_DRAGGED, e -> {
             mediaPlayer.pause();
-            VideoProgressBar.setProgress(e.getX()/VideoProgressBar.getWidth());
+            videoProgressBar.setProgress(e.getX()/videoProgressBar.getWidth());
         });
 
-        VideoProgressBar.addEventHandler(MouseEvent.MOUSE_RELEASED, e -> {
-            mediaPlayer.seek(Duration.seconds(mediaPlayer.getTotalDuration().toSeconds()*(e.getX()/VideoProgressBar.getWidth())));
+        videoProgressBar.addEventHandler(MouseEvent.MOUSE_RELEASED, e -> {
+            mediaPlayer.seek(Duration.seconds(mediaPlayer.getTotalDuration().toSeconds()*(e.getX()/videoProgressBar.getWidth())));
             mediaPlayer.play();
         });
     }
@@ -126,7 +121,7 @@ public class MediaPlayerController implements Initializable {
         totalTime.setText(String.format("%02d:%02d:%02d",tHours, tMinutes, tSeconds));
 
         mediaPlayer.currentTimeProperty().addListener((observable, oldTime, newTime) -> {
-            VideoProgressBar.setProgress(newTime.toMillis() / mediaPlayer.getTotalDuration().toMillis());
+            videoProgressBar.setProgress(newTime.toMillis() / mediaPlayer.getTotalDuration().toMillis());
             int hours = (int) (newTime.toSeconds() / 3600);
             int minutes = (int) ((newTime.toSeconds() % 3600) / 60);
             int seconds = (int) (newTime.toSeconds() % 60);
@@ -170,12 +165,20 @@ public class MediaPlayerController implements Initializable {
                 e.printStackTrace();
             }
         }
+        resetProgress();
+    }
+
+    private void resetProgress() {
+        videoProgressBar.setProgress(0.0);
+        totalTime.setText("00:00:00");
+        currentTime.setText("00:00:00");
     }
 
     /**
      * Displays the media of the previous index of the playlist in the mediaplayer, ready to play
      */
     public void btnPrev() {
+        resetProgress();
         System.out.println("Media Selected: " + GlobalInfo.mediaSelected);
         if (GlobalInfo.mediaSelected) {
             mediaPlayer.dispose(); //Flushes the mediaplayer
@@ -195,6 +198,7 @@ public class MediaPlayerController implements Initializable {
      * Displays the media of the next index of the playlist in the mediaplayer, ready to play
      */
     public void btnNext() {
+        resetProgress();
         if (GlobalInfo.mediaSelected) {
             System.out.println("Media Selected: " + GlobalInfo.mediaSelected);
             mediaPlayer.dispose();
@@ -231,6 +235,7 @@ public class MediaPlayerController implements Initializable {
     }
 
     public void selectFromPlaylist(MouseEvent mouseEvent) {
+        resetProgress();
         mediaPlayer.dispose();
         mediaView.setMediaPlayer(null);
         GlobalInfo.currentIndexOfMediaInPlaylist = currentPlaylist.getSelectionModel().getSelectedIndex();
