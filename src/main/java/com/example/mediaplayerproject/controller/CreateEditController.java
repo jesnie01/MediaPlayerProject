@@ -66,7 +66,18 @@ public class CreateEditController {
                }
           }
      }
-     public void btnSearch() {
+     public void btnSearch() throws SQLException {
+          ResultSet resultSet = SearchDB.searchMedia();
+          allMediaView.getItems().clear();
+          while (resultSet.next()) {
+               System.out.println(resultSet.getString(2));
+               System.out.println(searchField.getText());
+               System.out.println("-------------------------------------");
+               if (resultSet.getString(2).toLowerCase().contains(searchField.getText())) {
+                    System.out.println("MATCH");
+                    allMediaView.getItems().add(resultSet.getString(2));
+               }
+          }
 
      }
      public void btnAdd() throws SQLException {
