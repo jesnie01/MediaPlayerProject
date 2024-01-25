@@ -166,6 +166,7 @@ public class MediaPlayerController implements Initializable {
             media = new Media(file.toURI().toString());
             mediaPlayer = new MediaPlayer(media);
             mediaView.setMediaPlayer(mediaPlayer);
+            currentPlaylist.getSelectionModel().select(GlobalInfo.currentIndexOfMediaInPlaylist);
         }
     }
     /**
@@ -184,6 +185,7 @@ public class MediaPlayerController implements Initializable {
             media = new Media(file.toURI().toString());
             mediaPlayer = new MediaPlayer(media);
             mediaView.setMediaPlayer(mediaPlayer);
+            currentPlaylist.getSelectionModel().select(GlobalInfo.currentIndexOfMediaInPlaylist);
         }
     }
     @FXML
@@ -202,6 +204,18 @@ public class MediaPlayerController implements Initializable {
             {
                 currentPlaylist.getItems().add(GlobalInfo.playlistMedia.get(i).getMediaTitle());
             }
+            currentPlaylist.getSelectionModel().select(GlobalInfo.currentIndexOfMediaInPlaylist);
         }
+    }
+
+    public void selectFromPlaylist(MouseEvent mouseEvent) {
+        mediaPlayer.dispose();
+        mediaView.setMediaPlayer(null);
+        GlobalInfo.currentIndexOfMediaInPlaylist = currentPlaylist.getSelectionModel().getSelectedIndex();
+        file = new File(GlobalInfo.playlistMedia.get(GlobalInfo.currentIndexOfMediaInPlaylist).getMediaPath()).getAbsoluteFile();
+        media = new Media(file.toURI().toString());
+        mediaPlayer = new MediaPlayer(media);
+        mediaView.setMediaPlayer(mediaPlayer);
+
     }
 }
