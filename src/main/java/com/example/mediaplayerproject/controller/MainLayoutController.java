@@ -35,7 +35,7 @@ public class MainLayoutController {
     }
 
     /**
-     * Changes view to MediaPlayer (this option is not visible by default)
+     * Changes view to MediaPlayer
      */
     @FXML
     private void MediaplayerView() {
