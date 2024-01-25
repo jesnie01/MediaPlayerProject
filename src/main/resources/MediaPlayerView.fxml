@@ -54,6 +54,6 @@
                </HBox.margin></Slider>
          </children>
       </HBox>
-      <ListView fx:id="currentPlaylist" disable="true" prefHeight="200.0" prefWidth="250.0" visible="false" AnchorPane.bottomAnchor="56.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <ListView fx:id="currentPlaylist" disable="true" onMouseClicked="#selectFromPlaylist" prefHeight="200.0" prefWidth="250.0" visible="false" AnchorPane.bottomAnchor="56.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
    </children>
 </AnchorPane>
