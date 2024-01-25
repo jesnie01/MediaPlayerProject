@@ -10,7 +10,9 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
@@ -22,6 +24,7 @@ import javafx.util.Duration;
 import org.controlsfx.glyphfont.FontAwesome;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -150,8 +153,25 @@ public class MediaPlayerController implements Initializable {
             GlobalInfo.playlistMedia.clear();
             GlobalInfo.mediaSelected = false;
             System.out.println("Media Selected: " + GlobalInfo.mediaSelected);
+
+            try { //Loads the view of the mediaplayer with the matching index of the selected media, ready to play
+                System.out.println("Loading view: " + GlobalInfo.fxmlFile);
+                AnchorPane newView = FXMLLoader.load(getClass().getClassLoader().getResource(GlobalInfo.fxmlFile));
+                mediaAnchorpane.getChildren().removeAll();
+                mediaAnchorpane.getChildren().setAll(newView);
+
+                for (Node node : mediaAnchorpane.getChildren()) {
+                    AnchorPane.setTopAnchor(node, 0.0);
+                    AnchorPane.setRightAnchor(node, 0.0);
+                    AnchorPane.setBottomAnchor(node, 0.0);
+                    AnchorPane.setLeftAnchor(node, 0.0);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
+
     /**
      * Displays the media of the previous index of the playlist in the mediaplayer, ready to play
      */
