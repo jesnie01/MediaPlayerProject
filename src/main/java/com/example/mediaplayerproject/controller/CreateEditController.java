@@ -17,22 +17,6 @@ import java.util.ArrayList;
 
 public class CreateEditController {
      @FXML
-     private Label playlistName;
-     @FXML
-     private Button refreshButton;
-     @FXML
-     private Button deleteButton;
-     @FXML
-     private Button searchButton;
-     @FXML
-     private Button addItemButton;
-     @FXML
-     private Button removeItemButton;
-     @FXML
-     private Button updateButton;
-     @FXML
-     private Button createButton;
-     @FXML
      private TextField searchField;
      @FXML
      private TextField nameOfPlaylist;
@@ -48,39 +32,42 @@ public class CreateEditController {
      }
      @FXML
      public void selectPlaylist(MouseEvent mouseEvent) throws SQLException {
-          currentPlaylistView.getItems().clear();
+          currentPlaylistView.getItems().clear(); // clears selected playlist view to avoid duplicating results.
           if (allPlaylistsView.getSelectionModel().getSelectedItem() != null) {
+               //sets name to the selected playlist
                nameOfPlaylist.setText(allPlaylistsView.getSelectionModel().selectedItemProperty().getValue().toString());
+               //Executes an SQL query based on the selected item in list, and stores it in resultSet
                ResultSet resultSet = SearchDB.searchMediaInPlaylist(allPlaylistsView.getSelectionModel().selectedItemProperty().getValue().toString());
-               GlobalInfo.playlistMedia.clear();
+               GlobalInfo.playlistMedia.clear(); //clears arraylist containing the medias in selected playlist
                while (resultSet.next()) {
-                    for (int i = 0; i < GlobalInfo.allMedia.size(); i++) {
+                    for (int i = 0; i < GlobalInfo.allMedia.size(); i++) {//repeats body of loops based on the size of the allMedia list
+                         //if the mediatitle found in all available media match the medias found in the sql query, adds them to playlistMedia
                          if(resultSet.getString(5).equals(GlobalInfo.allMedia.get(i).getMediaTitle().toString())){
                               GlobalInfo.playlistMedia.add(GlobalInfo.allMedia.get(i));
                          }
                     }
 
                }
+               //displays playlistMedia in currentPlaylistView
                for (int i = 0; i < GlobalInfo.playlistMedia.size(); i++) {
                     currentPlaylistView.getItems().add(GlobalInfo.playlistMedia.get(i).getMediaTitle());
                }
           }
      }
-     public void btnSearch() throws SQLException {
+
+
+     public void btnSearch() throws SQLException { // button that searches for media
           ResultSet resultSet = SearchDB.searchMedia();
           allMediaView.getItems().clear();
           while (resultSet.next()) {
-               System.out.println(resultSet.getString(2));
-               System.out.println(searchField.getText());
-               System.out.println("-------------------------------------");
+               //Partial search, medias in all available medias contain anything in the searchbox, prints it out
                if (resultSet.getString(2).toLowerCase().contains(searchField.getText())) {
-                    System.out.println("MATCH");
                     allMediaView.getItems().add(resultSet.getString(2));
                }
           }
 
      }
-     public void btnAdd() throws SQLException {
+     public void btnAdd() throws SQLException { // button that adds whats selected in mediaview, into currentplaylistview
           if (allMediaView.getSelectionModel().getSelectedItem() != null) {
                String tempSelectedItem = allMediaView.getSelectionModel().selectedItemProperty().getValue().toString();
                int tempSelectedPlaylist = -1;
@@ -95,7 +82,7 @@ public class CreateEditController {
                }
           }
      }
-     public void btnRemove() throws SQLException {
+     public void btnRemove() throws SQLException { // button that removes whats selected in playlist view
           if (currentPlaylistView.getSelectionModel().getSelectedItem() != null) {
                String tempSelectedItem = currentPlaylistView.getSelectionModel().selectedItemProperty().getValue().toString();
                int tempIndexOfSelectedMedia = currentPlaylistView.getItems().indexOf(tempSelectedItem);
@@ -128,12 +115,19 @@ public class CreateEditController {
           }
      }
      @FXML
-     private void btnDelete() throws SQLException {
+     private void btnDelete() throws SQLException { // button that deletes record from playlists
           deletePlaylist();
           refreshAllPlaylists();
           currentPlaylistView.getItems().clear();
           nameOfPlaylist.setText(null);
      }
+
+     /**
+      *
+      * @param nameOfMedia
+      * @param IdOfPlaylist
+      * @throws SQLException
+      */
      private void addToPlaylist(String nameOfMedia, int IdOfPlaylist) throws SQLException {
           for (int i = 0; i < GlobalInfo.allMedia.size(); i++) {
                if (GlobalInfo.allMedia.get(i).getMediaTitle().equals(nameOfMedia)) {

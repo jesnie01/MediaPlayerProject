@@ -52,7 +52,7 @@ public class AllMediaController {
             GlobalInfo.mediaSelected = true;
             for (int i = 0; i < GlobalInfo.allMedia.size(); i++) {
                 if (selectedItem.equals(GlobalInfo.allMedia.get(i).getMediaTitle())) { //Check the array allMedia for a match
-                    GlobalInfo.playlistMedia.clear();
+                    GlobalInfo.playlistMedia.clear(); // makes sure the playlist is empty on start
                     GlobalInfo.playlistMedia.add(GlobalInfo.allMedia.get(i)); //Adds the match of MediaTitle to the playlist
                     GlobalInfo.currentIndexOfMediaInPlaylist = 0; //Reset the index
                 }

@@ -8,6 +8,13 @@ import java.util.ArrayList;
 
 public class SearchDB {
     //ArrayList method for partial search button for data storage
+    /**
+     *
+     * @param searchText in textbox
+     * @param toggle of radiobutton
+     * @returns either a creator name or media title, depending on toggle parameter.
+     * @throws SQLException
+     */
     public ArrayList<String> searchPartial(String searchText, boolean toggle) throws SQLException {
         ArrayList<String> tempArrayList = new ArrayList<>();
         ArrayList<String> sortArrayList = new ArrayList<>();
@@ -65,6 +72,12 @@ public class SearchDB {
         }
     }
 
+    /**
+     *
+     * @returns sql statement
+     * @throws SQLException
+     */
+
     public static ResultSet searchMedia() throws SQLException {
         Connection connection = DBConnection.getDbConnection().makeConnection();
         PreparedStatement preparedStatement = connection.prepareCall("SELECT * FROM tblMediaInfo");
@@ -75,14 +88,30 @@ public class SearchDB {
         PreparedStatement preparedStatement = connection.prepareCall("SELECT * FROM tblCreator");
         return preparedStatement.executeQuery();
     }
+
+    /**
+     *
+     * @returns SQL statement
+     * @throws SQLException
+     */
     public static ResultSet searchPlaylists() throws SQLException {
         Connection connection = DBConnection.getDbConnection().makeConnection();
         PreparedStatement preparedStatement = connection.prepareCall("SELECT * FROM tblPlaylist");
         return preparedStatement.executeQuery();
     }
+
+    /**
+     *
+     * @param playlistName a playlist name
+     * @returns medias in a playlist
+     * @throws SQLException
+     */
     public static ResultSet searchMediaInPlaylist(String playlistName) throws SQLException {
         Connection connection = DBConnection.getDbConnection().makeConnection();
-        PreparedStatement preparedStatement = connection.prepareCall("SELECT * FROM tblMediaPlaylist INNER JOIN tblMediaInfo ON tblMediaPlaylist.fldMediaId = tblMediaInfo.fldMediaId WHERE fldPlaylistId = (SELECT fldPlaylistId FROM tblPlaylist WHERE fldPlaylistTitle = '" + playlistName + "')");
+        PreparedStatement preparedStatement = connection.prepareCall(
+                "SELECT * FROM tblMediaPlaylist INNER JOIN tblMediaInfo ON tblMediaPlaylist.fldMediaId = " +
+                    "tblMediaInfo.fldMediaId WHERE fldPlaylistId = (SELECT fldPlaylistId FROM tblPlaylist WHERE " +
+                    "fldPlaylistTitle = '" + playlistName + "')");
         return preparedStatement.executeQuery();
     }
 
