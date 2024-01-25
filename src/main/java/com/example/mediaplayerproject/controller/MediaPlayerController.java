@@ -69,7 +69,7 @@ public class MediaPlayerController implements Initializable {
     /**
      * This method is invoked automatically in the beginning. Used for initializing the mediaplayer, loading data etc.
      *
-     * @param location
+     * @param location - location of running program
      * @param resources
      */
     @Override
@@ -168,6 +168,9 @@ public class MediaPlayerController implements Initializable {
         resetProgress();
     }
 
+    /**
+     * resets time on progressbar
+     */
     private void resetProgress() {
         videoProgressBar.setProgress(0.0);
         totalTime.setText("00:00:00");
@@ -214,6 +217,11 @@ public class MediaPlayerController implements Initializable {
             currentPlaylist.getSelectionModel().select(GlobalInfo.currentIndexOfMediaInPlaylist);
         }
     }
+
+    /**
+     * button that toggles display of listview containing current playlist
+     * @param actionEvent - listens for click on button
+     */
     @FXML
     public void btnList(ActionEvent actionEvent) {
         if(currentPlaylist.isVisible())
@@ -234,6 +242,10 @@ public class MediaPlayerController implements Initializable {
         }
     }
 
+    /**
+     * makes it possible to select a media from playlist
+     * @param mouseEvent - listener that awaits mouse click
+     */
     public void selectFromPlaylist(MouseEvent mouseEvent) {
         resetProgress();
         mediaPlayer.dispose();

@@ -27,6 +27,10 @@ public class PlaylistController {
     @FXML
     private ListView listViewOfMediaInCurrentPlaylist;
 
+    /**
+     * searches for playlists on button click
+     * @throws SQLException
+     */
     @FXML
     protected void btnSearchPlaylists() throws SQLException {
         playlistListView.getItems().clear();  //clears the list so results wont duplicate on click

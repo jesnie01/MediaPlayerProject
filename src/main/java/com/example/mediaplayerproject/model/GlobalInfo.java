@@ -20,6 +20,11 @@ public class GlobalInfo {
 
     public static String relativePath = "src\\main\\resources\\com\\example\\mediaplayerproject\\MediaPlayerView.fxml";
 
+    /**
+     *
+     * @param mediaPlayer - current instance of mediaplayer
+     * @param mediaView - current instance of mediaview
+     */
     public static void stopMedia(MediaPlayer mediaPlayer, MediaView mediaView){
         if (mediaView != null && mediaPlayer != null){
             mediaPlayer.dispose();

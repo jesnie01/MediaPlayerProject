@@ -124,8 +124,8 @@ public class CreateEditController {
 
      /**
       *
-      * @param nameOfMedia
-      * @param IdOfPlaylist
+      * @param nameOfMedia - a media title
+      * @param IdOfPlaylist - an ID of a playlist from DB
       * @throws SQLException
       */
      private void addToPlaylist(String nameOfMedia, int IdOfPlaylist) throws SQLException {
@@ -140,6 +140,12 @@ public class CreateEditController {
                }
           }
      }
+
+     /**
+      *
+      * @param MediaPlaylistId - an ID of a selected playlist
+      * @throws SQLException
+      */
      private void removeFromPlaylist(int MediaPlaylistId) throws SQLException {
           Connection connection = DBConnection.makeConnection();
           String deleteSQL = "DELETE FROM tblMediaPlaylist WHERE (fldMediaPlaylistId = ?)";
@@ -147,6 +153,11 @@ public class CreateEditController {
           preparedStatement.setInt(1,MediaPlaylistId);
           preparedStatement.executeUpdate();
      }
+
+     /**
+      * creates a record for playlist
+      * @throws SQLException
+      */
      private void createPlaylist() throws SQLException {
           Connection connection = DBConnection.makeConnection(); // Db connection
           String InsertSQL = "INSERT INTO tblPlaylist(fldPlaylistTitle, fldPlaylistOwner) values (?, ?)"; // SQL insert statement
@@ -155,6 +166,11 @@ public class CreateEditController {
           insertStatement.setString(2, GlobalInfo.User);
           insertStatement.executeUpdate();
      }
+
+     /**
+      * adds media to a newly created playlist
+      * @throws SQLException
+      */
      private void addMediaToNewPlaylist() throws SQLException {
           ResultSet resultSet = SearchDB.searchPlaylists();
           int tempPlaylistId = -1;
@@ -167,6 +183,11 @@ public class CreateEditController {
                addToPlaylist(currentPlaylistView.getItems().get(i).toString(), tempPlaylistId);
           }
      }
+
+     /**
+      * refreshes the list of playlists
+      * @throws SQLException
+      */
      private void refreshAllPlaylists() throws SQLException {
           allPlaylistsView.getItems().clear();
           allMediaView.getItems().clear();
@@ -178,6 +199,11 @@ public class CreateEditController {
                allMediaView.getItems().add(GlobalInfo.allMedia.get(i).getMediaTitle());
           }
      }
+
+     /**
+      * Deletes record for playlist
+      * @throws SQLException
+      */
      private void deletePlaylist() throws SQLException {
           Connection connection = com.example.mediaplayerproject.model.DBConnection.makeConnection();
           String deleteSQL = "DELETE FROM tblPlayList WHERE fldPlaylistTitle = ?";

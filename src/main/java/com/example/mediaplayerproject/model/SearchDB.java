@@ -7,9 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class SearchDB {
-    //ArrayList method for partial search button for data storage
     /**
-     *
+     *ArrayList method for partial search button for data storage
      * @param searchText in textbox
      * @param toggle of radiobutton
      * @returns either a creator name or media title, depending on toggle parameter.
@@ -74,7 +73,7 @@ public class SearchDB {
 
     /**
      *
-     * @returns sql statement
+     * @returns everything from tblMediaInfo
      * @throws SQLException
      */
 
@@ -83,15 +82,10 @@ public class SearchDB {
         PreparedStatement preparedStatement = connection.prepareCall("SELECT * FROM tblMediaInfo");
         return preparedStatement.executeQuery();
     }
-    public static ResultSet searchCreators() throws SQLException {
-        Connection connection = DBConnection.getDbConnection().makeConnection();
-        PreparedStatement preparedStatement = connection.prepareCall("SELECT * FROM tblCreator");
-        return preparedStatement.executeQuery();
-    }
 
     /**
      *
-     * @returns SQL statement
+     * @returns everything from tblPlaylist
      * @throws SQLException
      */
     public static ResultSet searchPlaylists() throws SQLException {

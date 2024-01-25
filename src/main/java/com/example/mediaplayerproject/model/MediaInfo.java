@@ -6,22 +6,12 @@ public class MediaInfo {
     private int mediaId;
     private String mediaTitle;
     private String mediaPath;
-    private ArrayList<Integer> occursOnPlaylists = new ArrayList<>();
-    //ArrayList<String> creatorName = new ArrayList<>(); TBD
+
     private int mediaSize;
 
     //region Getters and setters
-    public ArrayList<Integer> getOccursOnPlaylists() {
-        return getOccursOnPlaylists();
-    }
-    public void addToOccursOnPlaylists(int playlistId) {
-        occursOnPlaylists.add(playlistId);
-    }
-    public void delItemOnOccursOnPlaylists(int playlistId) {
-        for (int i : occursOnPlaylists) {
-            occursOnPlaylists.remove(occursOnPlaylists.indexOf(playlistId));
-        }
-    }
+
+
     public int getMediaId() {
         return mediaId;
     }
@@ -46,13 +36,6 @@ public class MediaInfo {
         this.mediaPath = mediaPath;
     }
 
-//    public ArrayList<String> getCreatorName() {
-//        return creatorName;
-//    }
-//
-//    public void setCreatorName(String creatorName) {
-//        this.creatorName.add(creatorName);
-//    }
 
     public int getMediaSize() {
         return mediaSize;

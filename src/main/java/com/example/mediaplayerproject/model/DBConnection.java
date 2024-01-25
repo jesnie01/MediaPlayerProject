@@ -13,6 +13,8 @@ public class DBConnection {
     private static Properties properties = new Properties();
 
     private static DBConnection dbConnection = null;
+
+
     private DBConnection() {
         properties.setProperty("user", userName);
         properties.setProperty("password", password);
