@@ -66,7 +66,7 @@ public class MainLayoutController {
      */
     @FXML
     private void HowToView() {
-        loadView("");
+        loadView("HowToView.fxml");
         GlobalInfo.stopMedia(player, view);
     }
 

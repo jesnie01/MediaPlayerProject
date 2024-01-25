@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="howToView" prefHeight="400.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mediaplayerproject.controller.HowToController">
    <children>
-      <TextArea editable="false" prefHeight="400.0" prefWidth="650.0" promptText="How To MediaPlayerUse the Navigation bar to either watch a media or create/edit a playlist.Go to View &gt; All Media to select a media from the library to watch, and press Play Selected Media.You can Search the library for a specific Creator or Title. Leave the Search bar empty to get everything.Go to View &gt;  All Playlists to select a playlist and choose a starting media or start from the beginning.You can Search the library of playlists for a title or leave the bar empty, to get everything.Go to View &gt; MediaPlayer to watch the selected Media.Go to Edit &gt; Playlist to Edit a Playlist.Refresh the list to see the library of playlists. You will see a list of all available medias that can be added to the playlist, and a list of all the media currently on the selected playlist.You can also create a new playlist from this menu or delete a playlist from the library.Go to Create &gt; Playlist to create a Playlist.Refresh the list to see the library of playlists. You will see a list of all available medias that can be added to the playlist, and a list of all the media currently on the selected playlist.You can also edit a new playlist from this menu or delete a playlist from the library.">
+      <Label alignment="CENTER" prefHeight="26.0" prefWidth="650.0" text="How To MediaPlayer" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <font>
-            <Font size="15.0" />
-         </font></TextArea>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <TextArea editable="false" layoutY="29.0" prefHeight="371.0" prefWidth="650.0" text="Use the Navigation bar to either watch a media or create/edit a playlist.&#10;&#10;Watch Media: Go to View &gt; All Media to select a media from the library to watch, and press Play Selected Media.&#10;You can Search the library for a specific Creator or Title. &#10;Leave the Search bar empty to get everything.&#10;&#10;Watch a Playlist: Go to View &gt;  All Playlists to select a playlist and choose a starting media or start from the beginning.&#10;You can Search the library of playlists for a title or leave the bar empty, to get everything.&#10;&#10;Watch selected Media: Go to View &gt; MediaPlayer to watch the selected Media.&#10;&#10;Edit Playlist: Go to Edit &gt; Playlist to Edit a Playlist.&#10;Refresh the list to see the library of playlists.&#10;You will see a list of all available medias that can be added to the playlist and a list&#10;of all the media currently on the selected playlist.&#10;You can also create a new playlist from this menu or delete a playlist from the library.&#10;&#10;Create Playlist: Go to Create &gt; Playlist to create a Playlist.Refresh the list to see the library of playlists. &#10;You will see a list of all available medias that can be added to the playlist, and a list&#10;of all the media currently on the selected playlist.&#10;You can also edit a new playlist from this menu or delete a playlist from the library." AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="29.0" />
    </children>
 </AnchorPane>
