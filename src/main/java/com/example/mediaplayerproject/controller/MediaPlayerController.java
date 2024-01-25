@@ -19,6 +19,7 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.util.Duration;
+import org.controlsfx.glyphfont.FontAwesome;
 
 import java.io.File;
 import java.net.URL;
@@ -147,6 +148,7 @@ public class MediaPlayerController implements Initializable {
             mediaView.setMediaPlayer(null);
             currentPlaylist.getItems().clear();
             GlobalInfo.playlistMedia.clear();
+            GlobalInfo.mediaSelected = false;
             System.out.println("Media Selected: " + GlobalInfo.mediaSelected);
         }
     }
